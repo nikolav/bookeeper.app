@@ -29,8 +29,8 @@ import values from "lodash/values";
 //
 import classnames from "classnames";
 //
-import withReturnValue from "./with-return-value";
 import groupByCount from "./group-by-count";
+import withReturnValue from "./with-return-value";
 //
 const { add: addClass, rm: removeClass, has: hasClass } = q.class;
 const { eventListener, prevent, ready, s: select, type } = q;

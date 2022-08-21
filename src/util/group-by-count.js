@@ -1,6 +1,6 @@
-import identity from lodash/identity;
-import groupBy from lodash/groupBy;
-import q from "nikolav-q"
+import identity from "lodash/identity";
+import groupBy from "lodash/groupBy";
+import q from "nikolav-q";
 
 const { has } = q.object;
 

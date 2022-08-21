@@ -1,14 +1,9 @@
 import { useAppData, ADMIN, TEST } from "./slice-appdata";
-// import {
-//   useFlags,
-//   FLAG_TEST,
-//   FLAG_BLOKUI,
-//   FLAG_APP_IS_PROCESSING,
-// } from "./slice-flags";
+import { useFlags, FLAG_TEST, FLAG_APP_IS_PROCESSING } from "./slice-flags";
 // import { useResourceMain } from "../resource";
 // //
 // import { useColorMode } from "../providers/muiThemeProvider";
-// import { useAuth, AUTH, AUTH_ERROR, AUTH_PROCESSING } from "./slice-auth";
+import { useAuth, AUTH, AUTH_ERROR, AUTH_PROCESSING } from "./slice-auth";
 // //
 // import { useAuthApi } from "../../src/hooks/use-auth-api";
 // //
@@ -41,14 +36,15 @@ export {
   useAppData,
   ADMIN,
   TEST,
-  //   useFlags,
-  //   FLAG_BLOKUI,
-  //   FLAG_TEST,
-  //   FLAG_APP_IS_PROCESSING,
-  //   useAuth,
-  //   AUTH,
-  //   AUTH_ERROR,
-  //   AUTH_PROCESSING,
+  //
+  useFlags,
+  FLAG_TEST,
+  FLAG_APP_IS_PROCESSING,
+  //
+  useAuth,
+  AUTH,
+  AUTH_ERROR,
+  AUTH_PROCESSING,
   //   useAuthApi,
   //   useColorModeTW,
   //   MODE_LIGHT,
