@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
-import { AuthSessionProvider } from "./app/providers";
+import { AuthSessionProvider, GravatarsProvider } from "./app/providers";
 import { Provider as ReduxStoreProvider } from "react-redux";
 import { store } from "./app/store/redux";
 
@@ -16,14 +16,16 @@ import "./index.css";
 import "animate.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <ReduxStoreProvider store={store}>
-    <AuthSessionProvider>
-      <MuiThemeProvider>
-        <CssBaseline />
-        <AppEventsProvider>
-          <App />
-        </AppEventsProvider>
-      </MuiThemeProvider>
-    </AuthSessionProvider>
-  </ReduxStoreProvider>
+  <AppEventsProvider>
+    <ReduxStoreProvider store={store}>
+      <AuthSessionProvider>
+        <MuiThemeProvider>
+          <CssBaseline />
+          <GravatarsProvider>
+            <App />
+          </GravatarsProvider>
+        </MuiThemeProvider>
+      </AuthSessionProvider>
+    </ReduxStoreProvider>
+  </AppEventsProvider>
 );

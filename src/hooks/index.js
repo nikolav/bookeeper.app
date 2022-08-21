@@ -11,7 +11,7 @@ import useTimer from "./use-timer";
 // import useFancyboxGallery from "./use-fancybox-gallery";
 import useFileReader from "./use-file-reader";
 // import useLocalStorage from "./use-local-storage";
-// import useGravatar from "./use-gravatar";
+import useGravatar from "./use-gravatar";
 // import { useAuthApi } from "./use-auth-api";
 import useAppEvents from "./use-events";
 // import { useJQuery } from "./use-jquery";
@@ -38,7 +38,7 @@ export {
   useCountDown,
   //   useFancyboxGallery,
   useFileReader,
-  //   useGravatar,
+  useGravatar,
   useInputSynced,
   //   useIsMounted,
   //   useJQuery,

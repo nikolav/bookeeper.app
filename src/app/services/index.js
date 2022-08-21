@@ -1,4 +1,9 @@
 import supabase from "./supabase/client";
 import firebase from "./firebase";
-
-export { firebase, supabase };
+// import feathers from "./feathers/client";
+//
+export {
+  firebase,
+  supabase,
+//   feathers,
+};

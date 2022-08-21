@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"yarn run watch:css\" \"vite\" ",
+    "dev": "concurrently \"yarn run watch:css\" \"vite --host\" ",
     "build": "vite build",
     "preview": "vite preview",
     "sass:build": "sass ./src/global.scss ./src/styles/global.css ",
@@ -15,6 +15,8 @@
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
+    "@feathersjs/client": "^4.5.15",
+    "@feathersjs/socketio-client": "^4.5.15",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.10.1",
     "@popperjs/core": "^2.11.6",
@@ -45,6 +47,7 @@
     "react-transition-group": "^4.4.5",
     "react-use": "^17.4.0",
     "sass": "^1.54.5",
+    "socket.io-client": "2.3.1",
     "tailwindcss": "^3.1.8"
   },
   "devDependencies": {

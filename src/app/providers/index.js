@@ -1,5 +1,11 @@
-import AuthSessionProvider from "./AuthSessionProvider";
-import MuiThemeProvider from "./MuiThemeProvider";
 import { AppEventsProvider } from "../../hooks/use-events";
+import AuthSessionProvider from "./AuthSessionProvider";
+import GravatarsProvider from "./GravatarsProvider";
+import MuiThemeProvider from "./MuiThemeProvider";
 
-export { AuthSessionProvider, MuiThemeProvider, AppEventsProvider };
+export {
+  AppEventsProvider,
+  AuthSessionProvider,
+  GravatarsProvider,
+  MuiThemeProvider,
+};
