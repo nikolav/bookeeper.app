@@ -29,6 +29,9 @@ import values from "lodash/values";
 //
 import classnames from "classnames";
 //
+import withReturnValue from "./with-return-value";
+import groupByCount from "./group-by-count";
+//
 const { add: addClass, rm: removeClass, has: hasClass } = q.class;
 const { eventListener, prevent, ready, s: select, type } = q;
 const { has } = q.object;
@@ -40,28 +43,6 @@ const arrayRand = sample;
 const paste = assign;
 const True = () => true;
 const False = () => false;
-
-const groupByCount = (series, value = identity) => {
-  return groupBy(
-    series,
-    (accum, node, _i, _coll) => {
-      const v = value(node);
-      if (has(accum, v)) {
-        accum[v] += 1;
-      } else {
-        accum[v] = 1;
-      }
-      return accum;
-    },
-    {}
-  );
-};
-const withReturnValue = (callback, returnValue = null) => {
-  return (...args) => {
-    callback(...args);
-    return returnValue;
-  };
-};
 
 export {
   addClass,
