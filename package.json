@@ -15,6 +15,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
+    "@fancyapps/ui": "^4.0.31",
     "@feathersjs/client": "^4.5.15",
     "@feathersjs/socketio-client": "^4.5.15",
     "@mui/icons-material": "^5.8.4",

@@ -8,7 +8,7 @@ import useSocialComments from "./use-social-comments";
 //   useQueryResourceBase,
 // } from "./use-query-resource";
 import useTimer from "./use-timer";
-// import useFancyboxGallery from "./use-fancybox-gallery";
+import useFancyboxGallery from "./use-fancybox-gallery";
 import useFileReader from "./use-file-reader";
 // import useLocalStorage from "./use-local-storage";
 import useGravatar from "./use-gravatar";
@@ -36,7 +36,7 @@ export {
   //   useChartPlot,
   useClickAway,
   useCountDown,
-  //   useFancyboxGallery,
+  useFancyboxGallery,
   useFileReader,
   useGravatar,
   useInputSynced,

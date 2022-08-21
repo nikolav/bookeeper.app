@@ -20,6 +20,7 @@ import "./styles/reset.css";
 import "./styles/build.css";
 import "./global.scss";
 import "./index.css";
+import "@fancyapps/ui/dist/fancybox.css";
 import "animate.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
