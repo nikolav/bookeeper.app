@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   plugins: {
     // https://tailwindcss.com/docs/using-with-preprocessors#build-time-imports
     "postcss-import": {},

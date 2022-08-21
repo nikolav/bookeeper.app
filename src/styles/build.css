@@ -740,29 +740,6 @@ select {
     * by plugins.
     */
 
-.border {
-  border-width: 1px;
-}
-
-.bg-blue-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
-}
-
-.p-4 {
-  padding: 1rem;
-}
-
-.px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.text-orange-200 {
-  --tw-text-opacity: 1;
-  color: rgb(254 215 170 / var(--tw-text-opacity));
-}
-
 /**
     * Use this directive to control where Tailwind injects the hover, focus,
     * responsive, dark mode, and other variants of each class.
@@ -770,8 +747,3 @@ select {
     * If omitted, Tailwind will append these classes to the very end of
     * your stylesheet by default.
     */
-
-.hover\:border-black:hover {
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
-}
