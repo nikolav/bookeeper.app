@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 //
-import { AppBar } from "./components";
+import { AppBar } from "./components/app";
 import "./App.css";
 //
 function App() {
@@ -8,7 +8,6 @@ function App() {
     <BrowserRouter>
       <main className="app-main">
         <AppBar />
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda, maiores dolore. Quia, temporibus. Quidem quibusdam dolore maxime, veniam totam nihil exercitationem quae consequuntur, quaerat, harum distinctio quasi ipsa doloremque natus.</p>
       </main>
     </BrowserRouter>
   );
