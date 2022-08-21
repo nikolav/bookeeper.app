@@ -25,6 +25,7 @@
     "animate.css": "^4.1.1",
     "autoprefixer": "^10.4.8",
     "classnames": "^2.3.1",
+    "firebase": "^9.9.3",
     "framer-motion": "^7.2.0",
     "lodash": "^4.17.21",
     "md5": "^2.3.0",
