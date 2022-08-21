@@ -286,17 +286,17 @@ export default function MuiThemeProvider({ children }) {
   };
   //
   // sync tailwind theme @change.mui
-  const cm_tw = useColorModeTW();
+  const colorModeTW = useColorModeTW();
   useEffect(() => {
     if ("dark" === mode) {
-      cm_tw.setColorModeDark();
+      colorModeTW.setColorModeDark();
       return;
     }
-    cm_tw.setColorModeLight();
+    colorModeTW.setColorModeLight();
   }, [mode]);
   ///
   // sync mui theme @changes.tw
-  const modeTW = cm_tw();
+  const modeTW = colorModeTW();
   useEffect(() => {
     if (MODE_DARK_TW === modeTW) setModeDark_();
   }, [modeTW]);

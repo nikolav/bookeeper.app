@@ -729,6 +729,20 @@ select {
     * registered by plugins.
     */
 
+.link {
+  cursor: pointer;
+}
+
+.link:hover {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
+.link:active {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
 /* default button; dark grey; small padding; white text; rounded */
 
 /*  */

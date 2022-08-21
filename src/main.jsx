@@ -6,7 +6,7 @@ import { AuthSessionProvider } from "./app/providers";
 import { Provider as ReduxStoreProvider } from "react-redux";
 import { store } from "./app/store/redux";
 
-import { MuiThemeProvider } from "./app/providers";
+import { MuiThemeProvider, AppEventsProvider } from "./app/providers";
 import CssBaseline from "@mui/material/CssBaseline";
 
 import "./styles/reset.css";
@@ -20,7 +20,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <AuthSessionProvider>
       <MuiThemeProvider>
         <CssBaseline />
-        <App />
+        <AppEventsProvider>
+          <App />
+        </AppEventsProvider>
       </MuiThemeProvider>
     </AuthSessionProvider>
   </ReduxStoreProvider>

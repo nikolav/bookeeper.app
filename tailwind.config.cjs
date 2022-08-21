@@ -4,10 +4,12 @@
 // defaultTheme @'tailwindcss/defaultTheme'
 module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx}",
+    "./src/app/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
+    "./src/*.{js,ts,jsx,tsx}",
     "./public/**/*.html",
     "./docs/**/*.html",
+    "./index.html"
   ],
   theme: {
     extend: {
