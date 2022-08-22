@@ -27,7 +27,8 @@ import "./index.css";
 import "@fancyapps/ui/dist/fancybox.css";
 import "animate.css";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+const APPROOT = "lgytlqbycau"
+ReactDOM.createRoot(document.getElementById(APPROOT)).render(
   <BrowserContextProvider>
     <BrowserRouter>
       <AppEventsProvider>

@@ -10,7 +10,8 @@
     "sass:build": "sass ./src/global.scss ./src/styles/global.css ",
     "sass:watch": "sass ./src/global.scss ./src/styles/global.css --watch",
     "build:css": "tailwindcss -i ./src/tailwind.css -o ./src/styles/build.css",
-    "watch:css": "tailwindcss -i ./src/tailwind.css -o ./src/styles/build.css --watch"
+    "watch:css": "tailwindcss -i ./src/tailwind.css -o ./src/styles/build.css --watch",
+    "docs": "serve -p 8889 docs "
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
@@ -63,6 +64,7 @@
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.1",
     "concurrently": "^7.3.0",
+    "serve": "^14.0.1",
     "vite": "^3.0.7"
   }
 }
