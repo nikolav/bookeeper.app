@@ -22,20 +22,20 @@ import useClickAway from "./use-click-away";
 import useBodyOverflow from "./use-body-overflow";
 import useCountDown from "./use-count-down";
 // //
-// import useChartPie from "./data/use-chart-pie";
-// import useChartPlot from "./data/use-chart-plot";
-// import useChartBar from "./data/use-chart-bar";
-// import useChartLine from "./data/use-chart-line";
+import useChartPie from "./data/use-chart-pie";
+import useChartPlot from "./data/use-chart-plot";
+import useChartBar from "./data/use-chart-bar";
+import useChartLine from "./data/use-chart-line";
 
 //
 export {
   useAppEvents,
   //   useAuthApi,
   useBodyOverflow,
-  //   useChartBar,
-  //   useChartLine,
-  //   useChartPie,
-  //   useChartPlot,
+  useChartBar,
+  useChartLine,
+  useChartPie,
+  useChartPlot,
   useClickAway,
   useCountDown,
   useFancyboxGallery,

@@ -11,9 +11,44 @@ import {
   // styled,
 } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-// import { deepmerge } from '@mui/utils';
+import { deepmerge } from "@mui/utils";
 import { useColorModeTW, MODE_DARK as MODE_DARK_TW } from "../store";
 //
+const DEFAULT_BASE_THEME = {
+  breakpoints: {
+    keys: ["xs", "sm", "md", "lg", "xl", "2xl"],
+    values: {
+      // https://tailwindcss.com/docs/responsive-design
+      xs: 0,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      "2xl": 1536,
+    },
+  },
+  typography: {
+    fontFamily: [
+      "Roboto",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "Segoe UI",
+      "Candara",
+      "Helvetica Neue",
+      "DejaVu Sans",
+      "Bitstream Vera Sans",
+      "Trebuchet MS",
+      "Verdana",
+      "Verdana Ref",
+      "Arial",
+      "sans-serif",
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol",
+    ].join(","),
+  },
+  components: {},
+};
 const themePrimary = {
   palette: {
     mode: "light",
@@ -249,7 +284,11 @@ const themeDark = {
 };
 //
 const getDesignTokens = (mode) =>
-  COLORMODE_DARK === mode ? themeDark : themePrimary;
+  // merge base
+  deepmerge(
+    COLORMODE_DARK === mode ? themeDark : themePrimary,
+    DEFAULT_BASE_THEME
+  );
 //
 const COLORMODE_DARK = "dark";
 const COLORMODE_LIGHT = "light";
@@ -266,6 +305,8 @@ export default function MuiThemeProvider({ children }) {
   const theme = useMemo(
     () =>
       responsiveFontSizes(createTheme(getDesignTokens(mode)), {
+        // setup responsive font scale factor; >1
+        // values closer to 1 scale fonts more @sm
         factor: DEFAULT_RWD_FONT_SIZE_FACTOR,
       }),
     [mode]
@@ -276,7 +317,8 @@ export default function MuiThemeProvider({ children }) {
   //
 
   const setModeDark_ = () => setMode(COLORMODE_DARK);
-  // colorMode api
+  //
+  // colorMode
   const colorMode = {
     mode,
     theme,
