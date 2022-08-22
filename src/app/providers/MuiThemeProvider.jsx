@@ -1,9 +1,24 @@
+// https://mui.com/material-ui/customization/theming/#theme-builder
+// https://bareynol.github.io/mui-theme-creator/
+import { useEffect, useState, useMemo, useContext, createContext } from "react";
+// https://mui.com/material-ui/customization/theming/#createtheme-options-args-theme
+// https://mui.com/material-ui/customization/default-theme/#main-content
+import {
+  createTheme,
+  ThemeProvider,
+  responsiveFontSizes,
+  // alpha,
+  // styled,
+} from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+// import { deepmerge } from '@mui/utils';
+import { useColorModeTW, MODE_DARK as MODE_DARK_TW } from "../store";
+//
 const themePrimary = {
   palette: {
     mode: "light",
     primary: {
       main: "#4682B3",
-      // main: "#f00",
     },
     secondary: {
       main: "#385269",
@@ -110,7 +125,7 @@ const themeDark = {
     mode: "dark",
     primary: {
       main: "#000000",
-      light: "#434343",
+      // light: "#434343",
     },
     secondary: {
       main: "#385269",
@@ -232,63 +247,53 @@ const themeDark = {
     },
   },
 };
-
-// https://mui.com/material-ui/customization/theming/#theme-builder
-// https://bareynol.github.io/mui-theme-creator/
 //
-import { useEffect, useState, useMemo, useContext, createContext } from "react";
-// https://mui.com/material-ui/customization/theming/#createtheme-options-args-theme
-// https://mui.com/material-ui/customization/default-theme/#main-content
+const getDesignTokens = (mode) =>
+  COLORMODE_DARK === mode ? themeDark : themePrimary;
 //
-import {
-  createTheme,
-  ThemeProvider,
-  responsiveFontSizes,
-  alpha,
-  styled,
-} from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-// import { deepmerge } from '@mui/utils';
-import { useColorModeTW, MODE_DARK as MODE_DARK_TW } from "../store";
-//
-const getDesignTokens = (mode) => ("dark" === mode ? themeDark : themePrimary);
+const COLORMODE_DARK = "dark";
+const COLORMODE_LIGHT = "light";
+const DEFAULT_RWD_FONT_SIZE_FACTOR = 1.22;
 //
 export const ColorModeContext = createContext();
 export const useColorMode = () => useContext(ColorModeContext);
 //
 export default function MuiThemeProvider({ children }) {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const [mode, setMode] = useState(prefersDarkMode ? "dark" : "light");
+  const [mode, setMode] = useState(
+    prefersDarkMode ? COLORMODE_DARK : COLORMODE_LIGHT
+  );
   const theme = useMemo(
-    () => responsiveFontSizes(createTheme(getDesignTokens(mode))),
+    () =>
+      responsiveFontSizes(createTheme(getDesignTokens(mode)), {
+        factor: DEFAULT_RWD_FONT_SIZE_FACTOR,
+      }),
     [mode]
   );
   useEffect(() => {
-    setMode(prefersDarkMode ? "dark" : "light");
+    setMode(prefersDarkMode ? COLORMODE_DARK : COLORMODE_LIGHT);
   }, [prefersDarkMode]);
   //
 
-  const setModeDark_ = () => setMode("dark");
+  const setModeDark_ = () => setMode(COLORMODE_DARK);
   // colorMode api
   const colorMode = {
     mode,
     theme,
     prefersDarkMode,
     //
-    alpha,
-    styled,
-    //
-    isDark: () => "dark" === mode,
-    isLight: () => "light" === mode,
+    isDark: () => COLORMODE_DARK === mode,
+    isLight: () => COLORMODE_LIGHT === mode,
     setColorModeDark: setModeDark_,
-    setColorModeLight: () => setMode("light"),
-    toggleColorMode: () => setMode((m) => ("dark" === m ? "light" : "dark")),
+    setColorModeLight: () => setMode(COLORMODE_LIGHT),
+    toggleColorMode: () =>
+      setMode((m) => (COLORMODE_DARK === m ? COLORMODE_LIGHT : COLORMODE_DARK)),
   };
   //
   // sync tailwind theme @change.mui
   const colorModeTW = useColorModeTW();
   useEffect(() => {
-    if ("dark" === mode) {
+    if (COLORMODE_DARK === mode) {
       colorModeTW.setColorModeDark();
       return;
     }
