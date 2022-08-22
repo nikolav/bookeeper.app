@@ -49,6 +49,7 @@ const DEFAULT_BASE_THEME = {
   },
   components: {},
 };
+
 const themePrimary = {
   palette: {
     mode: "light",
@@ -118,6 +119,18 @@ const themePrimary = {
     },
   },
   components: {
+    /**
+     * MuiCssBaseline: {
+     *  defaultProps: {},
+     *  styleOverrides: {},
+     *  variants: [
+     *     {
+            props: { variant: 'dashed' },
+            style: {},
+          },
+     *  ]
+     * }
+    */
     MuiSwitch: {
       styleOverrides: {
         root: {
