@@ -2,12 +2,20 @@ import { Route } from "react-router-dom";
 import { AnimatedRoutes, RouteTransition } from "./components";
 //
 import { AppBar } from "./components/app";
+import { PageHome, PageAbout } from "./app/pages";
+import { LoaderBars } from "./components/loaders";
+//
 import "./App.css";
 //
 function App() {
   return (
     <>
+      {/*  */}
+      {/*  */}
       <AppBar />
+
+      {/*  */}
+      {/*  */}
       <AnimatedRoutes>
         <Route
           path="/"
@@ -26,32 +34,12 @@ function App() {
           }
         />
       </AnimatedRoutes>
+
+      {/*  */}
+      {/*  */}
+      <LoaderBars />
     </>
   );
 }
 
 export default App;
-
-//
-function PageHome() {
-  return (
-    <section className="text-center">
-      <h1>@index</h1>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere
-        nesciunt suscipit perspiciatis.
-      </p>
-    </section>
-  );
-}
-function PageAbout() {
-  return (
-    <section className="text-center">
-      <h1>@about</h1>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam quae
-        perferendis totam?
-      </p>
-    </section>
-  );
-}
