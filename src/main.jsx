@@ -27,7 +27,7 @@ import "./index.css";
 import "@fancyapps/ui/dist/fancybox.css";
 import "animate.css";
 
-const APPROOT = "lgytlqbycau"
+const APPROOT = "lgytlqbycau";
 ReactDOM.createRoot(document.getElementById(APPROOT)).render(
   <BrowserContextProvider>
     <BrowserRouter>
@@ -36,12 +36,12 @@ ReactDOM.createRoot(document.getElementById(APPROOT)).render(
           <QueryProvider>
             <ResourceMainProvider>
               <AuthSessionProvider>
-                <MuiThemeProvider>
-                  <CssBaseline />
-                  <GravatarsProvider>
+                <GravatarsProvider>
+                  <MuiThemeProvider>
+                    <CssBaseline />
                     <App />
-                  </GravatarsProvider>
-                </MuiThemeProvider>
+                  </MuiThemeProvider>
+                </GravatarsProvider>
               </AuthSessionProvider>
             </ResourceMainProvider>
           </QueryProvider>
