@@ -18,7 +18,11 @@ import useGravatar from "./use-gravatar";
 import useAppEvents from "./use-events";
 import { useJQuery } from "./use-jquery";
 import useClickAway from "./use-click-away";
-// import { useWindowAddEvents, useWindowResizeEvent, useWindow, useWindowDocument } from "./use-window";
+import {
+  useBrowser,
+  useWindowAddEvents,
+  useWindowResizeEvent,
+} from "./use-browser";
 import useBodyOverflow from "./use-body-overflow";
 import useCountDown from "./use-count-down";
 // //
@@ -29,9 +33,10 @@ import useChartLine from "./data/use-chart-line";
 
 //
 export {
-  useAppEvents,
   //   useAuthApi,
+  useAppEvents,
   useBodyOverflow,
+  useBrowser,
   useChartBar,
   useChartLine,
   useChartPie,
@@ -42,7 +47,6 @@ export {
   useFileReader,
   useGravatar,
   useInputSynced,
-  //   useIsMounted,
   useJQuery,
   useLocalStorage,
   useQueryMain,
@@ -52,8 +56,6 @@ export {
   useSocialLike,
   useStateSwitch,
   useTimer,
-  //   useWindow,
-  //   useWindowAddEvents,
-  //   useWindowDocument,
-  //   useWindowResizeEvent,
+  useWindowAddEvents,
+  useWindowResizeEvent,
 };

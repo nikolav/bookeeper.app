@@ -1,18 +1,12 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 //
-import { AppBar } from "./components/app";
+// import { AppBar } from "./components/app";
 import "./App.css";
-
-import { useResourceMain } from "./app/store";
 
 const PageHome = () => {
   return (
     <section className="text-center">
       <h1>@index</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint magnam
-        quia quasi!
-      </p>
     </section>
   );
 };
@@ -29,7 +23,6 @@ const PageAbout = () => {
 };
 //
 function App() {
-  const { resourceMain } = useResourceMain();
   return (
     <BrowserRouter>
       <>

@@ -7,8 +7,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import {
   AppEventsProvider,
   AuthSessionProvider,
+  BrowserContextProvider,
   GravatarsProvider,
-  JqueryProvider,
   MuiThemeProvider,
   QueryProvider,
   ResourceMainProvider,
@@ -27,22 +27,22 @@ import "@fancyapps/ui/dist/fancybox.css";
 import "animate.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <AppEventsProvider>
-    <ReduxStoreProvider store={store}>
-      <QueryProvider>
-        <ResourceMainProvider>
-          <AuthSessionProvider>
-            <MuiThemeProvider>
-              <CssBaseline />
-              <GravatarsProvider>
-                <JqueryProvider>
+  <BrowserContextProvider>
+    <AppEventsProvider>
+      <ReduxStoreProvider store={store}>
+        <QueryProvider>
+          <ResourceMainProvider>
+            <AuthSessionProvider>
+              <MuiThemeProvider>
+                <CssBaseline />
+                <GravatarsProvider>
                   <App />
-                </JqueryProvider>
-              </GravatarsProvider>
-            </MuiThemeProvider>
-          </AuthSessionProvider>
-        </ResourceMainProvider>
-      </QueryProvider>
-    </ReduxStoreProvider>
-  </AppEventsProvider>
+                </GravatarsProvider>
+              </MuiThemeProvider>
+            </AuthSessionProvider>
+          </ResourceMainProvider>
+        </QueryProvider>
+      </ReduxStoreProvider>
+    </AppEventsProvider>
+  </BrowserContextProvider>
 );
