@@ -754,6 +754,11 @@ select {
     * by plugins.
     */
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 /**
     * Use this directive to control where Tailwind injects the hover, focus,
     * responsive, dark mode, and other variants of each class.

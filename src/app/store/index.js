@@ -1,6 +1,6 @@
 import { useAppData, ADMIN, TEST } from "./slice-appdata";
 import { useFlags, FLAG_TEST, FLAG_APP_IS_PROCESSING } from "./slice-flags";
-// import { useResourceMain } from "../resource";
+import { useResourceMain } from "../resource";
 // //
 import { useColorMode } from "../providers/MuiThemeProvider";
 import { useAuth, AUTH, AUTH_ERROR, AUTH_PROCESSING } from "./slice-auth";
@@ -52,6 +52,6 @@ export {
   MODE_LIGHT,
   MODE_DARK,
   //   //
-  //   useResourceMain,
+  useResourceMain,
   useColorMode,
 };

@@ -10,6 +10,8 @@ import {
   GravatarsProvider,
   JqueryProvider,
   MuiThemeProvider,
+  QueryProvider,
+  ResourceMainProvider,
 } from "./app/providers";
 import { store } from "./app/store/redux";
 
@@ -27,16 +29,20 @@ import "animate.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AppEventsProvider>
     <ReduxStoreProvider store={store}>
-      <AuthSessionProvider>
-        <MuiThemeProvider>
-          <CssBaseline />
-          <GravatarsProvider>
-            <JqueryProvider>
-              <App />
-            </JqueryProvider>
-          </GravatarsProvider>
-        </MuiThemeProvider>
-      </AuthSessionProvider>
+      <QueryProvider>
+        <ResourceMainProvider>
+          <AuthSessionProvider>
+            <MuiThemeProvider>
+              <CssBaseline />
+              <GravatarsProvider>
+                <JqueryProvider>
+                  <App />
+                </JqueryProvider>
+              </GravatarsProvider>
+            </MuiThemeProvider>
+          </AuthSessionProvider>
+        </ResourceMainProvider>
+      </QueryProvider>
     </ReduxStoreProvider>
   </AppEventsProvider>
 );
