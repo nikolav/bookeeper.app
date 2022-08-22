@@ -16,7 +16,6 @@ import useFileReader from "./use-file-reader";
 import useGravatar from "./use-gravatar";
 // import { useAuthApi } from "./use-auth-api";
 import useAppEvents from "./use-events";
-import { useJQuery } from "./use-jquery";
 import useClickAway from "./use-click-away";
 import {
   useBrowser,
@@ -47,7 +46,6 @@ export {
   useFileReader,
   useGravatar,
   useInputSynced,
-  useJQuery,
   useLocalStorage,
   useQueryMain,
   useQueryResource,

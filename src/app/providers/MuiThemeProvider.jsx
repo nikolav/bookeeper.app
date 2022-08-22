@@ -29,6 +29,7 @@ const DEFAULT_BASE_THEME = {
   },
   typography: {
     fontFamily: [
+      "Open Sans",
       "Roboto",
       "-apple-system",
       "BlinkMacSystemFont",
@@ -47,7 +48,6 @@ const DEFAULT_BASE_THEME = {
       "Segoe UI Symbol",
     ].join(","),
   },
-  components: {},
 };
 
 const themePrimary = {
@@ -297,11 +297,7 @@ const themeDark = {
 };
 //
 const getDesignTokens = (mode) =>
-  // merge base
-  deepmerge(
-    COLORMODE_DARK === mode ? themeDark : themePrimary,
-    DEFAULT_BASE_THEME
-  );
+  COLORMODE_DARK === mode ? themeDark : themePrimary;
 //
 const COLORMODE_DARK = "dark";
 const COLORMODE_LIGHT = "light";
@@ -317,11 +313,14 @@ export default function MuiThemeProvider({ children }) {
   );
   const theme = useMemo(
     () =>
-      responsiveFontSizes(createTheme(getDesignTokens(mode)), {
-        // setup responsive font scale factor; >1
-        // values closer to 1 scale fonts more @sm
-        factor: DEFAULT_RWD_FONT_SIZE_FACTOR,
-      }),
+      responsiveFontSizes(
+        createTheme(deepmerge(getDesignTokens(mode), DEFAULT_BASE_THEME)),
+        {
+          // setup responsive font scale factor; >1
+          // values closer to 1 scale fonts more @sm
+          factor: DEFAULT_RWD_FONT_SIZE_FACTOR,
+        }
+      ),
     [mode]
   );
   useEffect(() => {

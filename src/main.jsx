@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider as ReduxStoreProvider } from "react-redux";
 import CssBaseline from "@mui/material/CssBaseline";
+import { BrowserRouter } from "react-router-dom";
 
 //
 import {
@@ -28,21 +29,23 @@ import "animate.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserContextProvider>
-    <AppEventsProvider>
-      <ReduxStoreProvider store={store}>
-        <QueryProvider>
-          <ResourceMainProvider>
-            <AuthSessionProvider>
-              <MuiThemeProvider>
-                <CssBaseline />
-                <GravatarsProvider>
-                  <App />
-                </GravatarsProvider>
-              </MuiThemeProvider>
-            </AuthSessionProvider>
-          </ResourceMainProvider>
-        </QueryProvider>
-      </ReduxStoreProvider>
-    </AppEventsProvider>
+    <BrowserRouter>
+      <AppEventsProvider>
+        <ReduxStoreProvider store={store}>
+          <QueryProvider>
+            <ResourceMainProvider>
+              <AuthSessionProvider>
+                <MuiThemeProvider>
+                  <CssBaseline />
+                  <GravatarsProvider>
+                    <App />
+                  </GravatarsProvider>
+                </MuiThemeProvider>
+              </AuthSessionProvider>
+            </ResourceMainProvider>
+          </QueryProvider>
+        </ReduxStoreProvider>
+      </AppEventsProvider>
+    </BrowserRouter>
   </BrowserContextProvider>
 );

@@ -1,16 +1,50 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
+import { AnimatedRoutes, RouteTransition } from "./components";
 //
-// import { AppBar } from "./components/app";
+import { AppBar } from "./components/app";
 import "./App.css";
+//
+function App() {
+  return (
+    <>
+      <AppBar />
+      <AnimatedRoutes>
+        <Route
+          path="/"
+          element={
+            <RouteTransition>
+              <PageHome />
+            </RouteTransition>
+          }
+        />
+        <Route
+          path="about"
+          element={
+            <RouteTransition>
+              <PageAbout />
+            </RouteTransition>
+          }
+        />
+      </AnimatedRoutes>
+    </>
+  );
+}
 
-const PageHome = () => {
+export default App;
+
+//
+function PageHome() {
   return (
     <section className="text-center">
       <h1>@index</h1>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere
+        nesciunt suscipit perspiciatis.
+      </p>
     </section>
   );
-};
-const PageAbout = () => {
+}
+function PageAbout() {
   return (
     <section className="text-center">
       <h1>@about</h1>
@@ -20,23 +54,4 @@ const PageAbout = () => {
       </p>
     </section>
   );
-};
-//
-function App() {
-  return (
-    <BrowserRouter>
-      <>
-        <nav className="flex space-x-4 justify-center items-center font-bold">
-          <Link to="/">home</Link>
-          <Link to="about">about</Link>
-        </nav>
-      </>
-      <Routes>
-        <Route path="/" element={<PageHome />} />
-        <Route path="about" element={<PageAbout />} />
-      </Routes>
-    </BrowserRouter>
-  );
 }
-
-export default App;
