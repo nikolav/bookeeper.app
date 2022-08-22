@@ -1,3 +1,21 @@
+//
+.typography-adjust {
+  font-family: "Open Sans", "Roboto", "Segoe UI", "Candara", "DejaVu Sans",
+    "Bitstream Vera Sans", "Trebuchet MS", "Verdana", "Verdana Ref", sans-serif !important;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+.typography-antialiased {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+.typography-spacing-relaxed {
+  letter-spacing: 0.028rem;
+  word-spacing: 0.032rem;
+}
+
 /*
    * Remove text-shadow in selection highlight:
    * https://twitter.com/miketaylr/status/12228805301

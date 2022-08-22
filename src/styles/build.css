@@ -754,6 +754,10 @@ select {
     * by plugins.
     */
 
+.m-0 {
+  margin: 0px;
+}
+
 .flex {
   display: flex;
 }
@@ -770,6 +774,10 @@ select {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.p-0 {
+  padding: 0px;
 }
 
 .text-center {
