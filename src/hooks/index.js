@@ -14,7 +14,7 @@ import useFileReader from "./use-file-reader";
 import useGravatar from "./use-gravatar";
 // import { useAuthApi } from "./use-auth-api";
 import useAppEvents from "./use-events";
-// import { useJQuery } from "./use-jquery";
+import { useJQuery } from "./use-jquery";
 import useClickAway from "./use-click-away";
 // import { useWindowAddEvents, useWindowResizeEvent, useWindow, useWindowDocument } from "./use-window";
 import useBodyOverflow from "./use-body-overflow";
@@ -41,7 +41,7 @@ export {
   useGravatar,
   useInputSynced,
   //   useIsMounted,
-  //   useJQuery,
+  useJQuery,
   //   useLocalStorage,
   //   useQueryMain,
   //   useQueryResource,

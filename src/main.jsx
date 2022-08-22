@@ -8,6 +8,7 @@ import {
   AppEventsProvider,
   AuthSessionProvider,
   GravatarsProvider,
+  JqueryProvider,
   MuiThemeProvider,
 } from "./app/providers";
 import { store } from "./app/store/redux";
@@ -30,7 +31,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <MuiThemeProvider>
           <CssBaseline />
           <GravatarsProvider>
-            <App />
+            <JqueryProvider>
+              <App />
+            </JqueryProvider>
           </GravatarsProvider>
         </MuiThemeProvider>
       </AuthSessionProvider>
