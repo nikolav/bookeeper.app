@@ -13,8 +13,9 @@ export default function PageHome() {
       <Button onClick={toggle} variant="outlined" color="primary" size="small">
         ok
       </Button>
+
       <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere
+        Lorem ipsum dolor sit , amet consectetur adipisicing elit. Facere
         nesciunt suscipit perspiciatis.
       </p>
     </section>

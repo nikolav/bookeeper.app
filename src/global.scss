@@ -61,3 +61,16 @@
 .scrollbar-none::-webkit-scrollbar-thumb {
   background: transparent;
 }
+
+@keyframes placeholder-glow {
+  from {
+    opacity: 0.155;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+
+.placeholderGlow {
+  animation: placeholder-glow 2.22s ease-in-out infinite alternate;
+}

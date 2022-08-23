@@ -30,6 +30,7 @@ import values from "lodash/values";
 import classnames from "classnames";
 //
 import groupByCount from "./group-by-count";
+import isNumeric from "./is-numeric";
 import withReturnValue from "./with-return-value";
 //
 const { add: addClass, rm: removeClass, has: hasClass } = q.class;
@@ -62,6 +63,7 @@ export {
   identity,
   isEmail,
   isFunction,
+  isNumeric,
   isString,
   keys,
   map,
