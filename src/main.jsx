@@ -25,6 +25,7 @@ import "./styles/build.css";
 import "./global.scss";
 import "./index.css";
 import "@fancyapps/ui/dist/fancybox.css";
+import "react-toastify/dist/ReactToastify.css";
 import "animate.css";
 
 const APPROOT = "lgytlqbycau";
