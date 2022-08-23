@@ -1,6 +1,4 @@
 //
-import { useLocalStorage } from "react-use";
-//
 import useInputSynced from "./use-input-synced";
 import useStateSwitch from "./use-state-switch";
 import useSocialLike from "./use-social-like";
@@ -14,7 +12,7 @@ import useTimer from "./use-timer";
 import useFancyboxGallery from "./use-fancybox-gallery";
 import useFileReader from "./use-file-reader";
 import useGravatar from "./use-gravatar";
-// import { useAuthApi } from "./use-auth-api";
+import { useAuthApi } from "./use-auth-api";
 import useAppEvents from "./use-events";
 import useClickAway from "./use-click-away";
 import {
@@ -24,6 +22,7 @@ import {
 } from "./use-browser";
 import useBodyOverflow from "./use-body-overflow";
 import useCountDown from "./use-count-down";
+import useLocalStorage from "./use-local-storage";
 // //
 import useChartPie from "./data/use-chart-pie";
 import useChartPlot from "./data/use-chart-plot";
@@ -32,8 +31,8 @@ import useChartLine from "./data/use-chart-line";
 
 //
 export {
-  //   useAuthApi,
   useAppEvents,
+  useAuthApi,
   useBodyOverflow,
   useBrowser,
   useChartBar,

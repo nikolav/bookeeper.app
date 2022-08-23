@@ -16,7 +16,7 @@ const REST_RESOURCE_messages = "messages";
 //
 const AUTH_API_URL = "http://localhost:3344/authentication";
 const AUTH_API_URL_users = "http://localhost:3344/users";
-const AUTH_SESSION_TOKEN = "mkozfdizlkz";
+const AUTH_SESSION_TOKEN = "ulglwizzpxy";
 //
 const API_URL = API_URL_dev;
 // const API_URL = API_URL_production;

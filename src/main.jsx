@@ -7,9 +7,10 @@ import { BrowserRouter } from "react-router-dom";
 //
 import {
   AppEventsProvider,
+  // AuthApiProvider,
   AuthSessionProvider,
   BrowserContextProvider,
-  GravatarsProvider,
+  // GravatarsProvider,
   MuiThemeProvider,
   QueryProvider,
   ResourceMainProvider,
@@ -34,18 +35,20 @@ ReactDOM.createRoot(document.getElementById(APPROOT)).render(
     <BrowserRouter>
       <AppEventsProvider>
         <ReduxStoreProvider store={store}>
+          {/* <AuthApiProvider> */}
           <QueryProvider>
             <ResourceMainProvider>
               <AuthSessionProvider>
-                <GravatarsProvider>
-                  <MuiThemeProvider>
-                    <CssBaseline />
-                    <App />
-                  </MuiThemeProvider>
-                </GravatarsProvider>
+                {/* <GravatarsProvider> */}
+                <MuiThemeProvider>
+                  <CssBaseline />
+                  <App />
+                </MuiThemeProvider>
+                {/* </GravatarsProvider> */}
               </AuthSessionProvider>
             </ResourceMainProvider>
           </QueryProvider>
+          {/* </AuthApiProvider> */}
         </ReduxStoreProvider>
       </AppEventsProvider>
     </BrowserRouter>

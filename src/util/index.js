@@ -44,6 +44,7 @@ const arrayRand = sample;
 const paste = assign;
 const True = () => true;
 const False = () => false;
+const cp = (data = {}) => ({ ...data });
 
 export {
   addClass,
@@ -51,6 +52,7 @@ export {
   assign,
   clamp,
   classnames,
+  cp,
   debounce,
   each,
   eventListener,
