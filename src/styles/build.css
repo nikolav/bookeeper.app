@@ -1486,18 +1486,6 @@ select {
   background-color: rgb(248 250 252 / 0.5);
 }
 
-.bg-stone-800\/60 {
-  background-color: rgb(41 37 36 / 0.6);
-}
-
-.bg-stone-800\/70 {
-  background-color: rgb(41 37 36 / 0.7);
-}
-
-.bg-stone-800\/50 {
-  background-color: rgb(41 37 36 / 0.5);
-}
-
 .bg-stone-900\/50 {
   background-color: rgb(28 25 23 / 0.5);
 }
