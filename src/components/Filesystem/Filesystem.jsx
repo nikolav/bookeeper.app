@@ -233,6 +233,7 @@ function build(node, _index) {
     </Fragment>
   ) : (
     <FilesystemEntry
+      key={nodeKey}
       node={node}
       isFile={true}
       isSelected={isSelected}
