@@ -2,7 +2,7 @@ import { tree } from "../../util";
 
 const root = new tree({ label: "@" });
 
-const a = root.node({ value: { label: "/home" } });
+const a = root.node({ value: { label: "home" } });
 const a0 = root.node({ value: { label: ".git" } });
 const a1 = root.node({ value: { label: "docs" } });
 const a1_0 = root.node({ value: { label: "german" } });

@@ -155,7 +155,7 @@ const Filesystem = ({
   //
   const selected = appdata(fileSelected);
   useEffect(() => {
-    selected && onSelect(fs.byid(fileSelected));
+    onSelect(selected && fs.byid(fileSelected));
   }, [selected]);
   //
   // recurse-build folders
@@ -200,7 +200,7 @@ function build(node, _index) {
   } = this;
   //
   const fs = appdata(ID);
-  const nodeKey = nodeKey_(node);
+  const nodeKey = getNodeKey(node);
   const isOpen = fs && fs[nodeKey];
   const isSelected = nodeKey === appdata(fileSelected);
   //
@@ -302,7 +302,7 @@ function isEmpty(node) {
   return 0 === node.len();
 }
 
-function nodeKey_(node) {
+export function getNodeKey(node) {
   return (
     node &&
     node
