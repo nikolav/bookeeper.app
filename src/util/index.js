@@ -36,6 +36,7 @@ import withReturnValue from "./with-return-value";
 //
 const fProto = Function.prototype;
 const aProto = Array.prototype;
+const oProto = Object.prototype;
 //
 const { add: addClass, rm: removeClass, has: hasClass } = q.class;
 const { eventListener, prevent, ready, s: select, type } = q;
@@ -44,14 +45,15 @@ const { isEmail } = q.test;
 const { sortByTimestampDesc } = q.array;
 const { stripEndSlashes } = q.str;
 //
-const arrayRand = sample;
-const cp = (data = {}) => ({ ...data });
-const False = () => false;
-const forEach = fProto.call.bind(aProto.forEach);
-const isNumeric = (n) => !!(n - parseFloat(n) + 1);
-const paste = assign;
 const push = fProto.call.bind(aProto.push);
+const forEach = fProto.call.bind(aProto.forEach);
+const toString = fProto.call.bind(oProto.toString);
+const cp = (data = {}) => ({ ...data });
+const isNumeric = (n) => !!(n - parseFloat(n) + 1);
 const True = () => true;
+const False = () => false;
+const paste = assign;
+const arrayRand = sample;
 
 export {
   addClass,
@@ -99,6 +101,7 @@ export {
   shuffle,
   sortByTimestampDesc,
   stripEndSlashes,
+  toString,
   transform,
   traverseTree,
   tree,

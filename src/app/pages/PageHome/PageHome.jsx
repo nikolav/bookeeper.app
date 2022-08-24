@@ -11,7 +11,7 @@ export default function PageHome() {
         {f$ ? JSON.stringify(f$, null, 2) : "No file selected."}
       </pre>
       <Filesystem
-        key="grcnxyhffbb"
+        ID="grcnxyhffbb"
         onSelect={(node) => {
           if (!node) {
             setf(null);

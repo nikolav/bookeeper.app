@@ -206,7 +206,9 @@ function build(node, _index) {
   //
   const toggleOpen = () => appdata.set(ID, { ...fs, [nodeKey]: !fs[nodeKey] });
   const toggleFileSelected = () => {
+    // on.off
     appdata.set(fileSelected, isSelected ? null : nodeKey);
+    // tag node to access it in .onSelect
     node.id(fileSelected);
   };
   //
