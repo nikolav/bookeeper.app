@@ -13,7 +13,7 @@ import {
   // GravatarsProvider,
   MuiThemeProvider,
   QueryProvider,
-  ResourceMainProvider,
+  // ResourceMainProvider,
 } from "./app/providers";
 import { store } from "./app/store/redux";
 
@@ -37,16 +37,16 @@ ReactDOM.createRoot(document.getElementById(APPROOT)).render(
         <ReduxStoreProvider store={store}>
           {/* <AuthApiProvider> */}
           <QueryProvider>
-            <ResourceMainProvider>
-              <AuthSessionProvider>
-                {/* <GravatarsProvider> */}
-                <MuiThemeProvider>
-                  <CssBaseline />
-                  <App />
-                </MuiThemeProvider>
-                {/* </GravatarsProvider> */}
-              </AuthSessionProvider>
-            </ResourceMainProvider>
+            {/* <ResourceMainProvider> */}
+            <AuthSessionProvider>
+              {/* <GravatarsProvider> */}
+              <MuiThemeProvider>
+                <CssBaseline />
+                <App />
+              </MuiThemeProvider>
+              {/* </GravatarsProvider> */}
+            </AuthSessionProvider>
+            {/* </ResourceMainProvider> */}
           </QueryProvider>
           {/* </AuthApiProvider> */}
         </ReduxStoreProvider>

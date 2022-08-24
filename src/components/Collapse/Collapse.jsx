@@ -10,15 +10,15 @@ const Collapse = ({
   children,
   //
   // animation in/out speeds/easy
-  duration = 0.24,
-  spring = true,
+  duration = 0.1,
+  spring = false,
   //
   // container
   ...rest
 }) => {
   const transitionType = spring
     ? { type: "spring" }
-    : { type: "tween", ease: "linear" };
+    : { type: "tween", ease: "easeOut" };
   return (
     <AnimatePresence initial={false}>
       {isOpen && (

@@ -1,6 +1,5 @@
 import { nanoid } from "nanoid";
 import md5 from "md5";
-import q from "nikolav-q";
 //
 import assign from "lodash/assign";
 import clamp from "lodash/clamp";
@@ -29,9 +28,16 @@ import values from "lodash/values";
 //
 import classnames from "classnames";
 //
+import q from "nikolav-q";
+// import tree from "nikolav-tree";
+//
 import groupByCount from "./group-by-count";
-import isNumeric from "./is-numeric";
+import traverseTree, { isFolder } from "./traverse-tree";
 import withReturnValue from "./with-return-value";
+import tree from "./tree";
+//
+const fProto = Function.prototype;
+const aProto = Array.prototype;
 //
 const { add: addClass, rm: removeClass, has: hasClass } = q.class;
 const { eventListener, prevent, ready, s: select, type } = q;
@@ -41,10 +47,13 @@ const { sortByTimestampDesc } = q.array;
 const { stripEndSlashes } = q.str;
 //
 const arrayRand = sample;
-const paste = assign;
-const True = () => true;
-const False = () => false;
 const cp = (data = {}) => ({ ...data });
+const False = () => false;
+const forEach = fProto.call.bind(aProto.forEach);
+const isNumeric = (n) => !!(n - parseFloat(n) + 1);
+const paste = assign;
+const push = fProto.call.bind(aProto.push);
+const True = () => true;
 
 export {
   addClass,
@@ -58,12 +67,14 @@ export {
   eventListener,
   False,
   filter,
+  forEach,
   groupBy,
   groupByCount,
   has,
   hasClass,
   identity,
   isEmail,
+  isFolder,
   isFunction,
   isNumeric,
   isString,
@@ -79,6 +90,7 @@ export {
   pick,
   pickBy,
   prevent,
+  push,
   random,
   range,
   ready,
@@ -90,6 +102,8 @@ export {
   sortByTimestampDesc,
   stripEndSlashes,
   transform,
+  traverseTree,
+  tree,
   True,
   type,
   values,

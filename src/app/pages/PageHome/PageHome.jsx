@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import Button from "@mui/material/Button";
 // import { toast } from "react-toastify";
 // import { supabase as s } from "../../services";
+import { Filesystem } from "../../../components";
 
 export default function PageHome() {
   return (
@@ -15,6 +16,7 @@ export default function PageHome() {
       >
         ok
       </Button>
+      <Filesystem key="grcnxyhffbb" />
       <p>
         Lorem ipsum dolor sit , amet consectetur adipisicing elit. Facere
         nesciunt suscipit perspiciatis.
