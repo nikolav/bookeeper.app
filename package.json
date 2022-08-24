@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"yarn run watch:css\" \"vite --host\" ",
-    "build": "vite build",
+    "build": "cross-env NODE_ENV=production && vite build",
     "preview": "vite preview",
     "sass:build": "sass ./src/global.scss ./src/styles/global.css ",
     "sass:watch": "sass ./src/global.scss ./src/styles/global.css --watch",
@@ -66,6 +66,7 @@
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.1",
     "concurrently": "^7.3.0",
+    "cross-env": "^7.0.3",
     "serve": "^14.0.1",
     "vite": "^3.0.7"
   }

@@ -213,11 +213,11 @@ function build(node, _index) {
   return !isEmpty(node) ? (
     <Fragment key={nodeKey}>
       <FilesystemEntry
+        node={node}
+        isFolder={true}
         isOpen={isOpen}
         toggleOpen={toggleOpen}
-        node={node}
         iconCollapse={iconCollapse}
-        isFolder={true}
         iconFolder={iconFolder}
         iconFolderOpened={iconFolderOpened}
       />
@@ -234,13 +234,12 @@ function build(node, _index) {
   ) : (
     <FilesystemEntry
       node={node}
-      key={nodeKey}
       isFile={true}
+      isSelected={isSelected}
+      onSelect={toggleFileSelected}
       indentFile={indentFile}
       iconFile={iconFile}
       iconFileSelected={iconFileSelected}
-      isSelected={isSelected}
-      onSelect={toggleFileSelected}
     />
   );
 }
