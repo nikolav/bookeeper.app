@@ -17,10 +17,6 @@ export default function PageHome() {
         ok
       </Button>
       <Filesystem key="grcnxyhffbb" />
-      <p>
-        Lorem ipsum dolor sit , amet consectetur adipisicing elit. Facere
-        nesciunt suscipit perspiciatis.
-      </p>
     </section>
   );
 }

@@ -3243,10 +3243,10 @@ nikolav-q@^1.1.8:
   resolved "https://registry.yarnpkg.com/nikolav-q/-/nikolav-q-1.1.8.tgz#227343644c4a59e38c7f899238e9214148417a61"
   integrity sha512-fT7eXFVjMvjQ8hqpoZggJkDNgtmNlrAL5rN9daFfHiDAm177JxnH3PyVakpql47RXErZKMZRYLL246W7gBIPQg==
 
-nikolav-tree@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/nikolav-tree/-/nikolav-tree-1.1.0.tgz#60dd804c7300a2c2ba0d94d672463391dcd1eec9"
-  integrity sha512-HkJ94I9UGj12TjfQ8DfkXjOxR5bld8C6s6FPzZ2fbklvDFSci14gfDiCMxaNLV1aDhIMgknIyp3LupgIII8QCQ==
+nikolav-tree@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/nikolav-tree/-/nikolav-tree-1.1.1.tgz#99cba9de0c7792903e212e882a28e2e2da75611a"
+  integrity sha512-igiSPZdgVr9z40EsOD1ADAFeUumrK0UP4i9h7z4mmoh39nxJVFMbSs4iZjonh6lAm/2VppmOS8nk9ToW6032Ig==
   dependencies:
     nanoid "^4.0.0"
 

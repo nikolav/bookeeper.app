@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import md5 from "md5";
+import classnames from "classnames";
 //
 import assign from "lodash/assign";
 import clamp from "lodash/clamp";
@@ -26,15 +27,12 @@ import shuffle from "lodash/shuffle";
 import transform from "lodash/transform";
 import values from "lodash/values";
 //
-import classnames from "classnames";
-//
 import q from "nikolav-q";
-// import tree from "nikolav-tree";
+import tree from "nikolav-tree";
 //
 import groupByCount from "./group-by-count";
 import traverseTree, { isFolder } from "./traverse-tree";
 import withReturnValue from "./with-return-value";
-import tree from "./tree";
 //
 const fProto = Function.prototype;
 const aProto = Array.prototype;

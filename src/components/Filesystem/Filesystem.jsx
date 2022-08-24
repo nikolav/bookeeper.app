@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
-import React, { useEffect, useState, Fragment } from "react";
+import { useEffect, Fragment } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import Collapse from "../Collapse/Collapse";
-import { tree, noop, isNumeric } from "../../util";
+import { noop, isNumeric } from "../../util";
 import { useAppData } from "../../app/store";
 import {
   MdChevronRight as IconChevron,
@@ -23,7 +23,7 @@ const styleCollapseContent = ({ indent, guides, indentGuides }) => css`
   border-left: ${guides || 0};
   margin-left: ${indentGuides || 0};
 `;
-const styleFileSystemEntry = (props) => css`
+const styleFileSystemEntry = css`
   cursor: pointer;
   user-select: none;
 `;
@@ -71,7 +71,7 @@ const styleIconFileSelected = css`
 `;
 const styleLabelText = css`
   font-size: 88%;
-  opacity: .88;
+  opacity: 0.88;
 `;
 //
 const Widget = styled.section`
@@ -90,8 +90,22 @@ const DEFAULT_FOLDER_SIZE = DEFAULT_CHEVRON_SIZE;
 const DEFAULT_FILE_SIZE = "1.1rem";
 //
 const Filesystem = ({
-  /* fs: tree{} */
+  /* fs: tree{} @https://github.com/nikolav/treejs */
   fs = DEFAULT_FS,
+  //
+  ID = "@Filesystem",
+  //
+  indent = ".32rem",
+  //
+  indentFile = "1.22em",
+  //
+  guides = "1px dotted rgba(0, 0, 0, .22)",
+  //
+  indentGuides = ".5rem",
+  //
+  width = "100%",
+  //
+  height = "100%",
   //
   iconCollapseSize = DEFAULT_CHEVRON_SIZE,
   //
@@ -130,20 +144,6 @@ const Filesystem = ({
     />
   ),
   //
-  ID = "@Filesystem",
-  //
-  indent = ".22rem",
-  //
-  indentFile = "1.22em",
-  //
-  guides = "1px dotted rgba(0, 0, 0, .22)",
-  //
-  indentGuides = ".5rem",
-  //
-  width = "100%",
-  //
-  height = "100%",
-  //
   onSelect = noop,
   //
   ...rest
@@ -158,17 +158,19 @@ const Filesystem = ({
     selected && onSelect(fs.byid(fileSelected));
   }, [selected]);
   //
+  // recurse-build folders
+  // pass props down to *
   return (
     <Widget style={{ width, height }} {...rest}>
       {fs.ls().map(build, {
         appdata,
         ID,
-        iconCollapse,
-        indent,
         guides,
+        fileSelected,
+        indent,
         indentGuides,
         indentFile,
-        fileSelected,
+        iconCollapse,
         iconFolder,
         iconFolderOpened,
         iconFile,
@@ -180,7 +182,7 @@ const Filesystem = ({
 
 export default Filesystem;
 
-//
+// recurse-map folders to jsx
 function build(node, _index) {
   const {
     indent,
@@ -249,23 +251,23 @@ function FilesystemEntry({
   isOpen = null,
   toggleOpen = noop,
   isFile = null,
+  isFolder = null,
   isSelected = null,
   indentFile = "auto",
   onSelect = noop,
-  isFolder = null,
-  iconFolder = null,
-  iconFolderOpened = null,
   iconFile = null,
   iconFileSelected = null,
+  iconFolder = null,
+  iconFolderOpened = null,
 }) {
   //
   const nodeValue = node.value();
-  const { icon, label } = nodeValue;
+  const { label } = nodeValue;
   //
   return (
     <FilesystemEntryContent onClick={toggleOpen}>
       {/* icon.collapse */}
-      {iconCollapse && (
+      {isFolder && iconCollapse && (
         <strong
           style={{
             transform: `rotate(${isOpen ? "90deg" : 0})`,
@@ -275,7 +277,6 @@ function FilesystemEntry({
           {iconCollapse}
         </strong>
       )}
-      {/* label */}
       <span
         onClick={onSelect}
         style={{
@@ -284,10 +285,12 @@ function FilesystemEntry({
         css={[styleLabel, isFile && isSelected && styleLabelSelected]}
       >
         <span className="flex space-x-2 items-end">
+          {/* icon */}
           <strong>
             {isFile && (isSelected ? iconFileSelected : iconFile)}
             {isFolder && (isOpen ? iconFolderOpened : iconFolder)}
           </strong>
+          {/* label */}
           <span css={[styleLabelText]}>{label}</span>
         </span>
       </span>
