@@ -2,30 +2,73 @@ import { tree } from "../../util";
 
 const root = new tree({ label: "@" });
 
-const a = root.node({ value: { label: "home" } });
-const a0 = root.node({ value: { label: ".git" } });
-const a1 = root.node({ value: { label: "docs" } });
-const a1_0 = root.node({ value: { label: "german" } });
-const a2 = root.node({ value: { label: "images" } });
+root.json(
+  {
+    label: "home",
+    children: [
+      {
+        label: ".git",
+        children: [
+          {
+            label: "commits",
+            children: [
+              { label: "oosjfusllohophofptrulpdoqbaxfhwifpxynmdmz" },
+              { label: "erswophbmsbangykycvsrcczdvmdztccxeqdwjxwg" },
+            ],
+          },
+          {
+            label: "remotes",
+            children: [
+              {
+                label: "@1",
+                children: [
+                  {
+                    label: "@1-1",
+                    children: [{ label: "https://nikolav.rs/" }],
+                  },
+                ],
+              },
+              { label: "@2" },
+            ],
+          },
+          { label: "ref" },
+          { label: "HEAD" },
+        ],
+      },
+      {
+        label: "docs",
+        children: [
+          {
+            label: "german",
+            children: [{ label: "course.pdf" }, { label: "dictionary.pdf" }],
+          },
+          { label: "linux-kernel.pdf" },
+          { label: "hacking-vi.pdf" },
+          { label: "girls-for-dummies.pdf" },
+        ],
+      },
+      {
+        label: "images",
+        children: [{ label: "cerci.jpg" }, { label: "margery.jpg" }],
+      },
+      {
+        label: "temp",
+        children: [
+          {
+            label: "empty-folder",
+            children: [],
+          },
+        ],
+      },
+      { label: ".bashrc" },
+      { label: "send-sms.sh" },
+      { label: "trash.sh" },
+    ],
+  },
+  (newNode, json) => {
+    newNode.value((val) => ({ ...val, _hasChildren: "children" in json }));
+  }
+);
 
-//
-a.append(a0);
-a.append(a1);
-a.append(a2);
-a0.append(root.node({ value: { label: "ref" } }));
-a0.append(root.node({ value: { label: "HEAD" } }));
-a1.append(a1_0);
-a1_0.append(root.node({ value: { label: "course.pdf" } }));
-a1_0.append(root.node({ value: { label: "dictionary.pdf" } }));
-a1.append(root.node({ value: { label: "linux-kernel.pdf" } }));
-a1.append(root.node({ value: { label: "hacking-vi.pdf" } }));
-a1.append(root.node({ value: { label: "girls-for-dummies.pdf" } }));
-a2.append(root.node({ value: { label: "cerci.jpg" } }));
-a2.append(root.node({ value: { label: "margery.jpg" } }));
-a.append(root.node({ value: { label: ".bashrc" } }));
-a.append(root.node({ value: { label: "send-sms.sh" } }));
-a.append(root.node({ value: { label: "trash.sh" } }));
-// mount
-root.append(a);
 //
 export default root;
