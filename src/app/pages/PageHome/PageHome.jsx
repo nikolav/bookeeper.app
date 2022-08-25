@@ -18,9 +18,8 @@ export default function PageHome() {
             return;
           }
           //
-          const nodeValue = node.value();
-          const { label } = nodeValue;
-          setf({ path: getNodeKey(node), file: label });
+          const { label: file } = node.value();
+          setf({ path: getNodeKey(node), file });
         }}
       />
     </section>

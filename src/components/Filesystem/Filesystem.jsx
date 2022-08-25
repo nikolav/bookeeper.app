@@ -11,7 +11,7 @@ import {
   MdFolderOpen as IconFolderOpen,
   MdOutlineInsertDriveFile as IconFile,
 } from "../icons";
-import folders from "../../assets/folders";
+import foldersDefault from "../../assets/folders";
 //
 const styleRoot = css`
   text-align: left !important;
@@ -84,7 +84,7 @@ const FilesystemEntryContent = styled.div`
   ${styleFileSystemEntry}
 `;
 //
-const DEFAULT_FS = folders;
+const DEFAULT_FS = foldersDefault;
 const DEFAULT_CHEVRON_SIZE = "1.22rem";
 const DEFAULT_FOLDER_SIZE = DEFAULT_CHEVRON_SIZE;
 const DEFAULT_FILE_SIZE = "1.1rem";
@@ -203,6 +203,7 @@ function build(node, _index) {
   const nodeKey = getNodeKey(node);
   const isOpen = fs && fs[nodeKey];
   const isSelected = nodeKey === appdata(fileSelected);
+  const isEmpty = 0 === node.len();
   //
   const toggleOpen = () => appdata.set(ID, { ...fs, [nodeKey]: !fs[nodeKey] });
   const toggleFileSelected = () => {
@@ -212,7 +213,7 @@ function build(node, _index) {
     node.id(fileSelected);
   };
   //
-  return !isEmpty(node) ? (
+  return isFolder_(node) ? (
     <Fragment key={nodeKey}>
       <FilesystemEntry
         node={node}
@@ -223,15 +224,17 @@ function build(node, _index) {
         iconFolder={iconFolder}
         iconFolderOpened={iconFolderOpened}
       />
-      <Collapse isOpen={isOpen}>
-        <CollapseContent
-          guides={guides}
-          indent={indent}
-          indentGuides={indentGuides}
-        >
-          {node.ls().map(build, this)}
-        </CollapseContent>
-      </Collapse>
+      {!isEmpty && (
+        <Collapse isOpen={isOpen}>
+          <CollapseContent
+            guides={guides}
+            indent={indent}
+            indentGuides={indentGuides}
+          >
+            {node.ls().map(build, this)}
+          </CollapseContent>
+        </Collapse>
+      )}
     </Fragment>
   ) : (
     <FilesystemEntry
@@ -300,8 +303,8 @@ function FilesystemEntry({
   );
 }
 
-function isEmpty(node) {
-  return 0 === node.len();
+function isFolder_(node) {
+  return node.value()["_hasChildren"];
 }
 
 export function getNodeKey(node) {
