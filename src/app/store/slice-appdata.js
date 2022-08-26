@@ -43,7 +43,7 @@ export const { setAppData, removeAppData, clearAppDataEntry } =
 export default appdataSlice.reducer;
 
 //
-// export redux store shortcut hook
+// redux shortcut hook
 export function useAppData() {
   //
   const appdata = useSelector((state) => state.appdata);
