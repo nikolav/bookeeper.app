@@ -1,14 +1,12 @@
 /** @jsxImportSource @emotion/react */
-import React, { Fragment } from "react";
+import { useRef, useEffect, createContext, useContext } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { Popper } from "../index";
-import { useAppData, useFlags, FLAG_MENU_OPEN } from "../../app/store";
-import { MdChevronRight as IconChevron } from "../icons";
+import { useAppData } from "../../app/store";
+// import { MdChevronRight as IconChevron } from "../icons";
+import { useHover } from "../../hooks";
 //
-import MenuBarEntry from "./MenuBarEntry";
-import MenuBarCommand from "./MenuBarCommand";
-import MenuBarPanel from "./MenuBarPanel";
+import MenuBarSection from "./MenuBarSection";
 //
 import { main as menubar } from "../../assets/menu";
 import { keys, map } from "../../util";
@@ -19,43 +17,73 @@ const styleMenuBar__topBar = css`
   display: flex;
   flex-direction: row;
   align-items: center;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: end;
 `;
+const styleMenuBar__topBar__onHover = css``;
 
 //
 const Widget = styled.ul`
   ${styleMenuBar__topBar}
 `;
+//
+const ContextMenuBar = createContext();
+export const useMenuBar = () => useContext(ContextMenuBar);
 ////
 ////
 const MenuBar = ({
   // tree{} menu entries
   menu = menubar,
+  //
+  ID = "@MenuBar-1",
   // add classes @root
   className = "",
   // open menu entries if menu bar is open @hover-on-other-entry
   hoverOpen = true,
   //
+  menuOffset = [0, 0],
+  //
+  menuOffsetSecondary = [0, -1],
+  //
+  timeout = 444,
+  //
   ...rest
 }) => {
+  const refWidget = useRef();
+  const isHoverWidget = useHover(refWidget);
   //
-  const flags = useFlags();
   const appdata = useAppData();
+  if (!appdata.has(ID)) appdata.set(ID, { openMenuID: null });
   //
-  const isMenuOpen = flags(FLAG_MENU_OPEN);
+  const menuData = appdata(ID);
+  const isOpenMenuBar = null != menuData?.openMenuID;
+  //
+  const provide = {
+    ID,
+    menuOffsetSecondary,
+    isOpenMenuBar,
+    timeout,
+  };
   //
   return (
-    <Widget>
-      {map(keys(menu), (menuKey) => {
-        const node = menu[menuKey].eq(0);
-        //
-        return (
-          <Fragment key={menuKey}>
-            <MenuBarEntry node={node} />
-            <MenuBarPanel node={node} />
-          </Fragment>
-        );
-      })}
-    </Widget>
+    <ContextMenuBar.Provider value={provide}>
+      <Widget
+        ref={refWidget}
+        css={[isHoverWidget && styleMenuBar__topBar__onHover]}
+        {...rest}
+      >
+        {map(keys(menu), (menuKey) => (
+          <MenuBarSection
+            key={menuKey}
+            node={menu[menuKey].first()}
+            menuOffset={menuOffset}
+          />
+        ))}
+      </Widget>
+    </ContextMenuBar.Provider>
   );
 };
 

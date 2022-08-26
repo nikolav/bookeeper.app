@@ -10,8 +10,9 @@ const useClickAway = (
 ) => {
   const html = document.documentElement;
   //
-  const handle_ = (evt) =>
+  const handle_ = (evt) => {
     root?.current && !root.current.contains(evt.target) && handle(evt);
+  };
   //
   const cleanup = () => html.removeEventListener("click", handle_);
   //

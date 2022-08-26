@@ -28,7 +28,8 @@ import useChartPie from "./data/use-chart-pie";
 import useChartPlot from "./data/use-chart-plot";
 import useChartBar from "./data/use-chart-bar";
 import useChartLine from "./data/use-chart-line";
-
+//
+import useHover from "./use-hover";
 //
 export {
   useAppEvents,
@@ -44,6 +45,7 @@ export {
   useFancyboxGallery,
   useFileReader,
   useGravatar,
+  useHover,
   useInputSynced,
   useLocalStorage,
   useQueryMain,
