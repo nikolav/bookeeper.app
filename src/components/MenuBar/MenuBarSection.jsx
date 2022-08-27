@@ -41,16 +41,18 @@ const styleMenuList = css`
   padding: 0;
   min-width: 192px;
 `;
-const styleMenuItem = css`
+const styleMenuItem = ({ isDisabled }) => css`
   list-style: none;
   margin: 0;
   padding: 0.1rem 0.33rem;
-  cursor: pointer;
+  user-select: none;
+  cursor: ${!isDisabled && "pointer"};
   display: flex;
   align-items: center;
   justify-content: space-between;
+  opacity: ${isDisabled && 0.33};
   &:hover {
-    background-color: rgba(0, 0, 0, .048);
+    background-color: ${!isDisabled && "rgba(0, 0, 0, 0.048)"};
   }
   &:first-of-type {
     padding-top: 0.25rem;
@@ -108,9 +110,21 @@ const MenuBarEntry = forwardRef(
 );
 
 const MenuItemSingle = forwardRef(
-  ({ icon, label, iconWidth, shortcut, isSubMenu, children, ...rest }, ref) => {
+  (
+    {
+      icon,
+      label,
+      iconWidth,
+      shortcut,
+      isSubMenu,
+      isDisabled,
+      children,
+      ...rest
+    },
+    ref
+  ) => {
     return (
-      <MenuItem ref={ref} {...rest}>
+      <MenuItem ref={ref} isDisabled={isDisabled} {...rest}>
         <span className="flex items-center">
           <span style={{ width: iconWidth }} className="MenuBar-SubMenu--icon">
             {icon}
@@ -194,9 +208,10 @@ function SubMenuList({ parent }) {
       onMouseLeave={toggleIsInMenuList.off}
     >
       {parent.ls().map((node, index) => {
-        const { icon, label, shortcut, divider } = node.value();
+        const { icon, label, shortcut, divider, disabled } = node.value();
         const isParent = node.hasClass("hasChildren");
         const isDivider = true === divider;
+        const isDisabled = true === disabled;
         //
         return isDivider ? (
           <Divider key={`divider-${index}`} />
@@ -209,6 +224,7 @@ function SubMenuList({ parent }) {
             label={label}
             iconWidth={iconWidth}
             shortcut={shortcut}
+            isDisabled={isDisabled}
           />
         );
       })}
@@ -228,7 +244,8 @@ function SubMenuItem({ parent, isInMenuList }) {
   const [i2$, seti2] = useState();
   const { isActive: isInSubmenu, toggle: toggleIsInSubmenu } = useStateSwitch();
   //
-  const { icon, label, shortcut } = parent.value();
+  const { icon, label, shortcut, disabled } = parent.value();
+  const isDisabled = true === disabled;
 
   useEffect(() => {
     if (!isOpenMenuBar) toggleIsOpen.off();
@@ -260,6 +277,7 @@ function SubMenuItem({ parent, isInMenuList }) {
       iconWidth={iconWidth}
       shortcut={shortcut}
       isSubMenu={true}
+      isDisabled={isDisabled}
     >
       <Popper.Appear
         isActive={isOpen}
