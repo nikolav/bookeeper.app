@@ -1,15 +1,21 @@
+// import {
+//   MdOutlineInsertDriveFile as IconFile
+// } from "../../../components/icons"
+
 export default {
-  label: "File",
+  label: "Help",
   children: [
     {
       label: "New File",
-      icon: "N",
       shortcut: "Ctrl + N",
-      command: null,
     },
     {
       label: "Open File",
       shortcut: "Ctrl + O",
+    },
+    {
+      label: "Open Folder",
+      shortcut: "Ctrl + KO",
     },
     {
       divider: true,
@@ -32,25 +38,6 @@ export default {
     },
     {
       divider: true,
-    },
-    {
-      label: "Export",
-      shortcut: "Ctrl + E",
-      children: [
-        {
-          label: "image",
-          children: [
-            { label: "image-1" },
-            { label: "image-2" },
-          ]
-        },
-        {
-          label: "pdf",
-        },
-        {
-          label: "xls",
-        },
-      ],
     },
     {
       label: "Close",

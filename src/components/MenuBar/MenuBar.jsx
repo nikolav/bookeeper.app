@@ -3,14 +3,9 @@ import { useRef, useEffect, createContext, useContext } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { useAppData } from "../../app/store";
-// import { MdChevronRight as IconChevron } from "../icons";
 import { useHover } from "../../hooks";
-//
 import MenuBarSection from "./MenuBarSection";
-//
 import { main as menubar } from "../../assets/menu";
-import { keys, map } from "../../util";
-
 //
 const styleMenuBar__topBar = css`
   list-style: none;
@@ -22,6 +17,8 @@ const styleMenuBar__topBar = css`
   padding: 0;
   display: flex;
   align-items: end;
+  font-size: 92%;
+  /* border-bottom: 1px dotted gray; */
 `;
 const styleMenuBar__topBar__onHover = css``;
 
@@ -39,19 +36,20 @@ const MenuBar = ({
   menu = menubar,
   //
   ID = "@MenuBar-1",
-  // add classes @root
-  className = "",
-  // open menu entries if menu bar is open @hover-on-other-entry
-  hoverOpen = true,
   //
   menuOffset = [0, 0],
   //
-  menuOffsetSecondary = [0, -1],
+  menuOffsetSecondary = [0, -2],
   //
-  timeout = 444,
+  timeout = 292,
+  //
+  effect = "slideUp",
+  //
+  iconWidth = "1.22rem",
   //
   ...rest
 }) => {
+  //
   const refWidget = useRef();
   const isHoverWidget = useHover(refWidget);
   //
@@ -66,6 +64,8 @@ const MenuBar = ({
     menuOffsetSecondary,
     isOpenMenuBar,
     timeout,
+    effect,
+    iconWidth,
   };
   //
   return (
@@ -75,7 +75,7 @@ const MenuBar = ({
         css={[isHoverWidget && styleMenuBar__topBar__onHover]}
         {...rest}
       >
-        {map(keys(menu), (menuKey) => (
+        {Object.keys(menu).map((menuKey) => (
           <MenuBarSection
             key={menuKey}
             node={menu[menuKey].first()}

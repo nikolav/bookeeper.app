@@ -7,23 +7,33 @@ import { Popper } from "../index";
 import { useAppData } from "../../app/store";
 import { useClickAway, useStateSwitch, useWindowAddEvents } from "../../hooks";
 import { useMenuBar } from "./MenuBar";
+import { MdChevronRight as IconChevronRight } from "../icons";
 //
 const styleMenuEntry = ({ px }) => css`
   list-style: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
   padding: 0;
   padding-left: ${isNumeric(px) ? px + "px" : px};
   padding-right: ${isNumeric(px) ? px + "px" : px};
   /* @hover */
+  opacity: 0.72;
   &:hover {
+    opacity: 1;
   }
-  border: 1px dotted gray;
+  /* border: 1px dotted gray; */
 `;
 const stylePanelRoot = css`
   background-color: white;
-  border: 1px dotted gray;
+  border-radius: 3px;
+  overflow-y: auto;
+  font-size: 82%;
+  /* border: 1px dotted gray; */
   margin: 0;
   padding: 0;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 `;
 const styleMenuList = css`
   list-style: none;
@@ -34,8 +44,19 @@ const styleMenuList = css`
 const styleMenuItem = css`
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0.1rem 0.33rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   &:hover {
+    background-color: rgba(0, 0, 0, .048);
+  }
+  &:first-of-type {
+    padding-top: 0.25rem;
+  }
+  &:last-child {
+    padding-bottom: 0.33rem;
   }
 `;
 //
@@ -57,6 +78,8 @@ const MenuBarEntry = forwardRef(
   (
     {
       //
+      icon = null,
+      //
       label,
       //
       px = ".5rem",
@@ -65,26 +88,55 @@ const MenuBarEntry = forwardRef(
       //
       onEnter = noop,
       //
+      ...rest
     },
     ref
   ) => {
     return (
-      <Entry ref={ref} px={px} onClick={onClick} onMouseOver={onEnter}>
+      <Entry
+        ref={ref}
+        px={px}
+        onClick={onClick}
+        onMouseOver={onEnter}
+        {...rest}
+      >
+        {icon && <strong className="MenuBar--icon">{icon}</strong>}
         {label}
       </Entry>
     );
   }
 );
 
+const MenuItemSingle = forwardRef(
+  ({ icon, label, iconWidth, shortcut, isSubMenu, children, ...rest }, ref) => {
+    return (
+      <MenuItem ref={ref} {...rest}>
+        <span className="flex items-center">
+          <span style={{ width: iconWidth }} className="MenuBar-SubMenu--icon">
+            {icon}
+          </span>
+          <span className="mr-8">{label}</span>
+        </span>
+        <span className="flex items-center">
+          <span className="MenuBar-SubMenu--icon">{shortcut}</span>
+          <span style={{ width: iconWidth }} className="MenuBar-SubMenu--icon">
+            {isSubMenu && <IconChevronRight style={{ fontSize: 22 }} />}
+          </span>
+        </span>
+        {children}
+      </MenuItem>
+    );
+  }
+);
+
 const MenuBarSection = ({ node, menuOffset }) => {
+  const { icon, label } = node.value();
+  //
   const { ID, isOpenMenuBar } = useMenuBar();
-  //
-  const { label } = node.value();
-  const sectionID = `${ID}--${label}`;
-  //
   const appdata = useAppData();
   const menuData = appdata(ID);
   const { openMenuID } = menuData;
+  const sectionID = `${ID}--${label}`;
   //
   const isOpen = sectionID === openMenuID;
   const closeMenu = () => appdata.set(ID, { ...menuData, openMenuID: null });
@@ -111,18 +163,19 @@ const MenuBarSection = ({ node, menuOffset }) => {
         onEnter={onEnter}
         onClick={toggleMenuAsync}
         ref={setRefPopper}
+        icon={icon}
         label={label}
       />
-      <Popper.Appear
+      <Popper
+        isActive={isOpen}
         anchor={refPopper}
         placement="bottom-start"
-        isActive={isOpen}
         offset={menuOffset}
       >
         <PanelRoot ref={refPanelRoot}>
           <SubMenuList parent={node} />
         </PanelRoot>
-      </Popper.Appear>
+      </Popper>
     </>
   );
 };
@@ -131,6 +184,7 @@ export default MenuBarSection;
 
 //
 function SubMenuList({ parent }) {
+  const { iconWidth } = useMenuBar();
   const { isActive: isInMenuList, toggle: toggleIsInMenuList } =
     useStateSwitch();
   //
@@ -139,15 +193,23 @@ function SubMenuList({ parent }) {
       onMouseEnter={toggleIsInMenuList.on}
       onMouseLeave={toggleIsInMenuList.off}
     >
-      {parent.ls().map((node) => {
-        const { label, divider } = node.value();
+      {parent.ls().map((node, index) => {
+        const { icon, label, shortcut, divider } = node.value();
         const isParent = node.hasClass("hasChildren");
         const isDivider = true === divider;
         //
-        return isDivider ? null : isParent ? (
+        return isDivider ? (
+          <Divider key={`divider-${index}`} />
+        ) : isParent ? (
           <SubMenuItem key={label} parent={node} isInMenuList={isInMenuList} />
         ) : (
-          <MenuItem key={label}>{label}</MenuItem>
+          <MenuItemSingle
+            key={label}
+            icon={icon}
+            label={label}
+            iconWidth={iconWidth}
+            shortcut={shortcut}
+          />
         );
       })}
     </MenuList>
@@ -155,7 +217,7 @@ function SubMenuList({ parent }) {
 }
 
 function SubMenuItem({ parent, isInMenuList }) {
-  const { menuOffsetSecondary, isOpenMenuBar, timeout } =
+  const { menuOffsetSecondary, isOpenMenuBar, timeout, effect, iconWidth } =
     useMenuBar();
   //
   const { isActive: isOpen, toggle: toggleIsOpen } = useStateSwitch();
@@ -166,7 +228,7 @@ function SubMenuItem({ parent, isInMenuList }) {
   const [i2$, seti2] = useState();
   const { isActive: isInSubmenu, toggle: toggleIsInSubmenu } = useStateSwitch();
   //
-  const { label } = parent.value();
+  const { icon, label, shortcut } = parent.value();
 
   useEffect(() => {
     if (!isOpenMenuBar) toggleIsOpen.off();
@@ -181,7 +243,7 @@ function SubMenuItem({ parent, isInMenuList }) {
   }, [isInMenuList, isInSubmenu]);
   //
   return (
-    <MenuItem
+    <MenuItemSingle
       ref={setRefMenuItem}
       onMouseEnter={() => {
         clearInterval(i2$);
@@ -193,13 +255,18 @@ function SubMenuItem({ parent, isInMenuList }) {
         toggle.off();
         !isInSubmenu && seti2(setTimeout(toggleIsOpen.off, timeout));
       }}
+      icon={icon}
+      label={label}
+      iconWidth={iconWidth}
+      shortcut={shortcut}
+      isSubMenu={true}
     >
-      {label}...
       <Popper.Appear
+        isActive={isOpen}
         anchor={refMenuItem}
         placement="right-start"
         offset={menuOffsetSecondary}
-        isActive={isOpen}
+        effect={effect}
       >
         <PanelRoot
           onMouseEnter={toggleIsInSubmenu.on}
@@ -208,6 +275,10 @@ function SubMenuItem({ parent, isInMenuList }) {
           <SubMenuList parent={parent} />
         </PanelRoot>
       </Popper.Appear>
-    </MenuItem>
+    </MenuItemSingle>
   );
+}
+
+function Divider() {
+  return <hr className="m-0 p-0 my-1 block border-stone-300" />;
 }

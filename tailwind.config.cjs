@@ -9,7 +9,8 @@ module.exports = {
     "./src/*.{js,ts,jsx,tsx}",
     "./public/**/*.html",
     "./docs/**/*.html",
-    "./index.html"
+    "./index.html",
+    "./src/assets/menu/main/*.jsx?",
   ],
   theme: {
     extend: {
