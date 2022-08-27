@@ -35,11 +35,13 @@ const ApplicationBar = ({
   //
   menuOffsetSecondary = [0, -2],
   //
+  iconWidth = "1.25rem",
+  //
+  gapLabelShortuct = "3.6rem",
+  //
   timeout = 292,
   //
   effect = "slideUp",
-  //
-  iconWidth = "1.22rem",
   //
   ...rest
 }) => {
@@ -57,6 +59,7 @@ const ApplicationBar = ({
     timeout,
     effect,
     iconWidth,
+    gapLabelShortuct,
   };
   //
   return (

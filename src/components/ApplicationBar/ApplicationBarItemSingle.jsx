@@ -31,7 +31,7 @@ const MenuItem = styled.li`
 //
 const ApplicationBarItemSingle = forwardRef(
   ({ node, children, ...rest }, ref) => {
-    const { iconWidth } = useAppBar();
+    const { iconWidth, gapLabelShortuct } = useAppBar();
     const { icon, label, shortcut, disabled } = node.value();
     const isDisabled = true === disabled;
     const isParent = node.hasClass("hasChildren");
@@ -42,7 +42,7 @@ const ApplicationBarItemSingle = forwardRef(
           <span style={{ width: iconWidth }} className="MenuBar-SubMenu--icon">
             {icon}
           </span>
-          <span className="mr-8">{label}</span>
+          <span style={{ marginRight: gapLabelShortuct }}>{label}</span>
         </span>
         <span className="flex items-center">
           <span className="MenuBar-SubMenu--icon">{shortcut}</span>
