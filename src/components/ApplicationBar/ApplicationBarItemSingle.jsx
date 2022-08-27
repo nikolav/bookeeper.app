@@ -30,11 +30,11 @@ const MenuItem = styled.li`
 `;
 //
 const ApplicationBarItemSingle = forwardRef(
-  (
-    { icon, label, shortcut, isSubMenu, isDisabled, children, ...rest },
-    ref
-  ) => {
+  ({ node, children, ...rest }, ref) => {
     const { iconWidth } = useAppBar();
+    const { icon, label, shortcut, disabled } = node.value();
+    const isDisabled = true === disabled;
+    const isParent = node.hasClass("hasChildren");
     //
     return (
       <MenuItem ref={ref} isDisabled={isDisabled} {...rest}>
@@ -47,7 +47,7 @@ const ApplicationBarItemSingle = forwardRef(
         <span className="flex items-center">
           <span className="MenuBar-SubMenu--icon">{shortcut}</span>
           <span style={{ width: iconWidth }} className="MenuBar-SubMenu--icon">
-            {isSubMenu && <IconChevronRight style={{ fontSize: 22 }} />}
+            {isParent && <IconChevronRight style={{ fontSize: 22 }} />}
           </span>
         </span>
         {children}

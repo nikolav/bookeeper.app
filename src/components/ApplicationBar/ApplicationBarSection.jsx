@@ -2,14 +2,14 @@
 import { useState, useRef } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import ApplicationBarEntry from "./ApplicationBarEntry";
+import SubMenuList from "./SubMenuList";
 import { Popper } from "../index";
 import { useAppData } from "../../app/store";
 import { useClickAway, useWindowAddEvents } from "../../hooks";
 import { useAppBar } from "./ApplicationBar";
-import ApplicationBarEntry from "./ApplicationBarEntry";
-import SubMenuList from "./SubMenuList";
 //
-const stylePanelRoot = css`
+const stylePanel = css`
   background-color: white;
   border-radius: 3px;
   overflow-y: auto;
@@ -18,12 +18,12 @@ const stylePanelRoot = css`
   padding: 0;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 `;
-export const PanelRoot = styled.div`
-  ${stylePanelRoot}
+export const Panel = styled.div`
+  ${stylePanel}
 `;
 //
 const ApplicationBarSection = ({ node, menuOffset }) => {
-  const { icon, label } = node.value();
+  const { label } = node.value();
   //
   const { ID, isOpenAppBar } = useAppBar();
   const appdata = useAppData();
@@ -41,8 +41,8 @@ const ApplicationBarSection = ({ node, menuOffset }) => {
   const onEnter = () => isOpenAppBar && openMenu();
   const [refPopper, setRefPopper] = useState();
   //
-  const refPanelRoot = useRef();
-  useClickAway(refPanelRoot, closeMenu, isOpen);
+  const refPanel = useRef();
+  useClickAway(refPanel, closeMenu, isOpen);
   //
   useWindowAddEvents(
     "keyup",
@@ -56,8 +56,7 @@ const ApplicationBarSection = ({ node, menuOffset }) => {
         onEnter={onEnter}
         onClick={toggleMenuAsync}
         ref={setRefPopper}
-        icon={icon}
-        label={label}
+        node={node}
       />
       <Popper
         isActive={isOpen}
@@ -65,9 +64,9 @@ const ApplicationBarSection = ({ node, menuOffset }) => {
         placement="bottom-start"
         offset={menuOffset}
       >
-        <PanelRoot ref={refPanelRoot}>
+        <Panel ref={refPanel}>
           <SubMenuList parent={node} />
-        </PanelRoot>
+        </Panel>
       </Popper>
     </>
   );
