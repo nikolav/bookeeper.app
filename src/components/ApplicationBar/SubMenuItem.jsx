@@ -9,17 +9,13 @@ import { useAppBar } from "./ApplicationBar";
 export default function SubMenuItem({ parent, isInMenuList }) {
   const { menuOffsetSecondary, isOpenAppBar, timeout, effect } = useAppBar();
   //
-  const { isActive: isOpen, toggle: toggleIsOpen } = useStateSwitch();
   const { isActive, toggle } = useStateSwitch();
+  const { isActive: isInSubmenu, toggle: toggleIsInSubmenu } = useStateSwitch();
+  const { isActive: isOpen, toggle: toggleIsOpen } = useStateSwitch();
   const [refMenuItem, setRefMenuItem] = useState();
   //
   const [i1$, seti1] = useState();
   const [i2$, seti2] = useState();
-  const { isActive: isInSubmenu, toggle: toggleIsInSubmenu } = useStateSwitch();
-  //
-  useEffect(() => {
-    if (!isOpenAppBar) toggleIsOpen.off();
-  }, [isOpenAppBar]);
   //
   useEffect(() => {
     isOpen &&
@@ -28,6 +24,10 @@ export default function SubMenuItem({ parent, isInMenuList }) {
       !isInSubmenu &&
       seti2(setTimeout(toggleIsOpen.off, timeout));
   }, [isInMenuList, isInSubmenu]);
+  //
+  useEffect(() => {
+    if (!isOpenAppBar) toggleIsOpen.off();
+  }, [isOpenAppBar]);
   //
   return (
     <ApplicationBarItemSingle
