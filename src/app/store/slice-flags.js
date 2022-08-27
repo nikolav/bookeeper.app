@@ -6,9 +6,14 @@ import { paste } from "../../util";
 export const FLAG_TEST = "gigciljifcl";
 export const FLAG_APP_IS_PROCESSING = "lkojvpoyfbl";
 //
+export const FLAG_MENU_OPEN = "cwnhdskjqtj";
+//
+//
 const initialState = {
   [FLAG_TEST]: null,
   [FLAG_APP_IS_PROCESSING]: false,
+  //
+  [FLAG_MENU_OPEN]: false,
 };
 
 export const flagsSlice = createSlice({

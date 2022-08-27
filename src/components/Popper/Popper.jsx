@@ -5,8 +5,8 @@ import { has } from "../../util";
 // https://popper.js.org/react-popper/
 import { usePopper } from "react-popper";
 //
-const DEFAULT_DURATION_IN = 0.24;
-const DEFAULT_DURATION_OUT = 0.12;
+const DEFAULT_DURATION_IN = 0.2;
+const DEFAULT_DURATION_OUT = 0.1;
 const APPEAR = {
   slideUp: {
     initial: { opacity: 0, y: 12, scale: 1 },

@@ -1,5 +1,5 @@
 import { useAppData, ADMIN, TEST } from "./slice-appdata";
-import { useFlags, FLAG_TEST, FLAG_APP_IS_PROCESSING } from "./slice-flags";
+import { useFlags, FLAG_TEST, FLAG_APP_IS_PROCESSING, FLAG_MENU_OPEN } from "./slice-flags";
 import { useResourceMain } from "../resource";
 // //
 import { useColorMode } from "../providers/MuiThemeProvider";
@@ -40,6 +40,7 @@ export {
   useFlags,
   FLAG_TEST,
   FLAG_APP_IS_PROCESSING,
+  FLAG_MENU_OPEN,
   //
   useAuth,
   AUTH,
