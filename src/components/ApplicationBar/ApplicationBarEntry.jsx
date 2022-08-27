@@ -27,9 +27,7 @@ const ApplicationBarEntry = forwardRef(
   (
     {
       //
-      icon = null,
-      //
-      label,
+      node,
       //
       px = ".5rem",
       //
@@ -41,6 +39,8 @@ const ApplicationBarEntry = forwardRef(
     },
     ref
   ) => {
+    const { icon, label } = node.value();
+    //
     return (
       <Entry
         ref={ref}

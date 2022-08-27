@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
-import { useAppBar } from "./ApplicationBar";
-import ApplicationBarItemSingle from "./ApplicationBarItemSingle";
-import { PanelRoot } from "./ApplicationBarSection";
 import { Popper } from "../index";
+import { Panel } from "./ApplicationBarSection";
 import SubMenuList from "./SubMenuList";
+import ApplicationBarItemSingle from "./ApplicationBarItemSingle";
 import { useStateSwitch } from "../../hooks";
+import { useAppBar } from "./ApplicationBar";
 //
 export default function SubMenuItem({ parent, isInMenuList }) {
-  const { menuOffsetSecondary, isOpenAppBar, timeout, effect, iconWidth } =
-    useAppBar();
+  const { menuOffsetSecondary, isOpenAppBar, timeout, effect } = useAppBar();
   //
   const { isActive: isOpen, toggle: toggleIsOpen } = useStateSwitch();
   const { isActive, toggle } = useStateSwitch();
@@ -18,9 +17,6 @@ export default function SubMenuItem({ parent, isInMenuList }) {
   const [i2$, seti2] = useState();
   const { isActive: isInSubmenu, toggle: toggleIsInSubmenu } = useStateSwitch();
   //
-  const { icon, label, shortcut, disabled } = parent.value();
-  const isDisabled = true === disabled;
-
   useEffect(() => {
     if (!isOpenAppBar) toggleIsOpen.off();
   }, [isOpenAppBar]);
@@ -46,11 +42,7 @@ export default function SubMenuItem({ parent, isInMenuList }) {
         toggle.off();
         !isInSubmenu && seti2(setTimeout(toggleIsOpen.off, timeout));
       }}
-      icon={icon}
-      label={label}
-      shortcut={shortcut}
-      isSubMenu={true}
-      isDisabled={isDisabled}
+      node={parent}
     >
       <Popper.Appear
         isActive={isOpen}
@@ -59,12 +51,12 @@ export default function SubMenuItem({ parent, isInMenuList }) {
         offset={menuOffsetSecondary}
         effect={effect}
       >
-        <PanelRoot
+        <Panel
           onMouseEnter={toggleIsInSubmenu.on}
           onMouseLeave={toggleIsInSubmenu.off}
         >
           <SubMenuList parent={parent} />
-        </PanelRoot>
+        </Panel>
       </Popper.Appear>
     </ApplicationBarItemSingle>
   );
