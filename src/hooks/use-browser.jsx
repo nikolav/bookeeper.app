@@ -12,7 +12,7 @@ export const BrowserContextProvider = ({ children }) => {
   const [m$, setm] = useState(false);
   const [r$, setr] = useState(false);
   const [jq$, setjq] = useState({ jQuery: null });
-
+  //
   useEffect(() => {
     //
     const w = new Function("return this")();

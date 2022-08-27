@@ -1,16 +1,22 @@
 import { MdOutlineInsertDriveFile as IconFile } from "../../../components/icons";
 //
+// @file
+// .command fields to dispatch @global .useAppEvents
+export const COMMAND__NEW_TEXT_FILE = "spdfasslrlu";
+export const COMMAND__NEW_FILE = "utrnyghpdsr";
+//
 export default {
   label: "File",
   children: [
     {
       label: "New Text File",
       shortcut: "Ctrl + N",
-      command: null,
+      command: COMMAND__NEW_TEXT_FILE,
     },
     {
       label: "New File...",
       shortcut: "Ctrl + Alt + Win + N",
+      command: COMMAND__NEW_FILE,
       icon: (
         <IconFile style={{ fontSize: 16, transform: "translateY(-1px)" }} />
       ),

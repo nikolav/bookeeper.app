@@ -1468,10 +1468,6 @@ select {
   margin-bottom: 0.5rem;
 }
 
-.mr-8 {
-  margin-right: 2rem;
-}
-
 .block {
   display: block;
 }
@@ -1480,8 +1476,16 @@ select {
   display: flex;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .min-h-\[6rem\] {
   min-height: 6rem;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .transform {
@@ -1498,6 +1502,10 @@ select {
 
 .justify-center {
   justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {

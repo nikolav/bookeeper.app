@@ -10,7 +10,7 @@ module.exports = {
     "./public/**/*.html",
     "./docs/**/*.html",
     "./index.html",
-    "./src/assets/menu/main/*.jsx?",
+    "./src/assets/menu/main/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
