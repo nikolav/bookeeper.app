@@ -4,24 +4,26 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { MdChevronRight as IconChevronRight } from "../icons";
 import { useAppBar } from "./ApplicationBar";
-
+import { useAppEvents } from "../../hooks";
+import { DEFAULT__COMMAND } from "../../assets/menu";
+//
 const styleMenuItem = ({ isDisabled }) => css`
   list-style: none;
   margin: 0;
-  padding: 0.1rem 0.33rem;
+  padding: 0;
   user-select: none;
   cursor: ${!isDisabled && "pointer"};
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   opacity: ${isDisabled && 0.33};
   &:hover {
     background-color: ${!isDisabled && "rgba(0, 0, 0, 0.048)"};
   }
-  &:first-of-type {
+  & .ApplicationBar--command-target {
+    padding: 0.1rem 0.33rem;
+  }
+  &:first-of-type .ApplicationBar--command-target {
     padding-top: 0.25rem;
   }
-  &:last-child {
+  &:last-child .ApplicationBar--command-target {
     padding-bottom: 0.33rem;
   }
 `;
@@ -31,25 +33,51 @@ const MenuItem = styled.li`
 //
 const ApplicationBarItemSingle = forwardRef(
   ({ node, children, ...rest }, ref) => {
+    //
+    const { icon, label, shortcut, disabled, command } = node.value();
     const { iconWidth, gapLabelShortuct } = useAppBar();
-    const { icon, label, shortcut, disabled } = node.value();
+    //
     const isDisabled = true === disabled;
     const isParent = node.hasClass("hasChildren");
     //
+    const cmdDispatch = useAppEvents();
+    const runCommand = () =>
+      !isDisabled &&
+      cmdDispatch.triggerEvent(
+        null != command ? command : DEFAULT__COMMAND,
+        node
+      );
+    //
     return (
       <MenuItem ref={ref} isDisabled={isDisabled} {...rest}>
-        <span className="flex items-center">
-          <span style={{ width: iconWidth }} className="MenuBar-SubMenu--icon">
-            {icon}
+        {/*  */}
+        {/* @command trigger */}
+        <div
+          onClick={runCommand}
+          className="ApplicationBar--command-target h-full w-full flex items-center justify-between"
+        >
+          <span className="flex items-center">
+            <span
+              style={{ width: iconWidth }}
+              className="MenuBar-SubMenu--icon"
+            >
+              {icon}
+            </span>
+            <span style={{ marginRight: gapLabelShortuct }}>{label}</span>
           </span>
-          <span style={{ marginRight: gapLabelShortuct }}>{label}</span>
-        </span>
-        <span className="flex items-center">
-          <span className="MenuBar-SubMenu--icon">{shortcut}</span>
-          <span style={{ width: iconWidth }} className="MenuBar-SubMenu--icon">
-            {isParent && <IconChevronRight style={{ fontSize: 22 }} />}
+
+          <span className="flex items-center">
+            <span className="MenuBar-SubMenu--icon">{shortcut}</span>
+            <span
+              style={{ width: iconWidth }}
+              className="MenuBar-SubMenu--icon"
+            >
+              {isParent && <IconChevronRight style={{ fontSize: 22 }} />}
+            </span>
           </span>
-        </span>
+        </div>
+        {/*  */}
+        {/* render submenu */}
         {children}
       </MenuItem>
     );
