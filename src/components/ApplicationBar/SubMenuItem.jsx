@@ -48,7 +48,6 @@ export default function SubMenuItem({ parent, isInMenuList }) {
       }}
       icon={icon}
       label={label}
-      iconWidth={iconWidth}
       shortcut={shortcut}
       isSubMenu={true}
       isDisabled={isDisabled}

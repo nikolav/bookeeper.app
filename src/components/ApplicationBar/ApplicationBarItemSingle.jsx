@@ -3,6 +3,7 @@ import { forwardRef } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { MdChevronRight as IconChevronRight } from "../icons";
+import { useAppBar } from "./ApplicationBar";
 
 const styleMenuItem = ({ isDisabled }) => css`
   list-style: none;
@@ -30,18 +31,10 @@ const MenuItem = styled.li`
 //
 const ApplicationBarItemSingle = forwardRef(
   (
-    {
-      icon,
-      label,
-      iconWidth,
-      shortcut,
-      isSubMenu,
-      isDisabled,
-      children,
-      ...rest
-    },
+    { icon, label, shortcut, isSubMenu, isDisabled, children, ...rest },
     ref
   ) => {
+    const { iconWidth } = useAppBar();
     //
     return (
       <MenuItem ref={ref} isDisabled={isDisabled} {...rest}>
