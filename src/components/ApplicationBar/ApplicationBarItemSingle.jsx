@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 import { MdChevronRight as IconChevronRight } from "../icons";
 import { useAppBar } from "./ApplicationBar";
 import { useAppEvents } from "../../hooks";
-import { DEFAULT__COMMAND } from "../../assets/menu";
+import { COMMAND__DEFAULT } from "../../assets/menu";
 //
 const styleMenuItem = ({ isDisabled }) => css`
   list-style: none;
@@ -14,8 +14,13 @@ const styleMenuItem = ({ isDisabled }) => css`
   user-select: none;
   cursor: ${!isDisabled && "pointer"};
   opacity: ${isDisabled && 0.33};
+  transition: background-color .055s linear;
   &:hover {
     background-color: ${!isDisabled && "rgba(0, 0, 0, 0.048)"};
+  }
+  &:active {
+    background-color: ${!isDisabled && "rgba(0, 0, 0, 0.22)"};
+    color: ${!isDisabled && "white"};
   }
   & .ApplicationBar--command-target {
     padding: 0.1rem 0.33rem;
@@ -34,17 +39,21 @@ const MenuItem = styled.li`
 const ApplicationBarItemSingle = forwardRef(
   ({ node, children, ...rest }, ref) => {
     //
-    const { icon, label, shortcut, disabled, command } = node.value();
+    const { icon, label, shortcut, disabled, command, isActive } = node.value();
     const { iconWidth, gapLabelShortuct, commit } = useAppBar();
     //
     const isDisabled = true === disabled;
     const isParent = node.hasClass("hasChildren");
+    const isActive_ = false !== isActive;
     //
     const emit = useAppEvents();
     const runCommand = () =>
       !isDisabled &&
       !isParent &&
-      emit.triggerEvent(null != command ? command : DEFAULT__COMMAND, { node, commit });
+      emit.triggerEvent(null != command ? command : COMMAND__DEFAULT, {
+        node,
+        commit,
+      });
     //
     return (
       <MenuItem ref={ref} isDisabled={isDisabled} {...rest}>
@@ -59,7 +68,7 @@ const ApplicationBarItemSingle = forwardRef(
               style={{ width: iconWidth }}
               className="MenuBar-SubMenu--icon"
             >
-              {icon}
+              {isActive_ && icon}
             </span>
             <span style={{ marginRight: gapLabelShortuct }}>{label}</span>
           </span>

@@ -4,14 +4,10 @@ import AppRoutes from "./AppRoutes";
 import { ToastMessages } from "./components";
 import { LoaderBars } from "./components/loaders";
 //
-import { toast } from "react-toastify";
 import { useBrowser, useAppEvents } from "./hooks";
-import { DEFAULT__COMMAND } from "./assets/menu";
 import {
-  COMMAND__NEW_TEXT_FILE,
-  COMMAND__NEW_FILE,
-} from "./assets/menu/main/file";
-
+  configure as configureAppBarCommands,
+} from "./assets/menu";
 //
 function App() {
   // @boot
@@ -23,17 +19,7 @@ function App() {
       // ship logic in separate module..
       //
       // handle AppBar commands
-      [DEFAULT__COMMAND, COMMAND__NEW_TEXT_FILE, COMMAND__NEW_FILE].forEach(
-        (command) =>
-          emit$.addEventListener(command, (context) => {
-            const { node, commit } = context;
-            const { label } = node.value();
-            // @demo handler
-            setTimeout(() => {
-              toast.info(`@demo | running [${label}]`);
-            });
-          })
-      );
+      configureAppBarCommands(emit$);
     }
   }, [isMounted, isReady]);
 

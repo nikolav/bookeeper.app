@@ -47,13 +47,14 @@ const ApplicationBar = ({
 }) => {
   //
   const appdata = useAppData();
-  if (!appdata.has(ID)) appdata.set(ID, { openMenuID: null, updatedAt: null });
+  if (!appdata.has(ID)) appdata.set(ID, { openMenuID: null, _key: 0 });
   //
   const data = appdata(ID);
   const isOpenAppBar = null != data?.openMenuID;
   //
   // since menu data is outside react lifecycle, rebuild menu manually with .commit()
-  const commit = () => appdata.set(ID, { ...data, updatedAt: Date.now() });
+  const commit = () =>
+    appdata.set(ID, { ...data, _key: (data?._key || 0) + 1 });
   //
   const provide = {
     ID,

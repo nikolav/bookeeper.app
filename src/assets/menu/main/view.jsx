@@ -1,4 +1,9 @@
-import { IconCheck } from "../../../components/icons";
+import { iconCheck } from "./icons";
+//
+export const GROUP__PANEL_POSITION = "vfjpyktwbgy";
+export const COMMAND__PANEL_POSITION_BOTTOM = "rzfgdgdrkgl";
+export const COMMAND__PANEL_POSITION_LEFT = "idtcdkuuhvt";
+export const COMMAND__PANEL_POSITION_RIGHT = "kxbbrrhoxza";
 //
 export default {
   label: "View",
@@ -15,41 +20,21 @@ export default {
         { divider: true },
         {
           label: "Menu Bar",
-          icon: (
-            <IconCheck
-              style={{ fontSize: 16, transform: "translateX(-2px)" }}
-              className="MenuBar-SubMenu--icon"
-            />
-          ),
+          icon: iconCheck,
         },
         {
           label: "Primary Side Bar",
           shortcut: "Ctrl + B",
-          icon: (
-            <IconCheck
-              style={{ fontSize: 16, transform: "translateX(-2px)" }}
-              className="MenuBar-SubMenu--icon"
-            />
-          ),
+          icon: iconCheck,
         },
         { label: "Secondary Side Bar" },
         {
           label: "Status Bar",
-          icon: (
-            <IconCheck
-              style={{ fontSize: 16, transform: "translateX(-2px)" }}
-              className="MenuBar-SubMenu--icon"
-            />
-          ),
+          icon: iconCheck,
         },
         {
           label: "Activity Bar",
-          icon: (
-            <IconCheck
-              style={{ fontSize: 16, transform: "translateX(-2px)" }}
-              className="MenuBar-SubMenu--icon"
-            />
-          ),
+          icon: iconCheck,
         },
         { label: "Panel", shortcut: "Ctrl + J" },
         { divider: true },
@@ -59,18 +44,24 @@ export default {
           children: [
             {
               label: "Bottom",
-              icon: (
-                <IconCheck
-                  style={{ fontSize: 16, transform: "translateX(-2px)" }}
-                  className="MenuBar-SubMenu--icon"
-                />
-              ),
+              icon: iconCheck,
+              isActive: true,
+              group: GROUP__PANEL_POSITION,
+              command: COMMAND__PANEL_POSITION_BOTTOM,
             },
             {
               label: "Left",
+              icon: iconCheck,
+              isActive: false,
+              group: GROUP__PANEL_POSITION,
+              command: COMMAND__PANEL_POSITION_LEFT,
             },
             {
               label: "Right",
+              icon: iconCheck,
+              isActive: false,
+              group: GROUP__PANEL_POSITION,
+              command: COMMAND__PANEL_POSITION_RIGHT,
             },
           ],
         },
@@ -79,12 +70,7 @@ export default {
           children: [
             {
               label: "Center",
-              icon: (
-                <IconCheck
-                  style={{ fontSize: 16, transform: "translateX(-2px)" }}
-                  className="MenuBar-SubMenu--icon"
-                />
-              ),
+              icon: iconCheck,
             },
             { label: "Justify" },
             { label: "Left" },
@@ -134,39 +120,19 @@ export default {
     { label: "Word Wrap", shortcut: "Alt + Z" },
     {
       label: "Minimap",
-      icon: (
-        <IconCheck
-          style={{ fontSize: 16, transform: "translateX(-2px)" }}
-          className="MenuBar-SubMenu--icon"
-        />
-      ),
+      icon: iconCheck,
     },
     {
       label: "Breadcrumbs",
-      icon: (
-        <IconCheck
-          style={{ fontSize: 16, transform: "translateX(-2px)" }}
-          className="MenuBar-SubMenu--icon"
-        />
-      ),
+      icon: iconCheck,
     },
     {
       label: "Render Whitespace",
-      icon: (
-        <IconCheck
-          style={{ fontSize: 16, transform: "translateX(-2px)" }}
-          className="MenuBar-SubMenu--icon"
-        />
-      ),
+      icon: iconCheck,
     },
     {
       label: "Render Controll Characters",
-      icon: (
-        <IconCheck
-          style={{ fontSize: 16, transform: "translateX(-2px)" }}
-          className="MenuBar-SubMenu--icon"
-        />
-      ),
+      icon: iconCheck,
     },
   ],
 };

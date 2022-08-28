@@ -1,4 +1,4 @@
-import { MdOutlineInsertDriveFile as IconFile } from "../../../components/icons";
+import { iconFile } from "./icons";
 //
 // @file
 // .command fields to dispatch @global .useAppEvents
@@ -17,9 +17,10 @@ export default {
       label: "New File...",
       shortcut: "Ctrl + Alt + Win + N",
       command: COMMAND__NEW_FILE,
-      icon: (
-        <IconFile style={{ fontSize: 16, transform: "translateY(-1px)" }} />
-      ),
+      icon: iconFile,
+      // signal .active
+      // display icon
+      isActive: true,
     },
     {
       label: "New Window",
