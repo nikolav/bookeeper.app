@@ -33,7 +33,7 @@ const ApplicationBar = ({
   //
   menuOffset = [0, 0],
   //
-  menuOffsetSecondary = [0, -2],
+  menuOffsetSecondary = [0, -4],
   //
   iconWidth = "1.25rem",
   //
@@ -47,11 +47,14 @@ const ApplicationBar = ({
 }) => {
   //
   const appdata = useAppData();
-  if (!appdata.has(ID)) appdata.set(ID, { openMenuID: null });
+  if (!appdata.has(ID)) appdata.set(ID, { openMenuID: null, updatedAt: null });
   //
   const data = appdata(ID);
   const isOpenAppBar = null != data?.openMenuID;
-  // 
+  //
+  // since menu data is outside react lifecycle, rebuild menu manually with .commit()
+  const commit = () => appdata.set(ID, { ...data, updatedAt: Date.now() });
+  //
   const provide = {
     ID,
     menuOffsetSecondary,
@@ -60,6 +63,9 @@ const ApplicationBar = ({
     effect,
     iconWidth,
     gapLabelShortuct,
+    //
+    menu,
+    commit,
   };
   //
   return (

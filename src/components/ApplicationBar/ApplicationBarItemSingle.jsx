@@ -35,7 +35,7 @@ const ApplicationBarItemSingle = forwardRef(
   ({ node, children, ...rest }, ref) => {
     //
     const { icon, label, shortcut, disabled, command } = node.value();
-    const { iconWidth, gapLabelShortuct } = useAppBar();
+    const { iconWidth, gapLabelShortuct, commit } = useAppBar();
     //
     const isDisabled = true === disabled;
     const isParent = node.hasClass("hasChildren");
@@ -44,10 +44,7 @@ const ApplicationBarItemSingle = forwardRef(
     const runCommand = () =>
       !isDisabled &&
       !isParent &&
-      emit.triggerEvent(
-        null != command ? command : DEFAULT__COMMAND,
-        node
-      );
+      emit.triggerEvent(null != command ? command : DEFAULT__COMMAND, { node, commit });
     //
     return (
       <MenuItem ref={ref} isDisabled={isDisabled} {...rest}>
