@@ -40,10 +40,11 @@ const ApplicationBarItemSingle = forwardRef(
     const isDisabled = true === disabled;
     const isParent = node.hasClass("hasChildren");
     //
-    const cmdDispatch = useAppEvents();
+    const emit = useAppEvents();
     const runCommand = () =>
       !isDisabled &&
-      cmdDispatch.triggerEvent(
+      !isParent &&
+      emit.triggerEvent(
         null != command ? command : DEFAULT__COMMAND,
         node
       );
