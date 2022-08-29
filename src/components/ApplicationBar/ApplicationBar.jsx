@@ -48,16 +48,17 @@ const ApplicationBar = ({
   ...rest
 }) => {
   //
+  // use menu data{} provided under global ID key
   const appdata = useAppData();
   if (!appdata.has(ID))
     appdata.set(ID, {
       openMenuID: null,
       _keyCommit: null,
     });
-  //
   const data = appdata(ID);
-  const isOpenAppBar = null != data?.openMenuID;
   //
+  // setup menu controlls
+  const isOpenAppBar = null != data?.openMenuID;
   const openMenu = (sectionID) =>
     appdata.set(ID, { ...data, openMenuID: sectionID });
   const closeMenu = () => openMenu(null);
@@ -65,9 +66,11 @@ const ApplicationBar = ({
   const toggleMenu = (sectionID) =>
     isOpen(sectionID) ? closeMenu() : openMenu(sectionID);
   //
-  // since menu data is outside react lifecycle, rebuild menu manually with .commit()
+  // menu regenerate method
+  // since menu tree{} is outside react lifecycle, rebuild menu jsx manually with .commit()
   const commit = () => appdata.set(ID, { ...data, _keyCommit: idGen() });
   //
+  // provide to descendant components
   const provide = {
     ID,
     menuOffsetSecondary,
@@ -86,6 +89,7 @@ const ApplicationBar = ({
     commit,
   };
   //
+  // listen @key.ESC
   useWindowAddEvents(
     "keyup",
     ({ keyCode }) => 27 === keyCode && closeMenu(),

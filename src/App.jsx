@@ -5,18 +5,16 @@ import { ToastMessages } from "./components";
 import { LoaderBars } from "./components/loaders";
 //
 import { useBrowser, useAppEvents } from "./hooks";
-import {
-  configure as configureAppBarCommands,
-} from "./assets/menu";
+import { configure as configureAppBarCommands } from "./assets/menu";
 //
 function App() {
   // @boot
   const { isMounted, isReady } = useBrowser();
   const emit$ = useAppEvents();
   useEffect(() => {
+    // run global boot methods @App.loaded
+    // ship logic in separate module..
     if (isMounted && isReady) {
-      // run global boot methods @App.loaded
-      // ship logic in separate module..
       //
       // handle AppBar commands
       configureAppBarCommands(emit$);

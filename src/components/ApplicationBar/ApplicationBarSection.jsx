@@ -26,8 +26,8 @@ const ApplicationBarSection = ({ node, menuOffset }) => {
   const { ID, isOpenAppBar, openMenu, closeMenu, isOpen, toggleMenu } =
     useAppBar();
   const { label } = node.value();
+
   const sectionID = `${ID}--${label}`;
-  //
   const isOpenSection = isOpen(sectionID);
   const toggleMenuAsync = () => setTimeout(() => toggleMenu(sectionID));
   const onEnter = () => isOpenAppBar && openMenu(sectionID);

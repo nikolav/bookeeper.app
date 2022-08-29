@@ -38,9 +38,8 @@ const fProto = Function.prototype;
 const aProto = Array.prototype;
 const oProto = Object.prototype;
 //
-const { idGen } = q;
 const { add: addClass, rm: removeClass, has: hasClass } = q.class;
-const { eventListener, prevent, ready, s: select, type } = q;
+const { eventListener, prevent, ready, s: select, type, idGen } = q;
 const { has } = q.object;
 const { isEmail } = q.test;
 const { sortByTimestampDesc } = q.array;

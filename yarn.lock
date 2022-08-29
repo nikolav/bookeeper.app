@@ -3255,10 +3255,10 @@ nikolav-q@^1.2.0:
   resolved "https://registry.yarnpkg.com/nikolav-q/-/nikolav-q-1.2.0.tgz#62691a7cd07f74cd59b2fa8a6d2f726f674d9671"
   integrity sha512-ppw+K2ghehDaRFxGXqWDUwYK5wxwYQ4uxsHpV/kkT5+kxY8Mz8n4Wqfd057KvQdAbzXD5Wj57fzxIAkOjpLG3w==
 
-nikolav-tree@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/nikolav-tree/-/nikolav-tree-1.4.0.tgz#1942c1e2b4560573b856f4fa8dd94a84de3db3fd"
-  integrity sha512-DCep7BUsgW47e7hUxMRXwRW+lhcEQehW6L41sVxqMSAD1X+cIGG8pW4hzMBZXIFxIZdbF2XIPYoAbEIg5KoR/g==
+nikolav-tree@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/nikolav-tree/-/nikolav-tree-1.4.1.tgz#ef9f6cb46ffe070929edbb70f4b44f538d89f850"
+  integrity sha512-3BVcpiKCL7rm4BjwgFeKS3wgwW/F+TsfTEqy91wMm/1ge3lCdMRSiBkn71LRDOlVn2qcoBlOV5NBuwfutZv/1A==
 
 node-fetch@2.6.7:
   version "2.6.7"
