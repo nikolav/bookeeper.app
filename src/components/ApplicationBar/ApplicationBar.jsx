@@ -67,7 +67,8 @@ const ApplicationBar = ({
     isOpen(sectionID) ? closeMenu() : openMenu(sectionID);
   //
   // menu regenerate method
-  // since menu tree{} is outside react lifecycle, rebuild menu jsx manually with .commit()
+  // menu tree{} is outside react lifecycle
+  // ..manually trigger menu jsx rebuild with .commit()
   const commit = () => appdata.set(ID, { ...data, _keyCommit: idGen() });
   //
   // provide to descendant components
