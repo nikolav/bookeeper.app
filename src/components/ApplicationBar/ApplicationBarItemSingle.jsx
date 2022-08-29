@@ -14,7 +14,7 @@ const styleMenuItem = ({ isDisabled }) => css`
   user-select: none;
   cursor: ${!isDisabled && "pointer"};
   opacity: ${isDisabled && 0.33};
-  transition: background-color .055s linear;
+  transition: background-color 0.055s linear;
   &:hover {
     background-color: ${!isDisabled && "rgba(0, 0, 0, 0.048)"};
   }
@@ -40,20 +40,23 @@ const ApplicationBarItemSingle = forwardRef(
   ({ node, children, ...rest }, ref) => {
     //
     const { icon, label, shortcut, disabled, command, isActive } = node.value();
-    const { iconWidth, gapLabelShortuct, commit } = useAppBar();
+    const { iconWidth, gapLabelShortuct, commit, closeMenu } = useAppBar();
     //
     const isDisabled = true === disabled;
     const isParent = node.hasClass("hasChildren");
     const isActive_ = false !== isActive;
     //
     const emit = useAppEvents();
-    const runCommand = () =>
-      !isDisabled &&
-      !isParent &&
-      emit.triggerEvent(null != command ? command : COMMAND__DEFAULT, {
-        node,
-        commit,
-      });
+    const runCommand = () => {
+      if (!isDisabled && !isParent) {
+        emit.triggerEvent(null != command ? command : COMMAND__DEFAULT, {
+          node,
+          commit,
+        });
+        closeMenu();
+      }
+    };
+
     //
     return (
       <MenuItem ref={ref} isDisabled={isDisabled} {...rest}>

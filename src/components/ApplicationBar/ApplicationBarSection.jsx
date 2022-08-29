@@ -5,7 +5,6 @@ import styled from "@emotion/styled";
 import ApplicationBarEntry from "./ApplicationBarEntry";
 import SubMenuList from "./SubMenuList";
 import { Popper } from "../index";
-import { useAppData } from "../../app/store";
 import { useClickAway, useWindowAddEvents } from "../../hooks";
 import { useAppBar } from "./ApplicationBar";
 //
@@ -23,32 +22,20 @@ export const Panel = styled.div`
 `;
 //
 const ApplicationBarSection = ({ node, menuOffset }) => {
-  const { label } = node.value();
   //
-  const { ID, isOpenAppBar } = useAppBar();
-  const appdata = useAppData();
-  const menuData = appdata(ID);
-  const { openMenuID } = menuData;
+  const { ID, isOpenAppBar, openMenu, closeMenu, isOpen, toggleMenu } =
+    useAppBar();
+  const { label } = node.value();
   const sectionID = `${ID}--${label}`;
   //
-  const isOpen = sectionID === openMenuID;
-  const closeMenu = () => appdata.set(ID, { ...menuData, openMenuID: null });
-  const openMenu = () =>
-    appdata.set(ID, { ...menuData, openMenuID: sectionID });
-  const toggleMenu = () => (isOpen ? closeMenu() : openMenu());
-  const toggleMenuAsync = () => setTimeout(toggleMenu);
+  const isOpenSection = isOpen(sectionID);
+  const toggleMenuAsync = () => setTimeout(() => toggleMenu(sectionID));
+  const onEnter = () => isOpenAppBar && openMenu(sectionID);
   //
-  const onEnter = () => isOpenAppBar && openMenu();
   const [refPopper, setRefPopper] = useState();
   //
   const refPanel = useRef();
-  useClickAway(refPanel, closeMenu, isOpen);
-  //
-  useWindowAddEvents(
-    "keyup",
-    ({ keyCode }) => 27 === keyCode && closeMenu(),
-    isOpenAppBar
-  );
+  useClickAway(refPanel, closeMenu, isOpenSection);
   //
   return (
     <>
@@ -59,7 +46,7 @@ const ApplicationBarSection = ({ node, menuOffset }) => {
         node={node}
       />
       <Popper
-        isActive={isOpen}
+        isActive={isOpenSection}
         anchor={refPopper}
         placement="bottom-start"
         offset={menuOffset}

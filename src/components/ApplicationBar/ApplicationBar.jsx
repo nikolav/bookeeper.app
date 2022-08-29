@@ -4,7 +4,9 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import ApplicationBarSection from "./ApplicationBarSection";
 import { useAppData } from "../../app/store";
+import { useWindowAddEvents } from "../../hooks";
 import { main as menubar } from "../../assets/menu";
+import { idGen } from "../../util";
 //
 const styleTopBar = css`
   list-style: none;
@@ -47,14 +49,24 @@ const ApplicationBar = ({
 }) => {
   //
   const appdata = useAppData();
-  if (!appdata.has(ID)) appdata.set(ID, { openMenuID: null, _key: 0 });
+  if (!appdata.has(ID))
+    appdata.set(ID, {
+      openMenuID: null,
+      _keyCommit: null,
+    });
   //
   const data = appdata(ID);
   const isOpenAppBar = null != data?.openMenuID;
   //
+  const openMenu = (sectionID) =>
+    appdata.set(ID, { ...data, openMenuID: sectionID });
+  const closeMenu = () => openMenu(null);
+  const isOpen = (sectionID) => sectionID === data?.openMenuID;
+  const toggleMenu = (sectionID) =>
+    isOpen(sectionID) ? closeMenu() : openMenu(sectionID);
+  //
   // since menu data is outside react lifecycle, rebuild menu manually with .commit()
-  const commit = () =>
-    appdata.set(ID, { ...data, _key: (data?._key || 0) + 1 });
+  const commit = () => appdata.set(ID, { ...data, _keyCommit: idGen() });
   //
   const provide = {
     ID,
@@ -66,8 +78,19 @@ const ApplicationBar = ({
     gapLabelShortuct,
     //
     menu,
+    openMenu,
+    closeMenu,
+    isOpen,
+    toggleMenu,
+    //
     commit,
   };
+  //
+  useWindowAddEvents(
+    "keyup",
+    ({ keyCode }) => 27 === keyCode && closeMenu(),
+    isOpenAppBar
+  );
   //
   return (
     <ContextApplicationBar.Provider value={provide}>
