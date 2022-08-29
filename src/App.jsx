@@ -13,7 +13,7 @@ function App() {
   const emit$ = useAppEvents();
   useEffect(() => {
     // run global boot methods @App.loaded
-    // ship logic in separate module..
+    // ship logic in separate modules..
     if (isMounted && isReady) {
       //
       // handle AppBar commands
