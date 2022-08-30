@@ -3,7 +3,7 @@ import { useEffect, Fragment } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import Collapse from "../Collapse/Collapse";
-import { noop, isNumeric } from "../../util";
+import { noop, isNumeric, getNodeKey } from "../../util";
 import { useAppData } from "../../app/store";
 import {
   MdChevronRight as IconChevron,
@@ -305,14 +305,4 @@ function FilesystemEntry({
 
 function isFolder_(node) {
   return node.value()["_hasChildren"];
-}
-
-export function getNodeKey(node) {
-  return (
-    node &&
-    node
-      .path()
-      .map((p) => p.value()["label"])
-      .join("/")
-  );
 }

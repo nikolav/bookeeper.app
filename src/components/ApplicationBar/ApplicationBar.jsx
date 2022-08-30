@@ -25,7 +25,7 @@ const ApplicationBarMenu = styled.ul`
 //
 const ContextApplicationBar = createContext();
 export const useAppBar = () => useContext(ContextApplicationBar);
-////
+//
 ////
 const ApplicationBar = ({
   // tree{} menu entries

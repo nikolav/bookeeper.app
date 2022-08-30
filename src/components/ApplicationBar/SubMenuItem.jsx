@@ -54,6 +54,8 @@ export default function SubMenuItem({ parent, isInMenuList }) {
         <Panel
           onMouseEnter={toggleIsInSubmenu.on}
           onMouseLeave={toggleIsInSubmenu.off}
+          // node={parent}
+          // onClose={toggleIsOpen.off}
         >
           <SubMenuList parent={parent} />
         </Panel>
@@ -61,3 +63,15 @@ export default function SubMenuItem({ parent, isInMenuList }) {
     </ApplicationBarItemSingle>
   );
 }
+
+// function PanelSubMenu({ node, onClose, children, ...rest }) {
+//   const { pushStackESC, popStackESC, getNodeKey } = useAppBar();
+//   const path = getNodeKey(node);
+//   //
+//   useEffect(() => {
+//     pushStackESC({ path, onClose });
+//     return () => popStackESC({ path });
+//   }, []);
+//   //
+//   return <Panel {...rest}>{children}</Panel>;
+// }

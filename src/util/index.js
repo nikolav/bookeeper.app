@@ -7,6 +7,7 @@ import clamp from "lodash/clamp";
 import debounce from "lodash/debounce";
 import each from "lodash/each";
 import filter from "lodash/filter";
+import find from "lodash/find";
 import groupBy from "lodash/groupBy";
 import identity from "lodash/identity";
 import isFunction from "lodash/isFunction";
@@ -30,6 +31,7 @@ import values from "lodash/values";
 import q from "nikolav-q";
 import tree from "nikolav-tree";
 //
+import getNodeKey from "./get-node-key";
 import groupByCount from "./group-by-count";
 import traverseTree, { isFolder } from "./traverse-tree";
 import withReturnValue from "./with-return-value";
@@ -38,12 +40,12 @@ const fProto = Function.prototype;
 const aProto = Array.prototype;
 const oProto = Object.prototype;
 //
-const { add: addClass, rm: removeClass, has: hasClass } = q.class;
 const { eventListener, prevent, ready, s: select, type, idGen } = q;
-const { has } = q.object;
-const { isEmail } = q.test;
+const { add: addClass, rm: removeClass, has: hasClass } = q.class;
 const { sortByTimestampDesc } = q.array;
 const { stripEndSlashes } = q.str;
+const { isEmail } = q.test;
+const { has } = q.object;
 //
 const push = fProto.call.bind(aProto.push);
 const forEach = fProto.call.bind(aProto.forEach);
@@ -67,7 +69,9 @@ export {
   eventListener,
   False,
   filter,
+  find,
   forEach,
+  getNodeKey,
   groupBy,
   groupByCount,
   has,

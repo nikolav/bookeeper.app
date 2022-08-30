@@ -30,6 +30,7 @@ import useChartBar from "./data/use-chart-bar";
 import useChartLine from "./data/use-chart-line";
 //
 import useHover from "./use-hover";
+import useStackOnce from "./use-stack-once";
 //
 export {
   useAppEvents,
@@ -53,6 +54,7 @@ export {
   useQueryResourceBase,
   useSocialComments,
   useSocialLike,
+  useStackOnce,
   useStateSwitch,
   useTimer,
   useWindowAddEvents,

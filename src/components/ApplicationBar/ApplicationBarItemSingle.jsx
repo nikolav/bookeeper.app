@@ -56,7 +56,6 @@ const ApplicationBarItemSingle = forwardRef(
         closeMenu();
       }
     };
-
     //
     return (
       <MenuItem ref={ref} isDisabled={isDisabled} {...rest}>

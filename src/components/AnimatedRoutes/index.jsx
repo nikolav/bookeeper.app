@@ -4,8 +4,8 @@ import variantsPageTransitions from "../../assets/page-transitions";
 //
 export const RouteTransition = ({ children }) => (
   <motion.div
-    // variants={variantsPageTransitions.fade}
-    variants={variantsPageTransitions.slideLeft}
+    variants={variantsPageTransitions.fade}
+    // variants={variantsPageTransitions.slideLeft}
     initial="from"
     exit="out"
     animate="in"
