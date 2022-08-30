@@ -1,7 +1,7 @@
 import { ApplicationBar } from "../../../components";
 //
 const GIT_LINK =
-  "https://github.com/nikolav/bookeeper.app/tree/production--application-command-bar";
+  "https://github.com/nikolav/bookeeper.app/tree/production--application-command-bar/src/components/ApplicationBar";
 //
 export default function PageHome() {
   //
