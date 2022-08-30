@@ -32,14 +32,14 @@ const variantsPageTransitions = {
       x: 0,
       transition: {
         type: "spring",
-        duration: 0.2,
+        duration: .2,
       },
     },
     out: {
       opacity: 0,
       x: -24,
       transition: {
-        duration: 0.1,
+        duration: .2,
       },
       position: "absolute",
       width: "100%",

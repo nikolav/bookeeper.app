@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import { assign, addClass, hasClass, removeClass } from "../util";
 
 const OVERFLOW_HIDDEN_CLASS = "overflow-hidden";
-
 //
 const useBodyOverflow = () => {
   const [overflowHidden, setOverflowHidden] = useState();
   //
-  const body = document.body;
+  const body = window?.document.body;
   //
   // @init
   useEffect(() => {

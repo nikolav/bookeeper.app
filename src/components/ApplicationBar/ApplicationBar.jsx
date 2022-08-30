@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import ApplicationBarSection from "./ApplicationBarSection";
 import { useAppData } from "../../app/store";
-import { useWindowAddEvents } from "../../hooks";
+import { useStackOnce, useWindowAddEvents } from "../../hooks";
 import { main as menubar } from "../../assets/menu";
 import { idGen } from "../../util";
 //
@@ -71,6 +71,26 @@ const ApplicationBar = ({
   // ..manually trigger menu jsx rebuild with .commit()
   const commit = () => appdata.set(ID, { ...data, _keyCommit: idGen() });
   //
+  // callback stack for closing last open submenu
+  // stack onClose callbacks when submenu opens
+  // run/pop stack @esc
+  const {
+    stack: { isEmpty: isEmptyESC, tail: tailStackESC },
+    push: pushStackESC,
+    pop: popStackESC,
+  } = useStackOnce(({ path }) => path);
+  const [esc$, setEsc] = useState();
+  //
+  useEffect(() => {
+    if (isEmptyESC) {
+      closeMenu();
+      return;
+    }
+    tailStackESC.onClose();
+    popStackESC(tailStackESC);
+    //
+  }, [esc$]);
+  //
   // provide to descendant components
   const provide = {
     ID,
@@ -87,13 +107,16 @@ const ApplicationBar = ({
     isOpen,
     toggleMenu,
     //
+    pushStackESC,
+    popStackESC,
+    //
     commit,
   };
   //
   // listen @key.ESC
   useWindowAddEvents(
     "keyup",
-    ({ keyCode }) => 27 === keyCode && closeMenu(),
+    ({ keyCode }) => 27 === keyCode && setEsc(idGen()),
     isOpenAppBar
   );
   //

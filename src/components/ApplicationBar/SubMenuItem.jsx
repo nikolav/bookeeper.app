@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Popper } from "../index";
-import { Panel } from "./ApplicationBarSection";
 import SubMenuList from "./SubMenuList";
 import ApplicationBarItemSingle from "./ApplicationBarItemSingle";
 import { useStateSwitch } from "../../hooks";
 import { useAppBar } from "./ApplicationBar";
+import PanelSubMenu from "./PanelSubMenu";
 //
 export default function SubMenuItem({ parent, isInMenuList }) {
   const { menuOffsetSecondary, isOpenAppBar, timeout, effect } = useAppBar();
@@ -51,27 +51,15 @@ export default function SubMenuItem({ parent, isInMenuList }) {
         offset={menuOffsetSecondary}
         effect={effect}
       >
-        <Panel
+        <PanelSubMenu
           onMouseEnter={toggleIsInSubmenu.on}
           onMouseLeave={toggleIsInSubmenu.off}
-          // node={parent}
-          // onClose={toggleIsOpen.off}
+          node={parent}
+          onClose={toggleIsOpen.off}
         >
           <SubMenuList parent={parent} />
-        </Panel>
+        </PanelSubMenu>
       </Popper.Appear>
     </ApplicationBarItemSingle>
   );
 }
-
-// function PanelSubMenu({ node, onClose, children, ...rest }) {
-//   const { pushStackESC, popStackESC, getNodeKey } = useAppBar();
-//   const path = getNodeKey(node);
-//   //
-//   useEffect(() => {
-//     pushStackESC({ path, onClose });
-//     return () => popStackESC({ path });
-//   }, []);
-//   //
-//   return <Panel {...rest}>{children}</Panel>;
-// }
