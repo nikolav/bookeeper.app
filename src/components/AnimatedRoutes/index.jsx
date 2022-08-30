@@ -8,8 +8,8 @@ export const RouteTransition = ({ children }) => {
   //
   return (
     <motion.div
-      variants={variantsPageTransitions.fade}
-      // variants={variantsPageTransitions.slideLeft}
+      // variants={variantsPageTransitions.fade}
+      variants={variantsPageTransitions.slideLeft}
       initial="from"
       exit="out"
       animate="in"
