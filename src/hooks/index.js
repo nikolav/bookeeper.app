@@ -31,6 +31,7 @@ import useChartLine from "./data/use-chart-line";
 //
 import useHover from "./use-hover";
 import useStackOnce from "./use-stack-once";
+import useOn from "./use-on";
 //
 export {
   useAppEvents,
@@ -49,6 +50,7 @@ export {
   useHover,
   useInputSynced,
   useLocalStorage,
+  useOn,
   useQueryMain,
   useQueryResource,
   useQueryResourceBase,

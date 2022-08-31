@@ -10,14 +10,14 @@ import { configure as configureAppBarCommands } from "./assets/menu";
 function App() {
   // @boot
   const { isMounted, isReady } = useBrowser();
-  const emit$ = useAppEvents();
+  const emit = useAppEvents();
   useEffect(() => {
     // run global boot methods @App.loaded
     // ship logic in separate modules..
     if (isMounted && isReady) {
       //
       // handle AppBar commands
-      configureAppBarCommands(emit$);
+      configureAppBarCommands(emit);
     }
   }, [isMounted, isReady]);
 
