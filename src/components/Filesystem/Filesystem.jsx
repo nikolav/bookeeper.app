@@ -151,7 +151,7 @@ const Filesystem = ({
   //
   const fileSelected = `${ID}.fileSelected`;
   const appdata = useAppData();
-  if (!appdata.has(ID)) appdata.set(ID, {});
+  if (!appdata.has(ID)) appdata.set(ID, { "@/home": true });
   //
   const selected = appdata(fileSelected);
   useEffect(() => {
