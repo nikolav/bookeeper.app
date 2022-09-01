@@ -38,7 +38,7 @@ export default function PageHome() {
       </div>
 
       <p className="text-center opacity-60 italic">
-        Desni klik otvara pomoćni meni.
+        Desni klik na sliku otvara pomoćni meni.
       </p>
       <img
         ref={r$}
