@@ -13,6 +13,7 @@ import {
 } from "../../hooks";
 import { idGen } from "../../util";
 //
+// provides context data to descendats
 const ContextMenuContext = createContext();
 export const useMenuContext = () => useContext(ContextMenuContext);
 //
@@ -32,31 +33,34 @@ const ContextMenuPanel = styled.section`
 //
 const ContextMenu = ({
   //
+  // bind menu to this ref
   anchor,
   //
+  // menu tree{}
   menu,
   //
+  // provide string.unique for each menu
   ID = "@ContextMenu--eeqtllvzybc",
   //
   iconWidth = "1.67rem",
   //
   gapLabelShortuct = "4.5rem",
   //
+  // offset submenus
   menuOffsetSecondary = [-2, -5],
   //
   timeout = 234,
   //
+  // in.slideUp - out.pop
   effect = "slideUpExitPop",
   //
   ...rest
 }) => {
-  const r$ = useRef();
-  const [clientRect$, setClientRect] = useState();
   const { isActive: isOpen, toggle: toggleIsOpen } = useStateSwitch();
-  const closeMenu = toggleIsOpen.off;
+  const [clientRect$, setClientRect] = useState();
+  const r$ = useRef();
   //
-  const [k$, setk] = useState();
-  const commit = () => setk(idGen());
+  const closeMenu = toggleIsOpen.off;
   //
   // @contextmenu open
   // cache .virtualElement for popperjs; isOpen.on
@@ -81,9 +85,8 @@ const ContextMenu = ({
     },
   });
   //
-  // callback stack for closing last open submenu
-  // stack onClose callbacks when submenu opens
-  // run/pop stack @esc
+  // callback stack to close last open submenu
+  // stack onClose callbacks @submenu.open; pop@esc
   const {
     stack: { isEmpty: isEmptyESC, tail: tailStackESC },
     push: pushStackESC,
@@ -102,24 +105,27 @@ const ContextMenu = ({
   }, [esc$]);
   //
   // @clickaway|key.esc close
-  useClickAway(r$, toggleIsOpen.off, isOpen);
+  useClickAway(r$, closeMenu, isOpen);
   useWindowAddEvents(
     "keyup",
     ({ keyCode }) => 27 === keyCode && setEsc(idGen()),
     isOpen
   );
   //
+  const [k$, setk] = useState();
+  const commit = () => setk(idGen());
+  //
   const provide = {
-    iconWidth,
-    gapLabelShortuct,
-    commit,
     closeMenu,
+    commit,
+    effect,
+    gapLabelShortuct,
+    iconWidth,
     menuOffsetSecondary,
     timeout,
-    effect,
     //
-    pushStackESC,
     popStackESC,
+    pushStackESC,
     //
     _keyCommit: k$,
   };
