@@ -39,7 +39,7 @@ const variantsPageTransitions = {
       opacity: 0,
       x: -24,
       transition: {
-        duration: .2,
+        duration: .1,
       },
       position: "absolute",
       width: "100%",

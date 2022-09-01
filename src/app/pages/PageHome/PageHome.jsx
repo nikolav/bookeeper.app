@@ -36,7 +36,9 @@ export default function PageHome() {
           desktop tipa.
         </p>
       </div>
-
+      <p className="text-center opacity-60 italic">
+        Desni klik na sliku otvara dodatni meni.
+      </p>
       <img
         ref={r$}
         className="block p-2 rounded border-2 shadow w-[320px] mx-auto mt-4"

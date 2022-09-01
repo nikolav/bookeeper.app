@@ -47,7 +47,7 @@ const ApplicationBarItemSingle = forwardRef(
     const isActive_ = false !== isActive;
     //
     const emit = useAppEvents();
-    const runCommand = () => {
+    const runCommand = (e) => {
       if (!isDisabled && !isParent) {
         emit.triggerEvent(null != command ? command : COMMAND__DEFAULT, {
           node,
