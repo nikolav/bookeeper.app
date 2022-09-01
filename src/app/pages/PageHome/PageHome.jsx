@@ -4,7 +4,7 @@ import contextMenu from "../../../assets/context-menu/demo";
 import imageToolips from "../../../../public/tulips.jpg";
 //
 const GIT_LINK =
-  "https://github.com/nikolav/bookeeper.app/blob/production--application-command-bar/src/app/pages/PageHome/PageHome.jsx";
+  "https://github.com/nikolav/bookeeper.app/tree/production--context-menu/src/components/ContextMenu";
 //
 export default function PageHome() {
   const r$ = useRef();
