@@ -37,6 +37,9 @@ export default function PageHome() {
         </p>
       </div>
 
+      <p className="text-center opacity-60 italic">
+        Desni klik otvara pomoćni meni.
+      </p>
       <img
         ref={r$}
         className="block p-2 rounded border-2 shadow w-[320px] mx-auto mt-4"
@@ -45,7 +48,7 @@ export default function PageHome() {
       />
       <ContextMenu ID="wonnzyhpqpf" menu={contextMenu} anchor={r$} />
       <p className="text-center opacity-60 italic">
-        Right Click image to open contextmenu
+        Right Click image to open contextmenu.
       </p>
     </section>
   );
