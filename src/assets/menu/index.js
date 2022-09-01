@@ -8,7 +8,7 @@ import {
 } from "./main/view";
 const COMMAND__DEFAULT = "COMMAND__DEFAULT.faegplhmihy";
 
-const configure = (emit) => {
+const configure = (emitter) => {
   [
     COMMAND__DEFAULT,
     COMMAND__NEW_TEXT_FILE,
@@ -17,7 +17,7 @@ const configure = (emit) => {
     COMMAND__PANEL_POSITION_LEFT,
     COMMAND__PANEL_POSITION_RIGHT,
   ].forEach((command) =>
-    emit.addEventListener(command, ({ node, commit }) => {
+    emitter.addEventListener(command, ({ node, commit }) => {
       const { label, isActive, group } = node.value();
       // @demo handler
       setTimeout(() => {

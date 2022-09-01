@@ -48,6 +48,9 @@
   .MenuBar-SubMenu--icon {
     @apply opacity-50 text-center;
   }
+  .ContextMenu-SubMenu--icon {
+    @apply opacity-[0.33] text-center;
+  }
   .input-underline {
     @apply w-full px-0.5 border-0 border-b-2 border-gray-50 focus:ring-0 focus:border-gray-200 placeholder:italic placeholder:opacity-40 !bg-transparent;
   }
