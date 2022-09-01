@@ -41,7 +41,7 @@
     "md5": "^2.3.0",
     "nanoid": "^4.0.0",
     "nikolav-q": "^1.2.0",
-    "nikolav-tree": "^1.4.1",
+    "nikolav-tree": "^1.5.2",
     "postcss": "^8.4.16",
     "postcss-import": "^14.1.0",
     "qs": "^6.11.0",

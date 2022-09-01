@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import SubMenuItem from "./SubMenuItem";
-import ApplicationBarItemSingle from "./ApplicationBarItemSingle";
+import Divider from "./Divider";
+import ContextMenuSubMenuItem from "./ContextMenuSubMenuItem";
+import ContextMenuItemSingle from "./ContextMenuItemSingle";
 import { useStateSwitch } from "../../hooks";
 //
 const styleMenuList = css`
@@ -15,7 +16,7 @@ const MenuList = styled.ul`
   ${styleMenuList}
 `;
 //
-export default function SubMenuList({ parent }) {
+const ContextMenuSubMenuList = ({ parent }) => {
   const { isActive: isInMenuList, toggle: toggleIsInMenuList } =
     useStateSwitch();
   //
@@ -32,15 +33,17 @@ export default function SubMenuList({ parent }) {
         return isDivider ? (
           <Divider key={`divider-${index}`} />
         ) : isParent ? (
-          <SubMenuItem key={label} parent={node} isInMenuList={isInMenuList} />
+          <ContextMenuSubMenuItem
+            key={label}
+            parent={node}
+            isInMenuList={isInMenuList}
+          />
         ) : (
-          <ApplicationBarItemSingle key={label} node={node} />
+          <ContextMenuItemSingle key={label} node={node} />
         );
       })}
     </MenuList>
   );
-}
-
-function Divider() {
-  return <hr className="m-0 p-0 my-1 block border-stone-300" />;
-}
+};
+//
+export default ContextMenuSubMenuList;

@@ -111,6 +111,7 @@ const ApplicationBar = ({
     popStackESC,
     //
     commit,
+    //
   };
   //
   // listen @key.ESC

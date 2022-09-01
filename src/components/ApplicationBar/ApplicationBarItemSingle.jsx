@@ -54,8 +54,13 @@ const ApplicationBarItemSingle = forwardRef(
           commit,
         });
         closeMenu();
+        return;
       }
+      //
+      // ignore @clickAway
+      e.stopPropagation();
     };
+
     //
     return (
       <MenuItem ref={ref} isDisabled={isDisabled} {...rest}>

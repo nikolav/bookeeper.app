@@ -1,3 +1,4 @@
+//
 import { ApplicationBar } from "../../../components";
 //
 const GIT_LINK =
@@ -13,7 +14,10 @@ export default function PageHome() {
       </div>
       <hr className="m-0 p-0 block" />
       <div className="mt-12">
-        <p> <em>ReactJS</em> <strong>&lt;ApplicationBar&gt;</strong></p>
+        <p>
+          {" "}
+          <em>ReactJS</em> <strong>&lt;ApplicationBar&gt;</strong>
+        </p>
         <p>Application command bar for desktop type online applications.</p>
         <p>
           <a

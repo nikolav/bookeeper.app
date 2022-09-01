@@ -21,6 +21,17 @@ const APPEAR = {
       transition: { type: "spring", duration: DEFAULT_DURATION_IN },
     },
   },
+  slideUpExitPop: {
+    initial: { opacity: 0, y: 12, scale: 1 },
+    exit: {
+      transition: { duration: 0 },
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", duration: DEFAULT_DURATION_IN },
+    },
+  },
   slideLeft: {
     initial: { opacity: 0, x: 12, scale: 1 },
     exit: {

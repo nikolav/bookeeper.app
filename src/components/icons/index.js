@@ -2,11 +2,17 @@ import iconDinarCyr from "../../assets/icon-dinar-cyr.svg";
 import iconFactory from "../../assets/icon-factory.svg";
 import iconGrape from "../../assets/icon-grape.svg";
 import iconSearch from "../../assets/icon-search-primary.svg";
+import IconImageShadow from "./IconImageShadow.jsx";
 //
 import { HiOutlineBookOpen } from "react-icons/hi";
 import { IoMdPower } from "react-icons/io";
 import { TiArrowLeftThick } from "react-icons/ti";
-import { CgFormatItalic } from "react-icons/cg";
+import {
+  CgColorBucket,
+  CgDockBottom,
+  CgDockRight,
+  CgFormatItalic,
+} from "react-icons/cg";
 import { ImQuotesLeft } from "react-icons/im";
 import { GoListUnordered, GoListOrdered } from "react-icons/go";
 import {
@@ -30,45 +36,55 @@ import {
 import { IoHelp } from "react-icons/io5";
 import { FiCamera, FiShare2 } from "react-icons/fi";
 import {
-  BsStarFill,
-  BsPlayFill,
+  BsAlignCenter,
   BsChevronContract,
   BsChevronExpand,
   BsCodeSlash,
+  BsImage,
+  BsPlayFill,
+  BsSquare,
+  BsStarFill,
 } from "react-icons/bs";
-import { RiGithubLine, RiTwitterLine, RiMessengerLine } from "react-icons/ri";
 import {
+  BiBold,
+  BiCloudUpload,
+  BiCube,
+  BiImage,
+  BiRefresh,
   BiShow,
   BiSun,
   BiUserCircle,
-  BiBold,
-  BiCloudUpload,
-  BiImage,
-  BiRefresh,
 } from "react-icons/bi";
 import {
-  AiOutlineUnderline,
-  AiOutlineWhatsApp,
-  AiOutlineLink,
-  AiOutlineCloudSync,
-  //
-  AiOutlineTag,
-  AiOutlineCalendar,
   AiFillTwitterCircle,
+  AiOutlineCalendar,
+  AiOutlineCloudSync,
   AiOutlineIdcard,
-  AiOutlineUserAdd,
+  AiOutlineLink,
+  AiOutlineTag,
+  AiOutlineUnderline,
   AiOutlineUser,
+  AiOutlineUserAdd,
+  AiOutlineWhatsApp,
 } from "react-icons/ai";
 import {
-  RiCloseCircleFill,
+  RiBringForward,
+  RiBringToFront,
   RiCheckboxBlankCircleLine,
   RiCheckboxCircleFill,
+  RiCloseCircleFill,
+  RiGithubLine,
+  RiMessengerLine,
+  RiSendBackward,
+  RiSendToBack,
+  RiTwitterLine,
 } from "react-icons/ri";
 import { FiMoon, FiSend } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
 import { VscChromeMaximize } from "react-icons/vsc";
 //
 import {
+  MdAnchor,
   MdChevronRight,
   MdClose,
   MdCreate,
@@ -84,6 +100,8 @@ import {
   MdOutlineInsertDriveFile,
   MdOutlineMail,
   MdOutlinePostAdd,
+  MdRotateLeft,
+  MdRotateRight,
   MdSettings,
 } from "react-icons/md";
 // @mui.icons
@@ -110,9 +128,15 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import SaveIcon from "@mui/icons-material/Save";
 import SendIcon from "@mui/icons-material/Send";
 import ShareIcon from "@mui/icons-material/Share";
-
 //
-import { GiAccordion } from "react-icons/gi";
+import { GiAccordion, GiWineGlass } from "react-icons/gi";
+import {
+  TbBrandAppleArcade,
+  TbFlipHorizontal,
+  TbFlipVertical,
+  TbMathFunction,
+  TbResize,
+} from "react-icons/tb";
 //
 const IconCheck = Check;
 const IconCloud = Cloud;
@@ -120,8 +144,8 @@ const IconAccessTime = AccessTime;
 const IconContentCut = ContentCut;
 const IconContentCopy = ContentCopy;
 const IconContentPaste = ContentPaste;
-////
-////
+////import { IconName } from "react-icons/ri";
+//// RiSendToBack
 export {
   AddIcon,
   AddShoppingCartIcon,
@@ -139,16 +163,23 @@ export {
   ArrowDropDownIcon,
   BiBold,
   BiCloudUpload,
+  BiCube,
   BiImage,
   BiRefresh,
   BiShow,
   BiSun,
   BiUserCircle,
+  BsAlignCenter,
   BsChevronContract,
   BsChevronExpand,
   BsCodeSlash,
+  BsImage,
   BsPlayFill,
+  BsSquare,
   BsStarFill,
+  CgColorBucket,
+  CgDockBottom,
+  CgDockRight,
   CgFormatItalic,
   DeleteIcon,
   ExpandMoreIcon,
@@ -176,6 +207,7 @@ export {
   FiSend,
   FiShare2,
   GiAccordion,
+  GiWineGlass,
   GoListOrdered,
   GoListUnordered,
   HiOutlineBookOpen,
@@ -188,12 +220,14 @@ export {
   iconDinarCyr,
   iconFactory,
   iconGrape,
+  IconImageShadow,
   iconSearch,
   ImQuotesLeft,
   InboxIcon,
   IoHelp,
   IoMdPower,
   MailIcon,
+  MdAnchor,
   MdChevronRight,
   MdClose,
   MdCreate,
@@ -209,20 +243,31 @@ export {
   MdOutlineInsertDriveFile,
   MdOutlineMail,
   MdOutlinePostAdd,
+  MdRotateLeft,
+  MdRotateRight,
   MdSettings,
   MenuIcon,
   MoreVertIcon,
   PersonIcon,
   PhotoCamera,
+  RiBringForward,
+  RiBringToFront,
   RiCheckboxBlankCircleLine,
   RiCheckboxCircleFill,
   RiCloseCircleFill,
   RiGithubLine,
   RiMessengerLine,
+  RiSendBackward,
+  RiSendToBack,
   RiTwitterLine,
   SaveIcon,
   SendIcon,
   ShareIcon,
+  TbBrandAppleArcade,
+  TbFlipHorizontal,
+  TbFlipVertical,
+  TbMathFunction,
+  TbResize,
   TiArrowLeftThick,
   VscChromeMaximize,
 };
