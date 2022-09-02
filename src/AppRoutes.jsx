@@ -1,7 +1,7 @@
 import { Route } from "react-router-dom";
 import { AnimatedRoutes, RouteTransition } from "./components";
 //
-import { PageHome, PageAbout } from "./app/pages";
+import { PageHome, PageAbout, PageNotFound } from "./app/pages";
 //
 function AppRoutes() {
   return (
@@ -19,6 +19,15 @@ function AppRoutes() {
         element={
           <RouteTransition>
             <PageAbout />
+          </RouteTransition>
+        }
+      />
+      {/* 404 */}
+      <Route
+        path="*"
+        element={
+          <RouteTransition>
+            <PageNotFound />
           </RouteTransition>
         }
       />
