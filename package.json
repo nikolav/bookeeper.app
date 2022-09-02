@@ -11,6 +11,7 @@
     "sass:watch": "sass ./src/global.scss ./src/styles/global.css --watch",
     "build:css": "tailwindcss -i ./src/tailwind.css -o ./src/styles/build.css",
     "watch:css": "tailwindcss -i ./src/tailwind.css -o ./src/styles/build.css --watch",
+    "lint": "eslint ",
     "docs": "serve -p 8889 docs "
   },
   "dependencies": {
@@ -62,11 +63,14 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.10.0",
+    "@eslint/create-config": "^0.3.1",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.1",
     "concurrently": "^7.3.0",
     "cross-env": "^7.0.3",
+    "eslint": "^8.23.0",
+    "eslint-plugin-react": "^7.31.1",
     "html5-boilerplate": "^8.0.0",
     "normalize.css": "^8.0.1",
     "serve": "^14.0.1",

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, transform, AnimatePresence } from "framer-motion";
 import { useStateSwitch } from "../../hooks";
 import { clamp, classnames as cls } from "../../util";
