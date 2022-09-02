@@ -12,6 +12,7 @@
     "build:css": "tailwindcss -i ./src/tailwind.css -o ./src/styles/build.css",
     "watch:css": "tailwindcss -i ./src/tailwind.css -o ./src/styles/build.css --watch",
     "lint": "eslint ",
+    "prettier": "prettier --write src/",
     "docs": "serve -p 8889 docs "
   },
   "dependencies": {
@@ -70,9 +71,12 @@
     "concurrently": "^7.3.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.1",
     "html5-boilerplate": "^8.0.0",
     "normalize.css": "^8.0.1",
+    "prettier": "^2.7.1",
     "serve": "^14.0.1",
     "vite": "^3.0.7"
   }
