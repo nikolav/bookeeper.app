@@ -22,126 +22,126 @@ components: Object
 palette: Object
 mode: "light"
 common: Object
-black: 
+black:
 #000
-white: 
+white:
 #fff
 primary: Object
-main: 
+main:
 #1976d2
-light: 
+light:
 #42a5f5
-dark: 
+dark:
 #1565c0
-contrastText: 
+contrastText:
 #fff
 secondary: Object
-main: 
+main:
 #9c27b0
-light: 
+light:
 #ba68c8
-dark: 
+dark:
 #7b1fa2
-contrastText: 
+contrastText:
 #fff
 error: Object
-main: 
+main:
 #d32f2f
-light: 
+light:
 #ef5350
-dark: 
+dark:
 #c62828
-contrastText: 
+contrastText:
 #fff
 warning: Object
-main: 
+main:
 #ed6c02
-light: 
+light:
 #ff9800
-dark: 
+dark:
 #e65100
-contrastText: 
+contrastText:
 #fff
 info: Object
-main: 
+main:
 #0288d1
-light: 
+light:
 #03a9f4
-dark: 
+dark:
 #01579b
-contrastText: 
+contrastText:
 #fff
 success: Object
-main: 
+main:
 #2e7d32
-light: 
+light:
 #4caf50
-dark: 
+dark:
 #1b5e20
-contrastText: 
+contrastText:
 #fff
 grey: Object
-50: 
+50:
 #fafafa
-100: 
+100:
 #f5f5f5
-200: 
+200:
 #eeeeee
-300: 
+300:
 #e0e0e0
-400: 
+400:
 #bdbdbd
-500: 
+500:
 #9e9e9e
-600: 
+600:
 #757575
-700: 
+700:
 #616161
-800: 
+800:
 #424242
-900: 
+900:
 #212121
-A100: 
+A100:
 #f5f5f5
-A200: 
+A200:
 #eeeeee
-A400: 
+A400:
 #bdbdbd
-A700: 
+A700:
 #616161
 contrastThreshold: 3
 getContrastText: f E()
 augmentColor: f R()
 tonalOffset: 0.2
 text: Object
-primary: 
+primary:
 rgba(0, 0, 0, 0.87)
-secondary: 
+secondary:
 rgba(0, 0, 0, 0.6)
-disabled: 
+disabled:
 rgba(0, 0, 0, 0.38)
-divider: 
+divider:
 rgba(0, 0, 0, 0.12)
 background: Object
-paper: 
+paper:
 #fff
-default: 
+default:
 #fff
 action: Object
-active: 
+active:
 rgba(0, 0, 0, 0.54)
-hover: 
+hover:
 rgba(0, 0, 0, 0.04)
 hoverOpacity: 0.04
-selected: 
+selected:
 rgba(0, 0, 0, 0.08)
 selectedOpacity: 0.08
-disabled: 
+disabled:
 rgba(0, 0, 0, 0.26)
-disabledBackground: 
+disabledBackground:
 rgba(0, 0, 0, 0.12)
 disabledOpacity: 0.38
-focus: 
+focus:
 rgba(0, 0, 0, 0.12)
 focusOpacity: 0.12
 activatedOpacity: 0.12

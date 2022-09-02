@@ -22,128 +22,128 @@ components: Object
 palette: Object
 mode: "dark"
 common: Object
-black: 
+black:
 #000
-white: 
+white:
 #fff
 primary: Object
-main: 
+main:
 #90caf9
-light: 
+light:
 #e3f2fd
-dark: 
+dark:
 #42a5f5
-contrastText: 
+contrastText:
 rgba(0, 0, 0, 0.87)
 secondary: Object
-main: 
+main:
 #ce93d8
-light: 
+light:
 #f3e5f5
-dark: 
+dark:
 #ab47bc
-contrastText: 
+contrastText:
 rgba(0, 0, 0, 0.87)
 error: Object
-main: 
+main:
 #f44336
-light: 
+light:
 #e57373
-dark: 
+dark:
 #d32f2f
-contrastText: 
+contrastText:
 #fff
 warning: Object
-main: 
+main:
 #ffa726
-light: 
+light:
 #ffb74d
-dark: 
+dark:
 #f57c00
-contrastText: 
+contrastText:
 rgba(0, 0, 0, 0.87)
 info: Object
-main: 
+main:
 #29b6f6
-light: 
+light:
 #4fc3f7
-dark: 
+dark:
 #0288d1
-contrastText: 
+contrastText:
 rgba(0, 0, 0, 0.87)
 success: Object
-main: 
+main:
 #66bb6a
-light: 
+light:
 #81c784
-dark: 
+dark:
 #388e3c
-contrastText: 
+contrastText:
 rgba(0, 0, 0, 0.87)
 grey: Object
-50: 
+50:
 #fafafa
-100: 
+100:
 #f5f5f5
-200: 
+200:
 #eeeeee
-300: 
+300:
 #e0e0e0
-400: 
+400:
 #bdbdbd
-500: 
+500:
 #9e9e9e
-600: 
+600:
 #757575
-700: 
+700:
 #616161
-800: 
+800:
 #424242
-900: 
+900:
 #212121
-A100: 
+A100:
 #f5f5f5
-A200: 
+A200:
 #eeeeee
-A400: 
+A400:
 #bdbdbd
-A700: 
+A700:
 #616161
 contrastThreshold: 3
 getContrastText: f E()
 augmentColor: f R()
 tonalOffset: 0.2
 text: Object
-primary: 
+primary:
 #fff
-secondary: 
+secondary:
 rgba(255, 255, 255, 0.7)
-disabled: 
+disabled:
 rgba(255, 255, 255, 0.5)
-icon: 
+icon:
 rgba(255, 255, 255, 0.5)
-divider: 
+divider:
 rgba(255, 255, 255, 0.12)
 background: Object
-paper: 
+paper:
 #121212
-default: 
+default:
 #121212
 action: Object
-active: 
+active:
 #fff
-hover: 
+hover:
 rgba(255, 255, 255, 0.08)
 hoverOpacity: 0.08
-selected: 
+selected:
 rgba(255, 255, 255, 0.16)
 selectedOpacity: 0.16
-disabled: 
+disabled:
 rgba(255, 255, 255, 0.3)
-disabledBackground: 
+disabledBackground:
 rgba(255, 255, 255, 0.12)
 disabledOpacity: 0.38
-focus: 
+focus:
 rgba(255, 255, 255, 0.12)
 focusOpacity: 0.12
 activatedOpacity: 0.24

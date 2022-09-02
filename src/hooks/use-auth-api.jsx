@@ -68,8 +68,8 @@ const authDataFromResponse_authenticate = (data) => ({
   ...authDataFromResponse(data),
   [ACCESS_TOKEN]: accessTokenFromResponse(data),
 });
-const authDataFromResponse_register = (data) => ({...data});
-const authDataFromResponse_session = (data) => ({...data});
+const authDataFromResponse_register = (data) => ({ ...data });
+const authDataFromResponse_session = (data) => ({ ...data });
 //
 const AuthApiContext = createContext();
 //

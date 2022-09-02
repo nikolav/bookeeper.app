@@ -5,5 +5,5 @@ import firebase from "./firebase";
 export {
   firebase,
   supabase,
-//   feathers,
+  //   feathers,
 };
