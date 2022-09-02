@@ -36,7 +36,6 @@ export default function PageHome() {
           desktop tipa.
         </p>
       </div>
-
       <p className="text-center opacity-60 italic">
         Desni klik na sliku otvara pomoćni meni.
       </p>
