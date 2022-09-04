@@ -1,8 +1,9 @@
-import {
-  // BoxResizeLeft,
-  // BoxResizeRight,
-  BoxResizeTop,
-} from "../../../components";
+// import {
+//   // BoxResizeLeft,
+//   // BoxResizeRight,
+//   // BoxResizeTop,
+//   // Spotlight,
+// } from "../../../components";
 //
 const GIT_LINK =
   "https://github.com/nikolav/bookeeper.app/blob/production--application-command-bar/src/app/pages/PageHome/PageHome.jsx";
@@ -36,12 +37,12 @@ export default function PageHome() {
         </p>
       </div>
       <div className="h-[312px] ***flex ***justify-start">
-        <BoxResizeTop>
-          <p className="m-0 p-0">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-            voluptate ea fugiat.
-          </p>
-        </BoxResizeTop>
+        <div className="w-96 mx-auto">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
+          provident ipsum nam possimus, molestias quod ducimus facere nemo
+          accusantium quo alias hic necessitatibus quisquam assumenda numquam
+          obcaecati incidunt inventore pariatur?
+        </div>
       </div>
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error,

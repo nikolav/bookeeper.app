@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { isNumeric } from "../../util";
 //
-const Section = styled.section(
+const Resizable = styled.section(
   ({ width }) => css`
     border: 0;
     height: 100%;
@@ -39,7 +39,7 @@ const BoxResizeLeft = ({ width = 480, onResize = null, children, ...rest }) => {
   useEffect(() => x$.onChange((d) => onResize && onResize(d)), []);
   //
   return (
-    <Section width={width}>
+    <Resizable width={width}>
       {/* handle */}
       <motion.div
         drag="x"
@@ -53,7 +53,7 @@ const BoxResizeLeft = ({ width = 480, onResize = null, children, ...rest }) => {
       <motion.div style={{ width: w$, x: x$ }} css={[styleBox]} {...rest}>
         {children}
       </motion.div>
-    </Section>
+    </Resizable>
   );
 };
 

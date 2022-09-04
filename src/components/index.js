@@ -10,6 +10,7 @@ import Placeholder from "./Placeholder/Placeholder";
 import Popper from "./Popper/Popper";
 import PortalOverlays from "./PortalOverlays/PortalOverlays";
 import Slider from "./Slider/Slider";
+import Spotlight from "./Spotlight/Spotlight";
 import ToastMessages from "./ToastMessages/ToastMessages";
 //
 export {
@@ -26,5 +27,6 @@ export {
   PortalOverlays,
   RouteTransition,
   Slider,
+  Spotlight,
   ToastMessages,
 };
