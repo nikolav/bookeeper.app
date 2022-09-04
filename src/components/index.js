@@ -1,5 +1,7 @@
 import { RouteTransition, AnimatedRoutes } from "./AnimatedRoutes";
 import ApplicationBar from "./ApplicationBar/ApplicationBar";
+import BoxResizeLeft from "./BoxResizeLeft/BoxResizeLeft";
+import BoxResizeRight from "./BoxResizeRight/BoxResizeRight";
 import BoxResizeTop from "./BoxResizeTop/BoxResizeTop";
 import Collapse from "./Collapse/Collapse";
 import ContextMenu from "./ContextMenu/ContextMenu";
@@ -13,6 +15,8 @@ import ToastMessages from "./ToastMessages/ToastMessages";
 export {
   AnimatedRoutes,
   ApplicationBar,
+  BoxResizeLeft,
+  BoxResizeRight,
   BoxResizeTop,
   Collapse,
   ContextMenu,
