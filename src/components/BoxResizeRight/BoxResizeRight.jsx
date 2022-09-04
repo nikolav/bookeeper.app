@@ -27,17 +27,21 @@ const styleHandle = css`
 `;
 const styleBox = css`
   background-color: white;
-  /* border-left: 1px dotted lightgray; */
   height: 100%;
   overflow: auto;
 `;
 //
 const BoxResizeRight = ({
+  // initial width
   width = 480,
+  // callback
   onResize = null,
+  //
   children,
+  //
   ...rest
 }) => {
+  //
   const x$ = useMotionValue(0);
   const w$ = useTransform(x$, (d) => width + d);
   useEffect(() => x$.onChange((d) => onResize && onResize(d)), []);

@@ -20,8 +20,8 @@ const styleHandle = css`
   background-color: gray;
   cursor: ew-resize;
   height: 100%;
-  position: absolute;
   left: 0;
+  position: absolute;
   top: 0;
   width: 0.33rem;
   z-index: 1;
@@ -33,6 +33,7 @@ const styleBox = css`
 `;
 //
 const BoxResizeLeft = ({ width = 480, onResize = null, children, ...rest }) => {
+  //
   const x$ = useMotionValue(0);
   const w$ = useTransform(x$, (d) => width - d);
   useEffect(() => x$.onChange((d) => onResize && onResize(d)), []);
