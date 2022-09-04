@@ -6,7 +6,7 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useMeasure } from "react-use";
 import { isNumeric } from "../../util";
 //
-const ResizableArea = styled.section(
+const Resizable = styled.section(
   ({ height }) => css`
     border: none;
     height: ${isNumeric(height) ? height + "px" : height};
@@ -46,7 +46,7 @@ const BoxResizeTop = ({ height = 256, onResize = null, children, ...rest }) => {
   useEffect(() => y$.onChange((d) => onResize && onResize(d)), []);
   //
   return (
-    <ResizableArea height={height}>
+    <Resizable height={height}>
       <motion.div
         drag="y"
         style={{ y: y$, width }}
@@ -63,7 +63,7 @@ const BoxResizeTop = ({ height = 256, onResize = null, children, ...rest }) => {
       >
         {children}
       </motion.div>
-    </ResizableArea>
+    </Resizable>
   );
 };
 //
