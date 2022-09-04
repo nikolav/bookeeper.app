@@ -36,7 +36,10 @@ const MenuItem = styled.li`
   ${styleMenuItem}
 `;
 //
-const ContextMenuItemSingle = forwardRef(({ node, children, ...rest }, ref) => {
+const ContextMenuItemSingle = forwardRef(function ContextMenuItemSingle_(
+  { node, children, ...rest },
+  ref
+) {
   //
   const { icon, label, shortcut, disabled, command, isActive } = node.value();
   const { iconWidth, gapLabelShortuct, commit, closeMenu } = useMenuContext();
