@@ -1,12 +1,9 @@
-import { useRef } from "react";
-import { ContextMenu } from "../../../components";
-import contextMenu from "../../../assets/context-menu/demo";
+import { BoxResizeTop } from "../../../components";
 //
 const GIT_LINK =
   "https://github.com/nikolav/bookeeper.app/blob/production--application-command-bar/src/app/pages/PageHome/PageHome.jsx";
 //
 export default function PageHome() {
-  const r$ = useRef();
   //
   return (
     <section className="text-center">
@@ -34,18 +31,17 @@ export default function PageHome() {
           desktop tipa.
         </p>
       </div>
-      <p className="text-center opacity-60 italic">
-        Desni klik na sliku otvara dodatni meni.
-      </p>
-      <img
-        ref={r$}
-        className="block p-2 rounded border-2 shadow w-[320px] mx-auto mt-4"
-        src="tulips.jpg"
-        alt="right click to open context menu"
-      />
-      <ContextMenu ID="wonnzyhpqpf" menu={contextMenu} anchor={r$} />
-      <p className="text-center opacity-60 italic">
-        Right Click image to open contextmenu
+      <BoxResizeTop>
+        <p className="m-0 p-0">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti
+          voluptate ea fugiat.
+        </p>
+      </BoxResizeTop>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error,
+        mollitia! Ullam quidem ipsa quisquam corporis labore temporibus aut at
+        autem optio distinctio. Voluptate, dolore! Quod tenetur minima placeat
+        adipisci fuga.
       </p>
     </section>
   );
