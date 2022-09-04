@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { ContextMenu } from "../../../components";
 import contextMenu from "../../../assets/context-menu/demo";
-import imageToolips from "../../../../public/tulips.jpg";
 //
 const GIT_LINK =
   "https://github.com/nikolav/bookeeper.app/blob/production--application-command-bar/src/app/pages/PageHome/PageHome.jsx";
@@ -11,7 +10,6 @@ export default function PageHome() {
   //
   return (
     <section className="text-center">
-      <h1>@index</h1>
       <div className="mt-12">
         <p className="flex justify-center gap-20">
           <a
@@ -42,7 +40,7 @@ export default function PageHome() {
       <img
         ref={r$}
         className="block p-2 rounded border-2 shadow w-[320px] mx-auto mt-4"
-        src={imageToolips}
+        src="tulips.jpg"
         alt="right click to open context menu"
       />
       <ContextMenu ID="wonnzyhpqpf" menu={contextMenu} anchor={r$} />

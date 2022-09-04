@@ -78,8 +78,8 @@ const Slider = ({
   const handleOffsetLeft = -handleOffsetRight;
   // values to svg coords
   const Xviewport = [x1Offset, size - x1Offset];
-  // https://www.framer.com/docs/transform-function/
   // input value to svg x-pos
+  // https://www.framer.com/docs/transform-function/
   const t_vx = transform(values, [handleOffsetLeft, handleOffsetRight]);
   // const t_xv = transform([handleOffsetLeft, handleOffsetRight], values);
   // client-x to value

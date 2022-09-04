@@ -14,15 +14,12 @@ function App() {
   const emitter = useAppEvents();
   useEffect(() => {
     // run global boot methods @App.loaded
-    // ship logic in separate modules..
     if (isMounted && isReady) {
-      //
       // handle commands
       configureAppBarCommands(emitter);
       configureContextmenuCommands(emitter);
     }
   }, [isMounted, isReady]);
-
   //
   return (
     <>
