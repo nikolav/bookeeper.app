@@ -23,15 +23,16 @@ import {
 import useBodyOverflow from "./use-body-overflow";
 import useCountDown from "./use-count-down";
 import useLocalStorage from "./use-local-storage";
+//
+import useCss from "./use-css";
+import useHover from "./use-hover";
+import useOn from "./use-on";
+import useStackOnce from "./use-stack-once";
 // //
-import useChartPie from "./data/use-chart-pie";
-import useChartPlot from "./data/use-chart-plot";
 import useChartBar from "./data/use-chart-bar";
 import useChartLine from "./data/use-chart-line";
-//
-import useHover from "./use-hover";
-import useStackOnce from "./use-stack-once";
-import useOn from "./use-on";
+import useChartPie from "./data/use-chart-pie";
+import useChartPlot from "./data/use-chart-plot";
 //
 export {
   useAppEvents,
@@ -44,6 +45,7 @@ export {
   useChartPlot,
   useClickAway,
   useCountDown,
+  useCss,
   useFancyboxGallery,
   useFileReader,
   useGravatar,

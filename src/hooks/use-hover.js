@@ -5,7 +5,7 @@ export default (refElement) => {
   const { jQuery: $ } = useBrowser();
   //
   useEffect(() => {
-    const node = refElement.current;
+    const node = refElement?.current;
     let node$;
     //
     if (node && $) {

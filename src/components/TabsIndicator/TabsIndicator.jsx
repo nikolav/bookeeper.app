@@ -21,6 +21,8 @@ const TabsIndicator = ({
   height = 2,
   //
   className = "",
+  //
+  ...rest
 }) => {
   //
   const W = 512;
@@ -48,6 +50,7 @@ const TabsIndicator = ({
           fill,
         }}
         initial={false}
+        {...rest}
       />
     </svg>
   );
