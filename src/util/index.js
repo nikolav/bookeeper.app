@@ -8,6 +8,7 @@ import debounce from "lodash/debounce";
 import each from "lodash/each";
 import filter from "lodash/filter";
 import find from "lodash/find";
+import findIndex from "lodash/findIndex";
 import groupBy from "lodash/groupBy";
 import identity from "lodash/identity";
 import isFunction from "lodash/isFunction";
@@ -71,6 +72,7 @@ export {
   False,
   filter,
   find,
+  findIndex,
   forEach,
   getNodeKey,
   groupBy,

@@ -3,6 +3,7 @@
 //   // BoxResizeRight,
 //   // BoxResizeTop,
 //   // Spotlight,
+// TabsIndicator,
 // } from "../../../components";
 //
 const GIT_LINK =
@@ -36,20 +37,6 @@ export default function PageHome() {
           desktop tipa.
         </p>
       </div>
-      <div className="h-[312px] ***flex ***justify-start">
-        <div className="w-96 mx-auto">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
-          provident ipsum nam possimus, molestias quod ducimus facere nemo
-          accusantium quo alias hic necessitatibus quisquam assumenda numquam
-          obcaecati incidunt inventore pariatur?
-        </div>
-      </div>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error,
-        mollitia! Ullam quidem ipsa quisquam corporis labore temporibus aut at
-        autem optio distinctio. Voluptate, dolore! Quod tenetur minima placeat
-        adipisci fuga.
-      </p>
     </section>
   );
 }

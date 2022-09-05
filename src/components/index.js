@@ -11,6 +11,7 @@ import Popper from "./Popper/Popper";
 import PortalOverlays from "./PortalOverlays/PortalOverlays";
 import Slider from "./Slider/Slider";
 import Spotlight from "./Spotlight/Spotlight";
+import TabsIndicator from "./TabsIndicator/TabsIndicator";
 import ToastMessages from "./ToastMessages/ToastMessages";
 //
 export {
@@ -28,5 +29,6 @@ export {
   RouteTransition,
   Slider,
   Spotlight,
+  TabsIndicator,
   ToastMessages,
 };
