@@ -1,0 +1,8 @@
+.drag {
+}
+.dragIsDragging * {
+    user-select: none;
+}
+.dragHandle {
+    cursor: grab;
+}
