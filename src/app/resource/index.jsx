@@ -10,16 +10,16 @@ export const useResourceMain = () => useContext(ResourceMainContext);
 ////
 ////
 export function ResourceMainProvider({ children }) {
-  const [resourceMain, setResourceMain] = useState(null);
+  const [resource, setResource] = useState(null);
   const query = useQueryMain();
   //
   useEffect(() => {
     if (!query.isLoading && query.error) return;
     if (!query.isLoading && !query.error && query.data)
-      setResourceMain(query.data.data);
-  }, [query.error, query.isLoading, query.data?.data]);
+      setResource(query.data);
+  }, [query.error, query.isLoading, query.data]);
   //
-  const value = { resourceMain, query };
+  const value = { resource, query };
   //
   return (
     <ResourceMainContext.Provider value={value}>

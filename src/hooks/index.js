@@ -7,6 +7,7 @@ import {
   useQueryMain,
   useQueryResource,
   useQueryResourceBase,
+  useQueryResourceCustom,
 } from "./use-query-resource";
 import useTimer from "./use-timer";
 import useFancyboxGallery from "./use-fancybox-gallery";
@@ -55,6 +56,7 @@ export {
   useQueryMain,
   useQueryResource,
   useQueryResourceBase,
+  useQueryResourceCustom,
   useSocialComments,
   useSocialLike,
   useStackOnce,
