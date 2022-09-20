@@ -72,7 +72,7 @@ export function useQueryResource(RESOURCE, config = {}) {
     (_key) =>
       axios
         .get(`${stripEndSlashes(API_URL)}/${RESOURCE}`)
-        .then((res) => res.data),
+        .then(({ data }) => data),
     {
       ...DEFAULT_QUERY_CONFIG,
       initialData: () => queryClient.getQueryData(RESOURCE),
@@ -88,7 +88,7 @@ export function useQueryResourceBase(resource, config = {}) {
   //
   return useQuery(
     resource.key,
-    (_key) => axios.get(resource.url).then((res) => res.data),
+    (_key) => axios.get(resource.url).then(({ data }) => data),
     {
       ...DEFAULT_QUERY_CONFIG,
       initialData: () => queryClient.getQueryData(resource.key),
@@ -96,6 +96,29 @@ export function useQueryResourceBase(resource, config = {}) {
     }
   );
 }
+//
+export function useQueryResourceCustom(
+  queryFunction,
+  _prefix = null,
+  config = {}
+) {
+  const [keys$, setk] = useState([]);
+  const queryClient = useQueryClient();
+  //
+  const keys_ = null != _prefix ? [_prefix, ...keys$] : keys$;
+  const query = useQuery(keys_, queryFunction, {
+    ...DEFAULT_QUERY_CONFIG,
+    initialData: () => queryClient.getQueryData(keys_),
+    ...config,
+  });
+  //
+  return {
+    fetch: setk,
+    query,
+  };
+  //
+}
+
 ////
 ////
 export function useQueryMain(config) {

@@ -7,6 +7,7 @@ import {
   useQueryMain,
   useQueryResource,
   useQueryResourceBase,
+  useQueryResourceCustom,
 } from "./use-query-resource";
 import useTimer from "./use-timer";
 import useFancyboxGallery from "./use-fancybox-gallery";
@@ -33,6 +34,8 @@ import useChartBar from "./data/use-chart-bar";
 import useChartLine from "./data/use-chart-line";
 import useChartPie from "./data/use-chart-pie";
 import useChartPlot from "./data/use-chart-plot";
+// 
+import useStateReducer from "./use-state-reducer";
 //
 export {
   useAppEvents,
@@ -56,9 +59,11 @@ export {
   useQueryMain,
   useQueryResource,
   useQueryResourceBase,
+  useQueryResourceCustom,
   useSocialComments,
   useSocialLike,
   useStackOnce,
+  useStateReducer,
   useStateSwitch,
   useTimer,
   useWindowAddEvents,
