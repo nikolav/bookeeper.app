@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { transition, axisBottom, axisLeft, max, scaleLinear, select, scaleBand } from "d3";
-import { merge, map } from "../../util";
+import { merge, map, identity } from "../../util";
 import { useBrowser } from "../index";
 ////
 /////
@@ -25,11 +25,16 @@ const OPTIONS = {
     _classYAxis: "ChartBarsHorizontal--yAxis",
     _paddingInnerBars: 0.02,
     _paddingOuterBars: 0,
+    _tickSizeInner: 4,
+    _tickSizeOuter: 7,
     _ticksSpanX: 76,
-    _ticksSpanY: 92,
+    // _ticksSpanY: 92,
     _transitionDuration: 678,
-    _xAxisTextOpacity: 0.85,
-    _xAxisTextRotationDegrees: -24,
+    _xAxisTextAnchor: "center",
+    _xAxisTextFormat: identity,
+    _xAxisTextOpacity: 0.92,
+    _xAxisTextRotationDegrees: -2,
+    _yAxisTextFormat: identity,
 };
 
 const useChartBarsH = ({
@@ -68,11 +73,16 @@ const useChartBarsH = ({
         _classYAxis,
         _paddingInnerBars,
         _paddingOuterBars,
+        _tickSizeInner,
+        _tickSizeOuter,
         _ticksSpanX,
-        _ticksSpanY,
+        // _ticksSpanY,
         _transitionDuration,
+        _xAxisTextAnchor,
+        _xAxisTextFormat,
         _xAxisTextOpacity,
         _xAxisTextRotationDegrees,
+        _yAxisTextFormat,
     } = useMemo(() => merge({}, OPTIONS, options), [options]);
     const widthInner = width - paddingLeft - paddingRight;
     const heightInner = height - paddingTop - paddingBottom;
@@ -97,7 +107,7 @@ const useChartBarsH = ({
                     .attr("width", width)
                     .attr("height", height)
                     // @@
-                    .style("border", "1px dotted grey")
+                    // .style("border", "1px dotted grey")
                     .attr("class", _classCanvas);
                 graph = svg
                     .append("g")
@@ -133,8 +143,30 @@ const useChartBarsH = ({
             //
             // run axis
             // ..can format axis here
-            xAxis.transition(t).call(axisBottom(x).ticks(widthInner / _ticksSpanX));
-            yAxis.transition(t).call(axisLeft(y).ticks(heightInner / _ticksSpanY));
+            xAxis.transition(t)
+                .call(
+                    axisBottom(x)
+                        .ticks(widthInner / _ticksSpanX)
+                        .tickFormat(_xAxisTextFormat)
+                        .tickSizeInner(_tickSizeInner)
+                        .tickSizeOuter(_tickSizeOuter)
+                )
+                .call((g) =>
+                    g
+                        .selectAll("text")
+                        .attr("text-anchor", _xAxisTextAnchor)
+                        .attr("fill-opacity", _xAxisTextOpacity)
+                        .attr("transform", `rotate(${_xAxisTextRotationDegrees})`)
+                );
+
+            yAxis.transition(t)
+                .call(
+                    axisLeft(y)
+                        // .ticks(heightInner / _ticksSpanY)
+                        .tickFormat(_yAxisTextFormat)
+                        .tickSizeInner(_tickSizeInner)
+                        .tickSizeOuter(_tickSizeOuter)
+                );
 
             // [current]
             bars
