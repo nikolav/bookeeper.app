@@ -25,6 +25,10 @@ const OPTIONS = {
     _classVTicksLine: "ChartBarsH--vTicksLine",
     _classXAxis: "ChartBarsH--xAxis",
     _classYAxis: "ChartBarsH--yAxis",
+    _guides: true,
+    _guidesColor: "#000",
+    _guidesOpacity: .5,
+    _guidesWidth: .1,
     _paddingInnerBars: 0.02,
     _paddingOuterBars: 0,
     _tickSizeInner: 4,
@@ -36,11 +40,6 @@ const OPTIONS = {
     _xAxisTextOpacity: 0.92,
     _xAxisTextRotationDegrees: -2,
     _yAxisTextFormat: identity,
-    //
-    _guides: true,
-    _guidesColor: "#000",
-    _guidesOpacity: .5,
-    _guidesWidth: .1,
 };
 
 const useChartBarsH = ({
@@ -80,6 +79,10 @@ const useChartBarsH = ({
         _classVTicksLine,
         _classXAxis,
         _classYAxis,
+        _guides,
+        _guidesColor,
+        _guidesOpacity,
+        _guidesWidth,
         _paddingInnerBars,
         _paddingOuterBars,
         _tickSizeInner,
@@ -91,11 +94,6 @@ const useChartBarsH = ({
         _xAxisTextOpacity,
         _xAxisTextRotationDegrees,
         _yAxisTextFormat,
-        // 
-        _guides,
-        _guidesColor,
-        _guidesOpacity,
-        _guidesWidth,
     } = useMemo(() => merge({}, OPTIONS, options), [options]);
     const widthInner = width - paddingLeft - paddingRight;
     const heightInner = height - paddingTop - paddingBottom;
