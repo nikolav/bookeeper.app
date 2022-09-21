@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { transition, extent, axisBottom, axisLeft, max, scaleLinear, select, scaleBand } from "d3";
+import { transition, axisBottom, axisLeft, max, scaleLinear, select, scaleBand } from "d3";
 import { merge, map } from "../../util";
 import { useBrowser } from "../index";
 ////
@@ -8,8 +8,8 @@ const OPTIONS = {
     width: 640,
     height: 480,
     colorPrimary: "currentcolor",
-    paddingTop: 32,
-    paddingRight: 32,
+    paddingTop: 16,
+    paddingRight: 16,
     paddingBottom: 32,
     paddingLeft: 32,
     //
@@ -23,7 +23,7 @@ const OPTIONS = {
     _classGraph: "ChartBarsHorizontal--graph",
     _classXAxis: "ChartBarsHorizontal--xAxis",
     _classYAxis: "ChartBarsHorizontal--yAxis",
-    _paddingInnerBars: 0.05,
+    _paddingInnerBars: 0.02,
     _paddingOuterBars: 0,
     _ticksSpanX: 76,
     _ticksSpanY: 92,
@@ -142,7 +142,7 @@ const useChartBarsH = ({
                 .attr("x", (d) => x(value(d)))
                 .attr("y", (d) => y(key(d)))
                 .attr("height", y.bandwidth())
-                .attr("width", (d) => x(value(d)));
+                .attr("width", (d) => x(value(d)) - x(0));
             // [exit]
             bars
                 .exit()
@@ -168,7 +168,7 @@ const useChartBarsH = ({
                 // make transition
                 .transition(t)
                 // transition.animate
-                .attr("width", (d) => x(value(d)))
+                .attr("width", (d) => x(value(d)) - x(0))
                 .attr("fill-opacity", 1);
             //   ..tweak x-axis
         }
