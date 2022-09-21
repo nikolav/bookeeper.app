@@ -178,6 +178,14 @@ const useChartBarsH = ({
                         .attr("fill-opacity", _xAxisTextOpacity)
                         .attr("transform", `rotate(${_xAxisTextRotationDegrees})`)
                 );
+            // 
+            yAxis.transition(t)
+                .call(
+                    axisLeft(y)
+                        .tickFormat(_yAxisTextFormat)
+                        .tickSizeInner(_tickSizeInner)
+                        .tickSizeOuter(_tickSizeOuter)
+                );
             //
             if (_guides) {
                 const vLines = vGuides
@@ -205,15 +213,6 @@ const useChartBarsH = ({
                     .attr("x2", tickValue => x(tickValue))
                     .attr("stroke-opacity", _guidesOpacity);
             }
-            // 
-            yAxis.transition(t)
-                .call(
-                    axisLeft(y)
-                        .tickFormat(_yAxisTextFormat)
-                        .tickSizeInner(_tickSizeInner)
-                        .tickSizeOuter(_tickSizeOuter)
-                );
-
             // [current]
             bars
                 .transition(t)
