@@ -37,15 +37,15 @@ export default function PageHome() {
       height: 400
     }
   })
-  useChartPlot({
-    data: range(2001, 2022).map(y => ({ date: "" + y, value: random(1000)})),
-    root: r2$?.current,
-    options: {
-      key: d => new Date(d.date),
-      value: d => d.value,
-      xValue: scaleTime,
-    }
-  })
+  // useChartPlot({
+  //   data: range(2001, 2022).map(y => ({ date: "" + y, value: random(1000)})),
+  //   root: r2$?.current,
+  //   options: {
+  //     key: d => new Date(d.date),
+  //     value: d => d.value,
+  //     xValue: scaleTime,
+  //   }
+  // })
   //
   return (
     <section className="text-center">

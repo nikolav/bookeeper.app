@@ -18,6 +18,7 @@ const OPTIONS = {
     value: (d) => d.value,
     //
     // tweek
+    _barsOpacity: 1,
     _classBars: "ChartBarsH--bars",
     _classCanvas: "ChartBarsH--canvas",
     _classGraph: "ChartBarsH--graph",
@@ -72,6 +73,7 @@ const useChartBarsH = ({
         key,
         value,
         //
+        _barsOpacity,
         _classBars,
         _classCanvas,
         _classGraph,
@@ -247,7 +249,8 @@ const useChartBarsH = ({
                 .transition(t)
                 // transition.animate
                 .attr("width", (d) => x(value(d)) - x(0))
-                .attr("fill-opacity", 1);
+                .attr("fill-opacity", _barsOpacity)
+                ;
             //   ..tweak x-axis
         }
     }, [data, isActive, chart$.graph]);
