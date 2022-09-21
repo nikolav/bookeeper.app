@@ -122,7 +122,7 @@ const useChartBarsH = ({
                     // .style("border", "1px dotted grey")
                     .attr("class", _classCanvas);
                 // render guides first to place behind*
-                if (_guides)
+                if (true === _guides)
                     vGuides = svg
                         .append("g")
                         .attr("class", _classVTicksGroup)
@@ -187,7 +187,7 @@ const useChartBarsH = ({
                         .tickSizeOuter(_tickSizeOuter)
                 );
             //
-            if (_guides) {
+            if (true === _guides) {
                 const vLines = vGuides
                     .selectAll("line")
                     .data(x.ticks(ticksCount));
