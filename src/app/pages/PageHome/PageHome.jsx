@@ -7,9 +7,8 @@
 // } from "../../../components";
 //
 import { useEffect, useRef, useState } from "react";
-import { scaleTime } from "d3";
-import { random, range } from "../../../util"
-import { useChartBarsH, useChartPlot } from "../../../hooks"
+import { random } from "../../../util"
+import { useChartBarsH } from "../../../hooks"
 const GIT_LINK =
   "https://github.com/nikolav/bookeeper.app/blob/production--application-command-bar/src/app/pages/PageHome/PageHome.jsx";
 //
@@ -37,16 +36,6 @@ export default function PageHome() {
       height: 400,
     }
   })
-  // useChartPlot({
-  //   data: range(2001, 2022).map(y => ({ date: "" + y, value: random(1000)})),
-  //   root: r2$?.current,
-  //   options: {
-  //     key: d => new Date(d.date),
-  //     value: d => d.value,
-  //     xValue: scaleTime,
-  //   }
-  // })
-  //
   return (
     <section className="text-center">
       <div className="mt-12">

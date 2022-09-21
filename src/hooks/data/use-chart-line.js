@@ -1,8 +1,10 @@
 import { useEffect, useState, useMemo } from "react";
+import { useBrowser } from "../index"
 import {
-  //   scaleUtc,
-  //   curveLinear,
-  curveBasis,
+  // scaleUtc,
+  // curveLinear,
+  // curveBasis,
+  curveNatural,
   extent,
   axisBottom,
   axisLeft,
@@ -16,69 +18,60 @@ import { merge, identity } from "../../util";
 // ////
 // /////
 const OPTIONS = {
-  width: 576,
-  height: 456,
-  //
-  color: "currentColor",
+  colorPrimary: "currentcolor",
   fill: "none",
-  strokeWidth: 2.34,
+  height: 456,
+  paddingBottom: 48,
+  paddingLeft: 48,
+  paddingRight: 32,
+  paddingTop: 48,
   strokeLinecap: "round",
   strokeLinejoin: "round",
   strokeOpacity: 1,
-  //
-  paddingTop: 48,
-  paddingRight: 32,
-  paddingBottom: 48,
-  paddingLeft: 48,
-  //
+  strokeWidth: 2.34,
+  width: 576,
   yLabel: "[y]",
-  yLabelColor: "currentColor",
+  yLabelColor: "currentcolor",
   yLabelOffsetX: -34,
   yLabelOffsetY: -28,
-  //
-  // xType: scaleUtc,
-  xType: scaleLinear,
-  yType: scaleLinear,
-  //
   // accesors
   key: (d) => d.key,
   value: (d) => d.value,
-  //
-  _xAxisTextRotationDegrees: 0,
-  _xAxisTextOpacity: 1,
-  _xAxisTextAnchor: "center",
-  _xAxisTextFormat: identity,
-  _yAxisTextFormat: identity,
-  //
+  xType: scaleLinear,
+  yType: scaleLinear,
+  // tweek
   _classCanvas: "ChartLine--canvas",
   _classGraph: "ChartLine--graph",
+  _classGuide: "ChartLine--guide",
   _classPath: "ChartLine--path",
   _classXAxis: "ChartLine--xaxis",
   _classYAxis: "ChartLine--yaxis",
-  _classGuide: "ChartLine--guide",
   _classYLabel: "ChartLine--yLabel",
-  //
-  // _curve: curveLinear,
-  _curve: curveBasis,
+  _curve: curveNatural,
   _guideHorizontalOpacity: 0.056,
-  //
   _tickSizeOuter: 0,
-  _tickSpanVertical: 92,
   _tickSpanHorizontal: 76,
-  //
+  _tickSpanVertical: 92,
   _transitionDuration: 567,
+  _xAxisTextAnchor: "center",
+  _xAxisTextFormat: identity,
+  _xAxisTextOpacity: 1,
+  _xAxisTextRotationDegrees: 0,
+  _yAxisTextFormat: identity,
 };
 
 // https://observablehq.com/@d3/line-chart
 const useChartLine = ({ isActive, data, root, options }) => {
+  const { isReady } = useBrowser();
   const [c$, setc] = useState({
     svg: null,
     graph: null,
     xAxis: null,
     yAxis: null,
+    path: null,
   });
   const {
-    color,
+    colorPrimary,
     fill,
     height,
     key,
@@ -112,9 +105,9 @@ const useChartLine = ({ isActive, data, root, options }) => {
     _tickSpanVertical,
     _transitionDuration,
     _xAxisTextAnchor,
+    _xAxisTextFormat,
     _xAxisTextOpacity,
     _xAxisTextRotationDegrees,
-    _xAxisTextFormat,
     _yAxisTextFormat,
   } = useMemo(() => merge({}, OPTIONS, options), [options]);
   //
@@ -137,7 +130,7 @@ const useChartLine = ({ isActive, data, root, options }) => {
     let xAxis = null;
     let yAxis = null;
     //
-    if (root) {
+    if (isReady && root) {
       if (isActive) {
         // insert
         svg = select(root)
@@ -155,12 +148,11 @@ const useChartLine = ({ isActive, data, root, options }) => {
           .append("path")
           .attr("class", _classPath)
           .attr("fill", fill)
-          .attr("stroke", color)
+          .attr("stroke", colorPrimary)
           .attr("stroke-width", strokeWidth)
           .attr("stroke-linecap", strokeLinecap)
           .attr("stroke-linejoin", strokeLinejoin)
           .attr("stroke-opacity", strokeOpacity);
-
         xAxis = svg
           .append("g")
           .attr("class", _classXAxis)
@@ -189,7 +181,7 @@ const useChartLine = ({ isActive, data, root, options }) => {
     }
     //
     setc((c) => ({ ...c, svg, graph, path, xAxis, yAxis }));
-  }, [root, isActive]);
+  }, [root, isActive, isReady]);
   //
   // @update
   useEffect(() => {
@@ -199,7 +191,6 @@ const useChartLine = ({ isActive, data, root, options }) => {
       //
       x.domain(extent(data, key));
       y.domain([0, max(data, value)]);
-      //
       // run axis
       xAxis
         .transition(t)
@@ -233,9 +224,8 @@ const useChartLine = ({ isActive, data, root, options }) => {
             .attr("x2", innerWidth)
             .attr("stroke-opacity", _guideHorizontalOpacity);
         });
-
-      path.transition(t).attr("d", lineGen(data));
       //
+      path.transition(t).attr("d", lineGen(data));
     }
   }, [data, isActive, c$.path]);
   //
