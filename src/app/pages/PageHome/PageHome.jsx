@@ -31,6 +31,8 @@ export default function PageHome() {
     options: {
       key: (d) => d.name,
       value: (d) => d.count,
+      width: 550,
+      height: 400
     }
   })
   //

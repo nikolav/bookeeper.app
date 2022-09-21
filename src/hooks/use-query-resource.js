@@ -10,7 +10,7 @@ export const DEFAULT_QUERY_CONFIG = {
   //   refetchOnReconnect: bool,
 
   // how oftern to refetch data
-  staleTime: 56789, // [0], `Infinity`: fresh forever, refetch manually
+  staleTime: 122333, // [0], `Infinity`: fresh forever, refetch manually
 
   // ttl for cached/hiden query for memcached data thats not displaying
   cacheTime: 12 * 60 * 1000, // in ms; `Infinity` doesnt gc queries

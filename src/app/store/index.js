@@ -14,8 +14,8 @@ import { useAuth, AUTH, AUTH_ERROR, AUTH_PROCESSING } from "./slice-auth";
 // //
 import { useColorModeTW, MODE_LIGHT, MODE_DARK } from "./slice-color-mode-tw";
 // //
-const API_URL_dev = "http://localhost:3344/";
-const API_URL_production = "https://jeytgwpjlmm.herokuapp.com/";
+const API_URL_dev = "http://localhost:3344/api";
+const API_URL_production = "https://jeytgwpjlmm.herokuapp.com/api";
 const REST_RESOURCE_main = "main";
 const REST_RESOURCE_messages = "messages";
 //
