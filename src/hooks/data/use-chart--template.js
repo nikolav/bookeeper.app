@@ -5,15 +5,15 @@ import { useBrowser } from "../index";
 ////
 /////
 const OPTIONS = {
-  width: 550,
-  height: 400,
-  color: "currentcolor",
+  width: 640,
+  height: 480,
+  colorPrimary: "currentcolor",
   paddingTop: 32,
   paddingRight: 32,
   paddingBottom: 32,
   paddingLeft: 32,
   //
-  // accesor
+  // accesors
   key: (d) => d.key,
   value: (d) => d.value,
   //
@@ -44,11 +44,13 @@ const useChart = ({
   const {
     width,
     height,
-    color,
+    colorPrimary,
     paddingTop,
     paddingRight,
     paddingBottom,
     paddingLeft,
+    //
+    key,
     value,
     //
     _xAxisTextRotationDegrees,
@@ -56,8 +58,8 @@ const useChart = ({
     _ticksX,
     _ticksY,
   } = useMemo(() => merge({}, OPTIONS, options), [options]);
-  const innerWidth = width - paddingLeft - paddingRight;
-  const innerHeight = height - paddingTop - paddingBottom;
+  const widthInner = width - paddingLeft - paddingRight;
+  const heightInner = height - paddingTop - paddingBottom;
   // @init
   useEffect(() => {
     let svg = null;

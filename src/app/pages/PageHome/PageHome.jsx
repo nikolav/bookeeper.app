@@ -8,11 +8,34 @@ import {
 import { useState } from "react";
 import { sample } from "../../../util";
 //
+import { useEffect, useRef, useState } from "react";
+import { random } from "../../../util"
+import { useChartBarsH } from "../../../hooks"
 const GIT_LINK =
   "https://github.com/nikolav/bookeeper.app/blob/production--application-command-bar/src/app/pages/PageHome/PageHome.jsx";
 //
 export default function PageHome() {
-  const [k, setk] = useState("$0");
+  const r$ = useRef()
+  const [d$, setd] = useState(null)
+  //
+  useEffect(() => {
+    setd([
+      { name: "🥝", count: random(100) },
+      { name: "🍋", count: random(100) },
+      { name: "🍌", count: random(100) },
+      { name: "🍊", count: random(100) },
+      { name: "🍎", count: random(100) }
+    ])
+  }, [])
+  useChartBarsH({
+    data: d$, 
+    root: r$?.current,
+    options: {
+      key: (d) => d.name,
+      value: (d) => d.count,
+      colorPrimary: "steelblue"
+    }
+  })
   //
   return (
     <section className="text-center">
@@ -35,10 +58,7 @@ export default function PageHome() {
             admin
           </a>
         </p>
-        <p>
-          Komponenta <strong>&lt;ContextMenu&gt;</strong> za web aplikacije
-          desktop tipa.
-        </p>
+        <div ref={r$} />
       </div>
       <button onClick={() => setk(sample(["$0", "$1", "$2"]))}>go</button>
       <div className="**w-64 ***bg-blue-300 mx-auto">

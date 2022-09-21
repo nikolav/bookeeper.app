@@ -31,6 +31,7 @@ import useOn from "./use-on";
 import useStackOnce from "./use-stack-once";
 // //
 import useChartBar from "./data/use-chart-bar";
+import useChartBarsH from "./data/use-chart-bars-h";
 import useChartLine from "./data/use-chart-line";
 import useChartPie from "./data/use-chart-pie";
 import useChartPlot from "./data/use-chart-plot";
@@ -43,6 +44,7 @@ export {
   useBodyOverflow,
   useBrowser,
   useChartBar,
+  useChartBarsH,
   useChartLine,
   useChartPie,
   useChartPlot,
