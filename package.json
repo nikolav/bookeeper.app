@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"yarn run watch:css\" \"vite --host\" ",
+    "dev": "concurrently \"yarn run sass:watch\" \"yarn run watch:css\" \"vite --host\" ",
     "build": "yarn run build:css && cross-env NODE_ENV=production && vite build",
     "preview": "vite preview",
     "sass:build": "sass ./src/global.scss ./src/styles/global.css ",
@@ -60,7 +60,8 @@
     "react-use": "^17.4.0",
     "sass": "^1.54.5",
     "socket.io-client": "2.3.1",
-    "tailwindcss": "^3.1.8"
+    "tailwindcss": "^3.1.8",
+    "topojson-client": "^3.1.0"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.10.0",

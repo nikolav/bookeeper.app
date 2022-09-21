@@ -10,8 +10,9 @@ import { useEffect, useRef, useState } from "react";
 import { random } from "../../../util"
 import { 
   useChartBarsH, 
-  useQueryWorldAtlasTopology
+  // useQueryWorldAtlasTopology
 } from "../../../hooks"
+// import { feature } from "topojson-client"
 const GIT_LINK =
   "https://github.com/nikolav/bookeeper.app/blob/production--application-command-bar/src/app/pages/PageHome/PageHome.jsx";
 //
@@ -25,9 +26,9 @@ export default function PageHome() {
   const [i1$, seti1] = useState()
   const setFakeData = () => setd(fakeData());
   //
-  const { resource: topology } = useQueryWorldAtlasTopology()
-  console.log(topology)
+  // const { resource: topology } = useQueryWorldAtlasTopology()
   useEffect(() => {
+    console.log(122)
     seti1(setInterval(setFakeData, 5678));
     return clearInterval(i1$);
   }, [])
@@ -51,7 +52,7 @@ export default function PageHome() {
             target="_blank"
             href={GIT_LINK}
           >
-            code@github
+           code@github
           </a>
           <a
             className="link text-indigo-500"
