@@ -7,8 +7,9 @@
 // } from "../../../components";
 //
 import { useEffect, useRef, useState } from "react";
-import { random } from "../../../util"
-import { useChartBarsH } from "../../../hooks"
+import { scaleTime } from "d3";
+import { random, range } from "../../../util"
+import { useChartBarsH, useChartPlot } from "../../../hooks"
 const GIT_LINK =
   "https://github.com/nikolav/bookeeper.app/blob/production--application-command-bar/src/app/pages/PageHome/PageHome.jsx";
 //
@@ -17,6 +18,7 @@ const fakeData = () =>
   .map(name => ({ name, count: random(100)}));
 export default function PageHome() {
   const r$ = useRef()
+  const r2$ = useRef()
   const [d$, setd] = useState(fakeData())
   const [i1$, seti1] = useState()
   //
@@ -33,6 +35,15 @@ export default function PageHome() {
       value: (d) => d.count,
       width: 550,
       height: 400
+    }
+  })
+  useChartPlot({
+    data: range(2001, 2022).map(y => ({ date: "" + y, value: random(1000)})),
+    root: r2$?.current,
+    options: {
+      key: d => new Date(d.date),
+      value: d => d.value,
+      xValue: scaleTime,
     }
   })
   //
@@ -58,6 +69,7 @@ export default function PageHome() {
           </a>
         </p>
         <div ref={r$} />
+        <div ref={r2$} />
       </div>
     </section>
   );
