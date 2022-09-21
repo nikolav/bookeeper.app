@@ -29,6 +29,7 @@ import useChartPie from "./data/use-chart-pie";
 import useChartPlot from "./data/use-chart-plot";
 import useChartBar from "./data/use-chart-bar";
 import useChartLine from "./data/use-chart-line";
+import useChartBarsH from "./data/use-chart-bars-h";
 //
 import useHover from "./use-hover";
 import useStackOnce from "./use-stack-once";
@@ -41,6 +42,7 @@ export {
   useBodyOverflow,
   useBrowser,
   useChartBar,
+  useChartBarsH,
   useChartLine,
   useChartPie,
   useChartPlot,

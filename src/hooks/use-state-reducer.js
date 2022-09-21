@@ -32,7 +32,7 @@ const useStateReducer = (initialValue = {}) => {
         // @access | before write
         $pre: (callback) => setm(mw => ({ ...mw, pre: callback })),
         // @access | before read
-        $format: (callback) => setm(mw => ({ ...mw, format: callback })),
+        $computed: (callback) => setm(mw => ({ ...mw, format: callback })),
         // @access | write validated
         $rules: (rules) => setr(r => ({ ...r, ...rules })),
     })
