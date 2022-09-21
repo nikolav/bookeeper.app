@@ -8,8 +8,8 @@ import {
   useQueryResource,
   useQueryResourceBase,
   useQueryResourceCustom,
-  useQueryWorldAtlasTopology,
 } from "./use-query-resource";
+import { useQueryWorldAtlasTopology } from "./queries";
 import useTimer from "./use-timer";
 import useFancyboxGallery from "./use-fancybox-gallery";
 import useFileReader from "./use-file-reader";

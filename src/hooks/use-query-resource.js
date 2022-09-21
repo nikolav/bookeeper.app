@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import { stripEndSlashes, isString } from "../util";
-import { API_URL, REST_RESOURCE_main, WORLD_ATLAS_COUNTRIES_50M } from "../app/store";
+import { API_URL, REST_RESOURCE_main } from "../app/store";
 //
 export const DEFAULT_QUERY_CONFIG = {
   // refresh data on every window focus
@@ -119,29 +119,8 @@ export function useQueryResourceCustom(
   };
   //
 }
-
 ////
 ////
 export function useQueryMain(config) {
   return useQueryResource(REST_RESOURCE_main, config);
-}
-//
-export function useQueryWorldAtlasTopology() {
-  const [resource, setResource] = useState(null)
-  const query = useQueryResourceBase(
-    {
-      key: "world-atlas-countries",
-      url: WORLD_ATLAS_COUNTRIES_50M,
-    });
-  const { error, isLoading, data } = query;
-  useEffect(() => {
-    if (!isLoading && error) return;
-    if (!isLoading && !error && data)
-      setResource(data);
-  }, [error, isLoading, data])
-  // 
-  return {
-    resource,
-    query,
-  }
 }
