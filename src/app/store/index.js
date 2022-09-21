@@ -26,6 +26,9 @@ const AUTH_SESSION_TOKEN = "ulglwizzpxy";
 const API_URL = API_URL_dev;
 // const API_URL = API_URL_production;
 //
+// const WORLD_ATLAS_COUNTRIES_50M = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json";
+const WORLD_ATLAS_COUNTRIES_50M = "https://unpkg.com/world-atlas@2.0.2/countries-50m.json";
+//
 export {
   API_URL,
   API_URL_dev,
@@ -60,4 +63,6 @@ export {
   //   //
   useResourceMain,
   useColorMode,
+  //
+  WORLD_ATLAS_COUNTRIES_50M,
 };

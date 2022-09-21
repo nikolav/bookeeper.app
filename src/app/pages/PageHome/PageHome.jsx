@@ -8,7 +8,10 @@
 //
 import { useEffect, useRef, useState } from "react";
 import { random } from "../../../util"
-import { useChartBarsH } from "../../../hooks"
+import { 
+  useChartBarsH, 
+  useQueryWorldAtlasTopology
+} from "../../../hooks"
 const GIT_LINK =
   "https://github.com/nikolav/bookeeper.app/blob/production--application-command-bar/src/app/pages/PageHome/PageHome.jsx";
 //
@@ -20,8 +23,10 @@ export default function PageHome() {
   const r2$ = useRef()
   const [d$, setd] = useState(fakeData())
   const [i1$, seti1] = useState()
-  //
   const setFakeData = () => setd(fakeData());
+  //
+  const { resource: topology } = useQueryWorldAtlasTopology()
+  console.log(topology)
   useEffect(() => {
     seti1(setInterval(setFakeData, 5678));
     return clearInterval(i1$);

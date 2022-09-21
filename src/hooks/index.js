@@ -8,6 +8,7 @@ import {
   useQueryResource,
   useQueryResourceBase,
   useQueryResourceCustom,
+  useQueryWorldAtlasTopology,
 } from "./use-query-resource";
 import useTimer from "./use-timer";
 import useFancyboxGallery from "./use-fancybox-gallery";
@@ -35,6 +36,7 @@ import useHover from "./use-hover";
 import useStackOnce from "./use-stack-once";
 import useOn from "./use-on";
 import useStateReducer from "./use-state-reducer";
+
 //
 export {
   useAppEvents,
@@ -59,6 +61,7 @@ export {
   useQueryResource,
   useQueryResourceBase,
   useQueryResourceCustom,
+  useQueryWorldAtlasTopology,
   useSocialComments,
   useSocialLike,
   useStackOnce,
