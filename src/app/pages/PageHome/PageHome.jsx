@@ -34,7 +34,7 @@ export default function PageHome() {
       key: (d) => d.name,
       value: (d) => d.count,
       width: 550,
-      height: 400
+      height: 400,
     }
   })
   // useChartPlot({

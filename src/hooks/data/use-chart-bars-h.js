@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { transition, axisBottom, axisLeft, max, scaleLinear, select, scaleBand } from "d3";
-import { merge, map, identity, forEach } from "../../util";
+import { merge, map, identity } from "../../util";
 import { useBrowser } from "../index";
 ////
 /////
@@ -20,6 +20,7 @@ const OPTIONS = {
     // tweek
     _barsOpacity: 1,
     _classBars: "ChartBarsH--bars",
+    _classBarsTitle: "ChartBarsH--barsTitle",
     _classCanvas: "ChartBarsH--canvas",
     _classGraph: "ChartBarsH--graph",
     _classVTicksGroup: "ChartBarsH--vTicksGroup",
@@ -75,6 +76,7 @@ const useChartBarsH = ({
         //
         _barsOpacity,
         _classBars,
+        _classBarsTitle,
         _classCanvas,
         _classGraph,
         _classVTicksGroup,
@@ -217,10 +219,12 @@ const useChartBarsH = ({
             }
             // [current]
             bars
+                .call(s => s.select("title").text(d => d.count))
                 .transition(t)
                 .attr("y", (d) => y(key(d)))
                 .attr("height", y.bandwidth())
-                .attr("width", (d) => x(value(d)) - x(0));
+                .attr("width", (d) => x(value(d)) - x(0))
+                ;
             // [exit]
             bars
                 .exit()
@@ -237,6 +241,12 @@ const useChartBarsH = ({
             bars
                 .enter()
                 .append("rect")
+                .call(s =>
+                    s
+                        .append("title")
+                        .text(d => d.count)
+                        .attr("class", _classBarsTitle)
+                )
                 .attr("x", x(0))
                 .attr("y", (d) => y(key(d)))
                 .attr("height", y.bandwidth())
