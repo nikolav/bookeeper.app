@@ -139,7 +139,6 @@ const useChartBarsH = ({
             // [current]
             bars
                 .transition(t)
-                .attr("x", (d) => x(value(d)))
                 .attr("y", (d) => y(key(d)))
                 .attr("height", y.bandwidth())
                 .attr("width", (d) => x(value(d)) - x(0));
@@ -148,22 +147,24 @@ const useChartBarsH = ({
                 .exit()
                 // .initial
                 .attr("fill", "#ff0000")
+                //  
                 .transition(t)
                 // .animate
                 .attr("fill-opacity", 0)
-                .attr("x", x(0))
+                .attr("width", 0)
                 .attr("height", 0)
                 .remove();
             // [enter]; update shapes
             bars
                 .enter()
                 .append("rect")
+                .attr("x", x(0))
                 .attr("y", (d) => y(key(d)))
                 .attr("height", y.bandwidth())
                 .attr("fill", colorPrimary)
                 .attr("class", _classBars)
                 // transition.initial
-                .attr("x", x(0))
+                .attr("width", 0)
                 .attr("fill-opacity", 0)
                 // make transition
                 .transition(t)

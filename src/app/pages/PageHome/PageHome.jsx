@@ -12,18 +12,18 @@ import { useChartBarsH } from "../../../hooks"
 const GIT_LINK =
   "https://github.com/nikolav/bookeeper.app/blob/production--application-command-bar/src/app/pages/PageHome/PageHome.jsx";
 //
+const fakeData = () => 
+  ["🥝", "🍋", "🍌", "🍊", "🍎"]
+  .map(name => ({ name, count: random(100)}));
 export default function PageHome() {
   const r$ = useRef()
-  const [d$, setd] = useState(null)
+  const [d$, setd] = useState(fakeData())
+  const [i1$, seti1] = useState()
   //
+  const setFakeData = () => setd(fakeData());
   useEffect(() => {
-    setd([
-      { name: "🥝", count: random(100) },
-      { name: "🍋", count: random(100) },
-      { name: "🍌", count: random(100) },
-      { name: "🍊", count: random(100) },
-      { name: "🍎", count: random(100) }
-    ])
+    seti1(setInterval(setFakeData, 5678));
+    return clearInterval(i1$);
   }, [])
   useChartBarsH({
     data: d$, 
