@@ -1,5 +1,5 @@
-import useQueryWorldAtlasTopology from "./use-query-world-atlas-topology";
+import useQueryWorldAtlas from "./use-query-world-atlas";
 
 export {
-  useQueryWorldAtlasTopology,
+  useQueryWorldAtlas,
 };

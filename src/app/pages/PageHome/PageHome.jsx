@@ -6,31 +6,35 @@
 // TabsIndicator,
 // } from "../../../components";
 //
-import { useEffect, useRef, useState } from "react";
-import { random } from "../../../util"
 import { 
-  useChartBarsH, 
-  useQueryWorldAtlasTopology
+  useEffect, 
+  useRef, 
+  useState
+} from "react";
+// import { random } from "../../../util"
+import { 
+  // useChartBarsH, 
+  useQueryWorldAtlas
 } from "../../../hooks"
 const GIT_LINK =
   "https://github.com/nikolav/bookeeper.app/blob/production--application-command-bar/src/app/pages/PageHome/PageHome.jsx";
 //
-const fakeData = () => 
-  ["🥝", "🍋", "🍌", "🍊", "🍎"]
-  .map(name => ({ name, count: random(100)}));
+// const fakeData = () => 
+//   ["🥝", "🍋", "🍌", "🍊", "🍎"]
+//   .map(name => ({ name, count: random(100)}));
 export default function PageHome() {
-  const r$ = useRef()
-  const r2$ = useRef()
-  const [d$, setd] = useState(fakeData())
-  const [i1$, seti1] = useState()
-  const setFakeData = () => setd(fakeData());
+  // const r$ = useRef()
+  // const r2$ = useRef()
+  // const [d$, setd] = useState(fakeData())
+  // const [i1$, seti1] = useState()
+  // const setFakeData = () => setd(fakeData());
   //
   const { 
     topology, 
     paths: { countries, interiors, land }, 
     graticule,
     geoDrawFeature 
-  } = useQueryWorldAtlasTopology()
+  } = useQueryWorldAtlas()
   useEffect(() => {
     if (topology && countries && interiors) {
       console.log(topology);
@@ -38,20 +42,20 @@ export default function PageHome() {
       console.log(interiors);
     }
   }, [topology, countries, interiors])
-  useEffect(() => {
-    seti1(setInterval(setFakeData, 5678));
-    return clearInterval(i1$);
-  }, [])
-  useChartBarsH({
-    data: d$, 
-    root: r$?.current,
-    options: {
-      key: (d) => d.name,
-      value: (d) => d.count,
-      width: 550,
-      height: 400,
-    }
-  })
+  // useEffect(() => {
+  //   seti1(setInterval(setFakeData, 5678));
+  //   return clearInterval(i1$);
+  // }, [])
+  // useChartBarsH({
+  //   data: d$, 
+  //   root: r$?.current,
+  //   options: {
+  //     key: (d) => d.name,
+  //     value: (d) => d.count,
+  //     width: 550,
+  //     height: 400,
+  //   }
+  // })
   return (
     <section className="text-center">
       <div className="mt-12">
@@ -90,8 +94,8 @@ export default function PageHome() {
             )
           }
         </div>
-        <div ref={r$} />
-        <div ref={r2$} />
+        {/* <div ref={r$} />
+        <div ref={r2$} /> */}
       </div>
     </section>
   );

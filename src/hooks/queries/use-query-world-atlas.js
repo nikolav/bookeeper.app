@@ -14,7 +14,7 @@ const projection = geoNaturalEarth1();
 const graticule = geoGraticule();
 const geoDrawFeature = geoPath(projection);
 // 
-const useQueryWorldAtlasTopology = () => {
+const useQueryWorldAtlas = () => {
   const [topology, setTopology] = useState(null)
   const [paths, setPaths] = useState({})
   // 
@@ -50,7 +50,7 @@ const useQueryWorldAtlasTopology = () => {
   }
 }
 
-export default useQueryWorldAtlasTopology;
+export default useQueryWorldAtlas;
 
 
 /*

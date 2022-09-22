@@ -9,7 +9,7 @@ import {
   useQueryResourceBase,
   useQueryResourceCustom,
 } from "./use-query-resource";
-import { useQueryWorldAtlasTopology } from "./queries";
+import { useQueryWorldAtlas } from "./queries";
 import useTimer from "./use-timer";
 import useFancyboxGallery from "./use-fancybox-gallery";
 import useFileReader from "./use-file-reader";
@@ -61,7 +61,7 @@ export {
   useQueryResource,
   useQueryResourceBase,
   useQueryResourceCustom,
-  useQueryWorldAtlasTopology,
+  useQueryWorldAtlas,
   useSocialComments,
   useSocialLike,
   useStackOnce,
